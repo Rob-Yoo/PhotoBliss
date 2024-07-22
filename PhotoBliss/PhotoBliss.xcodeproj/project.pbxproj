@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */; };
 		CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */; };
-		CC5510B32C4E3C0100A042C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* ViewController.swift */; };
+		CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */; };
 		CC5510B82C4E3C0200A042C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC5510B72C4E3C0200A042C2 /* Assets.xcassets */; };
-		CC5510BB2C4E3C0200A042C2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CC5510BA2C4E3C0200A042C2 /* Base */; };
 		CC5510C62C4E3DAD00A042C2 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CC5510C52C4E3DAD00A042C2 /* Then */; };
 		CC5510C92C4E3DB800A042C2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CC5510C82C4E3DB800A042C2 /* SnapKit */; };
 		CC5510CC2C4E3DF300A042C2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC5510CB2C4E3DF300A042C2 /* RealmSwift */; };
@@ -29,6 +28,9 @@
 		CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */; };
 		CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */; };
 		CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */; };
+		CC5511002C4E700300A042C2 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FF2C4E700300A042C2 /* TextButton.swift */; };
+		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
+		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,9 +51,8 @@
 		CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CC5510B22C4E3C0100A042C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CC5510B72C4E3C0200A042C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CC5510BA2C4E3C0200A042C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC5510BC2C4E3C0200A042C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5510DB2C4E453F00A042C2 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		CC5510DE2C4E455700A042C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -63,6 +64,9 @@
 		CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		CC5510FF2C4E700300A042C2 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +125,10 @@
 		CC5510D72C4E3EC900A042C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA37D02C4E8D5E00C9ADC1 /* LaunchScreen */,
 				CC5510DA2C4E451200A042C2 /* Common */,
 				CC5510B72C4E3C0200A042C2 /* Assets.xcassets */,
-				CC5510B92C4E3C0200A042C2 /* LaunchScreen.storyboard */,
+				CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -143,7 +148,6 @@
 				CC5510F02C4E600100A042C2 /* Custom */,
 				CC5510E92C4E587D00A042C2 /* Base */,
 				CC5510E72C4E584500A042C2 /* Screens */,
-				CC5510B22C4E3C0100A042C2 /* ViewController.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -177,6 +181,7 @@
 		CC5510E82C4E586300A042C2 /* OnboardingScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */,
 			);
 			path = OnboardingScreen;
 			sourceTree = "<group>";
@@ -195,7 +200,8 @@
 		CC5510F02C4E600100A042C2 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				CC5510F12C4E603B00A042C2 /* NavigationController.swift */,
+				CC5510FE2C4E6F0200A042C2 /* Controller */,
+				CC5510FD2C4E6ECA00A042C2 /* View */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -215,6 +221,38 @@
 				CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CC5510FD2C4E6ECA00A042C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC5511012C4E704300A042C2 /* Buttons */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC5510FE2C4E6F0200A042C2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510F12C4E603B00A042C2 /* NavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC5511012C4E704300A042C2 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510FF2C4E700300A042C2 /* TextButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CCFA37D02C4E8D5E00C9ADC1 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,8 +330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */,
 				CC5510B82C4E3C0200A042C2 /* Assets.xcassets in Resources */,
-				CC5510BB2C4E3C0200A042C2 /* Base in Resources */,
+				CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,8 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC5510B32C4E3C0100A042C2 /* ViewController.swift in Sources */,
+				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
+				CC5511002C4E700300A042C2 /* TextButton.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
 				CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
@@ -321,17 +361,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		CC5510B92C4E3C0200A042C2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC5510BA2C4E3C0200A042C2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CC5510BD2C4E3C0200A042C2 /* Debug */ = {

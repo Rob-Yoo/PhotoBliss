@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhotoBliss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8O-MX-oOb">
+                                <rect key="frame" x="95" y="134" width="203" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
+                                <color key="textColor" name="MainTheme"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유진영" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9z-r7-1R2">
+                                <rect key="frame" x="164" y="633" width="65" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polaroid.png" translatesAutoresizingMaskIntoConstraints="NO" id="cLR-67-H9w">
+                                <rect key="frame" x="30" y="239" width="333" height="374"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q9z-r7-1R2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6hf-iD-y6P"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="cLR-67-H9w" secondAttribute="trailing" constant="30" id="ElZ-Al-Lt0"/>
+                            <constraint firstItem="cLR-67-H9w" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="30" id="VbD-Mm-2La"/>
+                            <constraint firstItem="cLR-67-H9w" firstAttribute="top" secondItem="L8O-MX-oOb" secondAttribute="bottom" constant="45" id="WLi-rr-ynp"/>
+                            <constraint firstItem="L8O-MX-oOb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="j5F-dT-IOb"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="Q9z-r7-1R2" secondAttribute="bottom" constant="155" id="kNh-95-Dra"/>
+                            <constraint firstItem="Q9z-r7-1R2" firstAttribute="top" secondItem="cLR-67-H9w" secondAttribute="bottom" constant="20" id="o0i-gI-Plp"/>
+                            <constraint firstItem="L8O-MX-oOb" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="75" id="yub-4W-05Y"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="polaroid.png" width="335" height="374"/>
+        <namedColor name="MainTheme">
+            <color red="0.094117647058823528" green="0.43529411764705883" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
