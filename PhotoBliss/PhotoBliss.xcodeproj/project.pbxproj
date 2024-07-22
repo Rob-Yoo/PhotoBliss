@@ -66,14 +66,46 @@
 		CC5510AD2C4E3C0100A042C2 /* PhotoBliss */ = {
 			isa = PBXGroup;
 			children = (
-				CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */,
-				CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */,
-				CC5510B22C4E3C0100A042C2 /* ViewController.swift */,
-				CC5510B72C4E3C0200A042C2 /* Assets.xcassets */,
-				CC5510B92C4E3C0200A042C2 /* LaunchScreen.storyboard */,
+				CC5510D72C4E3EC900A042C2 /* Resources */,
+				CC5510D62C4E3EC200A042C2 /* Sources */,
 				CC5510BC2C4E3C0200A042C2 /* Info.plist */,
 			);
 			path = PhotoBliss;
+			sourceTree = "<group>";
+		};
+		CC5510D62C4E3EC200A042C2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510D92C4E3EDA00A042C2 /* Presenter */,
+				CC5510D82C4E3ED200A042C2 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CC5510D72C4E3EC900A042C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510B72C4E3C0200A042C2 /* Assets.xcassets */,
+				CC5510B92C4E3C0200A042C2 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CC5510D82C4E3ED200A042C2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */,
+				CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CC5510D92C4E3EDA00A042C2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510B22C4E3C0100A042C2 /* ViewController.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
