@@ -21,7 +21,22 @@
 		CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510DB2C4E453F00A042C2 /* Literal.swift */; };
 		CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510DE2C4E455700A042C2 /* UIFont+Extension.swift */; };
 		CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510E12C4E45F000A042C2 /* UIImage+Extension.swift */; };
+		CC5510E52C4E57D400A042C2 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CC5510CB2C4E3DF300A042C2 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC5510E62C4E57D400A042C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CC5510E52C4E57D400A042C2 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +158,7 @@
 				CC5510A72C4E3C0100A042C2 /* Sources */,
 				CC5510A82C4E3C0100A042C2 /* Frameworks */,
 				CC5510A92C4E3C0100A042C2 /* Resources */,
+				CC5510E62C4E57D400A042C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
