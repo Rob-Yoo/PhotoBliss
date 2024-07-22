@@ -12,4 +12,5 @@ extension UIImage {
     
     static let star = UIImage(systemName: "star.fill")
     static let camera = UIImage(systemName: "camera.fill")
+    static let leftArrow = UIImage(systemName: "chevron.left")
 }

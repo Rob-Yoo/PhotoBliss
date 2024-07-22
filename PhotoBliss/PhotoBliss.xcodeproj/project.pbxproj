@@ -22,6 +22,9 @@
 		CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510DE2C4E455700A042C2 /* UIFont+Extension.swift */; };
 		CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510E12C4E45F000A042C2 /* UIImage+Extension.swift */; };
 		CC5510E52C4E57D400A042C2 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CC5510CB2C4E3DF300A042C2 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */; };
+		CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */; };
+		CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F12C4E603B00A042C2 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +52,9 @@
 		CC5510DB2C4E453F00A042C2 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		CC5510DE2C4E455700A042C2 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CC5510E12C4E45F000A042C2 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
+		CC5510F12C4E603B00A042C2 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,9 @@
 		CC5510D92C4E3EDA00A042C2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CC5510F02C4E600100A042C2 /* Custom */,
+				CC5510E92C4E587D00A042C2 /* Base */,
+				CC5510E72C4E584500A042C2 /* Screens */,
 				CC5510B22C4E3C0100A042C2 /* ViewController.swift */,
 			);
 			path = Presenter;
@@ -146,6 +155,38 @@
 				CC5510E12C4E45F000A042C2 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CC5510E72C4E584500A042C2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510E82C4E586300A042C2 /* OnboardingScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CC5510E82C4E586300A042C2 /* OnboardingScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OnboardingScreen;
+			sourceTree = "<group>";
+		};
+		CC5510E92C4E587D00A042C2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */,
+				CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CC5510F02C4E600100A042C2 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510F12C4E603B00A042C2 /* NavigationController.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +278,12 @@
 			files = (
 				CC5510B32C4E3C0100A042C2 /* ViewController.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
+				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
+				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
 				CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
+				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
