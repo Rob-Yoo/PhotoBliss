@@ -31,6 +31,14 @@
 		CC5511002C4E700300A042C2 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FF2C4E700300A042C2 /* TextButton.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
 		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
+		CCFA37D82C4E917F00C9ADC1 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37D72C4E917F00C9ADC1 /* ProfileImageView.swift */; };
+		CCFA37DA2C4E941700C9ADC1 /* CurrentProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37D92C4E941700C9ADC1 /* CurrentProfileImageView.swift */; };
+		CCFA37DC2C4E946A00C9ADC1 /* CamerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37DB2C4E946A00C9ADC1 /* CamerImageView.swift */; };
+		CCFA37E02C4E96A700C9ADC1 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37DF2C4E96A700C9ADC1 /* ProfileSettingView.swift */; };
+		CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37E12C4E980C00C9ADC1 /* NicknameTextFieldView.swift */; };
+		CCFA37E42C4E98BD00C9ADC1 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37E32C4E98BD00C9ADC1 /* NicknameValidationStatus.swift */; };
+		CCFA37E72C4E996500C9ADC1 /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37E62C4E996500C9ADC1 /* ProfileSettingType.swift */; };
+		CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37EB2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +75,14 @@
 		CC5510FF2C4E700300A042C2 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
+		CCFA37D72C4E917F00C9ADC1 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		CCFA37D92C4E941700C9ADC1 /* CurrentProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProfileImageView.swift; sourceTree = "<group>"; };
+		CCFA37DB2C4E946A00C9ADC1 /* CamerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerImageView.swift; sourceTree = "<group>"; };
+		CCFA37DF2C4E96A700C9ADC1 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		CCFA37E12C4E980C00C9ADC1 /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
+		CCFA37E32C4E98BD00C9ADC1 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
+		CCFA37E62C4E996500C9ADC1 /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
+		CCFA37EB2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5510E82C4E586300A042C2 /* OnboardingScreen */,
+				CCFA37DD2C4E952300C9ADC1 /* ProfileSettingScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -226,6 +243,7 @@
 		CC5510FD2C4E6ECA00A042C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA37D62C4E917000C9ADC1 /* Profile */,
 				CC5511012C4E704300A042C2 /* Buttons */,
 			);
 			path = View;
@@ -253,6 +271,52 @@
 				CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		CCFA37D62C4E917000C9ADC1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37D72C4E917F00C9ADC1 /* ProfileImageView.swift */,
+				CCFA37D92C4E941700C9ADC1 /* CurrentProfileImageView.swift */,
+				CCFA37DB2C4E946A00C9ADC1 /* CamerImageView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CCFA37DD2C4E952300C9ADC1 /* ProfileSettingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37E52C4E995400C9ADC1 /* Enums */,
+				CCFA37DE2C4E953100C9ADC1 /* View */,
+			);
+			path = ProfileSettingScreen;
+			sourceTree = "<group>";
+		};
+		CCFA37DE2C4E953100C9ADC1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37E92C4E9B5C00C9ADC1 /* New */,
+				CCFA37DF2C4E96A700C9ADC1 /* ProfileSettingView.swift */,
+				CCFA37E12C4E980C00C9ADC1 /* NicknameTextFieldView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCFA37E52C4E995400C9ADC1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37E32C4E98BD00C9ADC1 /* NicknameValidationStatus.swift */,
+				CCFA37E62C4E996500C9ADC1 /* ProfileSettingType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		CCFA37E92C4E9B5C00C9ADC1 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37EB2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift */,
+			);
+			path = New;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,17 +409,25 @@
 			files = (
 				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
+				CCFA37DC2C4E946A00C9ADC1 /* CamerImageView.swift in Sources */,
 				CC5511002C4E700300A042C2 /* TextButton.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
 				CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
+				CCFA37E72C4E996500C9ADC1 /* ProfileSettingType.swift in Sources */,
 				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
 				CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */,
 				CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */,
+				CCFA37D82C4E917F00C9ADC1 /* ProfileImageView.swift in Sources */,
+				CCFA37DA2C4E941700C9ADC1 /* CurrentProfileImageView.swift in Sources */,
 				CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
+				CCFA37E42C4E98BD00C9ADC1 /* NicknameValidationStatus.swift in Sources */,
+				CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */,
 				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
+				CCFA37E02C4E96A700C9ADC1 /* ProfileSettingView.swift in Sources */,
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
+				CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
