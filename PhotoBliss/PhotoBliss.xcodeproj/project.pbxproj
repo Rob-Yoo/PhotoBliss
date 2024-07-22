@@ -25,6 +25,10 @@
 		CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */; };
 		CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */; };
 		CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F12C4E603B00A042C2 /* NavigationController.swift */; };
+		CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F32C4E6AAD00A042C2 /* BaseView.swift */; };
+		CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */; };
+		CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */; };
+		CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +59,10 @@
 		CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
 		CC5510F12C4E603B00A042C2 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CC5510F32C4E6AAD00A042C2 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 		CC5510D62C4E3EC200A042C2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CC5510F92C4E6D2E00A042C2 /* Common */,
 				CC5510D92C4E3EDA00A042C2 /* Presenter */,
 				CC5510D82C4E3ED200A042C2 /* App */,
 			);
@@ -176,7 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				CC5510EA2C4E588B00A042C2 /* BaseViewController.swift */,
-				CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */,
+				CC5510F32C4E6AAD00A042C2 /* BaseView.swift */,
+				CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */,
+				CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -187,6 +198,23 @@
 				CC5510F12C4E603B00A042C2 /* NavigationController.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		CC5510F92C4E6D2E00A042C2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510FA2C4E6D3700A042C2 /* Protocols */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CC5510FA2C4E6D3700A042C2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CC5510EC2C4E58DE00A042C2 /* RootViewProtocol.swift */,
+				CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,10 +307,14 @@
 				CC5510B32C4E3C0100A042C2 /* ViewController.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
+				CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
 				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
+				CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */,
+				CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */,
 				CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
+				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
 			);
