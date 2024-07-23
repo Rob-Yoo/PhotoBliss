@@ -9,12 +9,13 @@ import UIKit
 
 final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingView> {
     
-    private var viewModel: ProfileImageSettingViewModel
+    private let viewModel = ProfileImageSettingViewModel()
+    private let input: Observable<ProfileImageSettingViewModel.Input>
     
     var deliverProfileImageNumber: ((Int) -> Void)?
     
-    init(contentView: ProfileImageSettingView, viewModel: ProfileImageSettingViewModel) {
-        self.viewModel = viewModel
+    init(contentView: ProfileImageSettingView, profileImageNumber: Int) {
+        self.input = Observable<ProfileImageSettingViewModel.Input>(.profileImageNumber(profileImageNumber))
         super.init(contentView: contentView)
     }
 
@@ -24,7 +25,7 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
     }
     
     override func bindViewModel() {
-        self.viewModel.transform()
+        self.viewModel.transform(input: input)
             .bind { [weak self] event in
                 switch event {
                 case .profileImageNumber(let number):
@@ -57,7 +58,7 @@ extension ProfileImageSettingViewController: UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let idx = indexPath.item
-        self.viewModel.input.value = .profileImageNumber(idx)
+        self.input.value = .profileImageNumber(idx)
     }
 }
 

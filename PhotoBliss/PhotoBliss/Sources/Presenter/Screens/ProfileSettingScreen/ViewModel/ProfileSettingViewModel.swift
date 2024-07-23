@@ -24,14 +24,13 @@ final class ProfileSettingViewModel {
         case profileImageNumber(_ number: Int)
         case transition(imageNumber: Int)
     }
-
-    let input = Observable<Input>()
+    
     private let output = Observable<Output>()
     
     private var profileImageNumber = -1
     private let repository = ProfileRepository()
     
-    func transform() -> Observable<Output> {
+    func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
             switch event {
             case .viewDidLoad:

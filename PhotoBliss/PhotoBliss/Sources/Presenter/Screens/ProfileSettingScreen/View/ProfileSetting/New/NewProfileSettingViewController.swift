@@ -9,10 +9,10 @@ import UIKit
 
 final class NewProfileSettingViewController: BaseViewController<ProfileSettingView> {
     
-    private let viewModel: ProfileSettingViewModel
+    private let viewModel = ProfileSettingViewModel()
+    private let input = Observable<ProfileSettingViewModel.Input>()
     
-    init(contentView: ProfileSettingView, viewModel: ProfileSettingViewModel) {
-        self.viewModel = viewModel
+    override init(contentView: ProfileSettingView) {
         super.init(contentView: contentView)
     }
     
@@ -20,7 +20,7 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingVi
         super.viewDidLoad()
         self.configureNavigationAppearence(appearenceType: .opaque)
         self.configureNavBarLeftBarButtonItem()
-        self.viewModel.input.value = .viewDidLoad
+        self.input.value = .viewDidLoad
     }
     
     private func configureNavBarLeftBarButtonItem() {
@@ -40,7 +40,7 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingVi
     }
     
     override func bindViewModel() {
-        self.viewModel.transform()
+        self.viewModel.transform(input: input)
             .bind { [weak self] output in
                 switch output {
                 case .nickname(let nickname):
@@ -67,12 +67,12 @@ extension NewProfileSettingViewController {
     }
     
     @objc private func profileImageViewTapped() {
-        self.viewModel.input.value = .profileImageViewTapped
+        self.input.value = .profileImageViewTapped
     }
     
     @objc private func nicknameTextFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
-        self.viewModel.input.value = .nickname(text)
+        self.input.value = .nickname(text)
     }
     
     @objc private func completeButtonTapped() {
@@ -104,10 +104,10 @@ extension NewProfileSettingViewController {
     }
     
     private func moveToProfileImageSettingView(imageNumber: Int) {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), viewModel: ProfileImageSettingViewModel(imageNumber: imageNumber))
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), profileImageNumber: imageNumber)
         
         nextVC.deliverProfileImageNumber = { [weak self] number in
-            self?.viewModel.input.value = .profileImageNumber(number)
+            self?.input.value = .profileImageNumber(number)
         }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

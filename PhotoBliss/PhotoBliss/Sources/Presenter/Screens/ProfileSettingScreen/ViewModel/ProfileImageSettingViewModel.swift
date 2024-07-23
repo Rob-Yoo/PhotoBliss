@@ -17,15 +17,10 @@ final class ProfileImageSettingViewModel {
         case profileImageNumber(_ number: Int)
     }
     
-    let input: Observable<Input>
     private let output = Observable<Output>()
     
-    init(imageNumber: Int) {
-        self.input = Observable<Input>(.profileImageNumber(imageNumber))
-    }
-    
-    func transform() -> Observable<Output> {
-        self.input.bind { [weak self] event in
+    func transform(input: Observable<Input>) -> Observable<Output> {
+        input.bind { [weak self] event in
             switch event {
             case .profileImageNumber(let number):
                 self?.output.value = .profileImageNumber(number)
