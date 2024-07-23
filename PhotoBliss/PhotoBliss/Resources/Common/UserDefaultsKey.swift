@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum UserDefaultsKey: String, CaseIterable {
+    case profileImageNumber
+    case nickname
+    case isUser
+    case mbti
+}

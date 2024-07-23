@@ -54,7 +54,7 @@ final class NicknameTextFieldView: BaseView {
     }
     
     func update(status: NicknameValidationStatus) {
-        let statusColor: UIColor = (status == .ok) ? .black : .mainTheme
+        let statusColor: UIColor = (status == .ok) ? .mainTheme : .warning
         let lineColor: UIColor = (status == .ok) ? .black : .unselected
 
         self.line.backgroundColor = lineColor

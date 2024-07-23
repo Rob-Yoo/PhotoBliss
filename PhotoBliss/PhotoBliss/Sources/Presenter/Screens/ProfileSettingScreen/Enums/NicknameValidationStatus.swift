@@ -7,6 +7,7 @@
 
 enum NicknameValidationStatus {
     case ok
+    case empty
     case countError
     case characterError
     case numberError
@@ -24,6 +25,8 @@ enum NicknameValidationStatus {
             return Literal.NicknameStatus.numError
         case .whitespaceError:
             return Literal.NicknameStatus.whitespaceError
+        case .empty:
+            return ""
         }
     }
 }
