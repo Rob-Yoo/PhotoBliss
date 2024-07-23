@@ -14,9 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser.rawValue)
+        let rootVC = isUser ? TabBarController() : NavigationController(rootViewController: OnboardingViewController())
+
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = NavigationController(rootViewController: OnboardingViewController())
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }
 

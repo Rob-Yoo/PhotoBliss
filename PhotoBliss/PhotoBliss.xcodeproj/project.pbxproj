@@ -11,6 +11,8 @@
 		CC19046D2C4FC17B0092F4AF /* ProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19046C2C4FC17B0092F4AF /* ProfileImageSettingView.swift */; };
 		CC19046F2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19046E2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift */; };
 		CC1904712C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904702C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift */; };
+		CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904742C5017CF0092F4AF /* NavigationManager.swift */; };
+		CC1904772C5018220092F4AF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904762C5018220092F4AF /* TabBarController.swift */; };
 		CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */; };
 		CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */; };
 		CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */; };
@@ -69,6 +71,8 @@
 		CC19046C2C4FC17B0092F4AF /* ProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC19046E2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC1904702C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewModel.swift; sourceTree = "<group>"; };
+		CC1904742C5017CF0092F4AF /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		CC1904762C5018220092F4AF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,14 @@
 				CCFA37E92C4E9B5C00C9ADC1 /* New */,
 			);
 			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		CC1904732C5017BC0092F4AF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904742C5017CF0092F4AF /* NavigationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		CC5510A22C4E3C0100A042C2 = {
@@ -274,6 +286,7 @@
 		CC5510F92C4E6D2E00A042C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CC1904732C5017BC0092F4AF /* Managers */,
 				CCEF3E412C4FBA5B006CAA4E /* Extension */,
 				CCFA37F42C4EB9F800C9ADC1 /* CustomObservable */,
 				CC5510FA2C4E6D3700A042C2 /* Protocols */,
@@ -303,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5510F12C4E603B00A042C2 /* NavigationController.swift */,
+				CC1904762C5018220092F4AF /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -522,11 +536,13 @@
 				CCFA37E42C4E98BD00C9ADC1 /* NicknameValidationStatus.swift in Sources */,
 				CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */,
 				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
+				CC1904772C5018220092F4AF /* TabBarController.swift in Sources */,
 				CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */,
 				CC19046D2C4FC17B0092F4AF /* ProfileImageSettingView.swift in Sources */,
 				CCFA37E02C4E96A700C9ADC1 /* ProfileSettingView.swift in Sources */,
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
 				CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */,
+				CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
 				CCFA37F82C4ECA8600C9ADC1 /* ProfileRepository.swift in Sources */,
 			);
