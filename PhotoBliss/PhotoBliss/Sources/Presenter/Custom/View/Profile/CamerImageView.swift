@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CameraImageView: UIImageView {
+final class CameraImageView: UIImageView {
     
     init() {
         super.init(image: nil)
@@ -18,7 +18,7 @@ class CameraImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func draw(_ rect: CGRect) {
+    override func layoutSubviews() {
         self.layer.cornerRadius = self.frame.width / 2
         self.clipsToBounds = true
     }

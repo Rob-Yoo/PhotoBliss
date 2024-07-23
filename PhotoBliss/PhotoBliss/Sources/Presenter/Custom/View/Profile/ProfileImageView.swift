@@ -19,8 +19,8 @@ final class ProfileImageView: UIImageView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func draw(_ rect: CGRect) {
+
+    override func layoutSubviews() {
         self.layer.cornerRadius = self.frame.width / 2
         self.clipsToBounds = true
     }
