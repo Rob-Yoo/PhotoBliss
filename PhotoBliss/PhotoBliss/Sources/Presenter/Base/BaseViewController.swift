@@ -8,7 +8,7 @@
 import UIKit
 
 class BaseViewController<ContentView: UIView>: UIViewController {
-
+    
     let contentView: ContentView
     
     init(contentView: ContentView = ContentView()) {
@@ -46,7 +46,7 @@ class BaseViewController<ContentView: UIView>: UIViewController {
         self.contentView.endEditing(true)
     }
 
-    @objc func backButtonTapped() {
+    @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -54,6 +54,7 @@ class BaseViewController<ContentView: UIView>: UIViewController {
 //MARK: - Configure NavigationBar
 extension BaseViewController {
     private func configureNavigationBar() {
+        self.configureNavigationBarAppearence()
         self.configureNavBarTitle()
         
         if let nc = self.navigationController, nc.viewControllers.count > 1 {
@@ -61,6 +62,13 @@ extension BaseViewController {
         }
     }
 
+    private func configureNavigationBarAppearence() {
+        let appearence = UINavigationBarAppearance()
+
+        appearence.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.standardAppearance = appearence
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
+    }
     
     private func configureNavBarTitle() {
         guard let navBarInfo = self.contentView as? RootViewProtocol else {

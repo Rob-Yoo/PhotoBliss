@@ -40,8 +40,14 @@ final class OnboardingViewController: UIViewController {
         self.configureLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.configureNavigationAppearence(appearenceType: .transparent)
+    }
+    
     @objc func startButtonTapped() {
-        
+        let nextVC = NewProfileSettingViewController(contentView: ProfileSettingView(type: .New), viewModel: ProfileSettingViewModel())
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -56,14 +62,13 @@ extension OnboardingViewController {
     
     private func configureLayout() {
         
-        appTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(75)
-            $0.bottom.equalTo(appImageView.snp.top).inset(-45)
-            $0.centerX.equalToSuperview()
+        appImageView.snp.makeConstraints {
+            $0.center.equalTo(view)
         }
         
-        appImageView.snp.makeConstraints {
-            $0.center.equalTo(view.safeAreaLayoutGuide)
+        appTitleLabel.snp.makeConstraints {
+            $0.bottom.equalTo(appImageView.snp.top).inset(-45)
+            $0.centerX.equalToSuperview()
         }
         
         nameLabel.snp.makeConstraints {
