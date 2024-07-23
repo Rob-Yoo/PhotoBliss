@@ -142,6 +142,7 @@
 		CC1904722C50087D0092F4AF /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
+				CC1904682C4FC0540092F4AF /* Common */,
 				CCFA37E92C4E9B5C00C9ADC1 /* New */,
 			);
 			path = ProfileSetting;
@@ -353,7 +354,6 @@
 		CCFA37DE2C4E953100C9ADC1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC1904682C4FC0540092F4AF /* Common */,
 				CC1904722C50087D0092F4AF /* ProfileSetting */,
 				CC1904692C4FC0960092F4AF /* ProfileImageSetting */,
 			);
