@@ -17,12 +17,15 @@ final class Observable<T> {
         }
     }
     
-//    init(_ value: T) {
-//        self.value = value
-//    }
+    convenience init(_ value: T) {
+        self.init()
+        self.value = value
+    }
     
     func bind(closure: @escaping (T) -> Void) {
-//        closure(value)
+        if let value {
+            closure(value)
+        }
         self.closure = closure
     }
 }

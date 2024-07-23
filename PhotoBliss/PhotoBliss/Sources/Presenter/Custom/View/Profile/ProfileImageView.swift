@@ -30,10 +30,6 @@ final class ProfileImageView: UIImageView {
         self.uncolorProfileImageView()
     }
     
-    func update(image: UIImage) {
-        self.image = image
-    }
-    
     func update(isSelected: Bool) {
         isSelected ? self.colorProfileImageView() : self.uncolorProfileImageView()
     }
@@ -45,7 +41,7 @@ final class ProfileImageView: UIImageView {
     }
     
     func uncolorProfileImageView() {
-        self.layer.borderColor = UIColor.unselected.cgColor
+        self.layer.borderColor = UIColor.disabled.cgColor
         self.layer.borderWidth = 1
         self.alpha = 0.5
     }
