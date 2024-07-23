@@ -13,6 +13,7 @@ final class ProfileSettingViewModel {
         case viewDidLoad
         case nickname(_ nickname: String)
         case profileImageNumber(_ number: Int)
+        case profileImageViewTapped
         case saveButtonTapped
     }
     
@@ -21,11 +22,13 @@ final class ProfileSettingViewModel {
         case nicknameValidationStatus(_ status: NicknameValidationStatus)
         case isValid(_ status: Bool)
         case profileImageNumber(_ number: Int)
+        case transition(imageNumber: Int)
     }
 
-    var input = Observable<Input>()
-    private var output = Observable<Output>()
+    let input = Observable<Input>()
+    private let output = Observable<Output>()
     
+    private var profileImageNumber = -1
     private let repository = ProfileRepository()
     
     func transform() -> Observable<Output> {
@@ -37,6 +40,8 @@ final class ProfileSettingViewModel {
                 self?.checkNicknameValidationStatus(nickname: nickname)
             case .profileImageNumber(let number):
                 self?.changeProfileImage(number: number)
+            case .profileImageViewTapped:
+                self?.passThroughProfileImageNumber()
             case .saveButtonTapped:
                 break
             }
@@ -54,6 +59,7 @@ extension ProfileSettingViewModel {
         self.output.value = .nickname(userNickname)
         self.checkNicknameValidationStatus(nickname: userNickname)
         self.output.value = .profileImageNumber(userProfileImageNumber)
+        self.profileImageNumber = userProfileImageNumber
     }
     
     private func checkNicknameValidationStatus(nickname: String) {
@@ -67,6 +73,12 @@ extension ProfileSettingViewModel {
     
     private func changeProfileImage(number: Int) {
         self.output.value = .profileImageNumber(number)
+        self.profileImageNumber = number
+    }
+    
+    private func passThroughProfileImageNumber() {
+        guard (profileImageNumber != -1) else { return }
+        self.output.value = .transition(imageNumber: self.profileImageNumber)
     }
 }
 
