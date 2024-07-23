@@ -59,9 +59,9 @@ extension ProfileSettingView {
         self.addSubview(completeButton)
         
         completeButton.snp.makeConstraints {
-            $0.top.equalTo(nicknameTextFieldView.snp.bottom).offset(20)
-            $0.horizontalEdges.equalTo(nicknameTextFieldView)
-            $0.height.equalTo(nicknameTextFieldView.snp.height).multipliedBy(0.5)
+            $0.horizontalEdges.equalToSuperview().inset(30)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
+            $0.height.equalToSuperview().multipliedBy(0.05)
         }
     }
 }
