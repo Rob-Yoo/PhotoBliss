@@ -34,13 +34,13 @@ final class ProfileImageView: UIImageView {
         isSelected ? self.colorProfileImageView() : self.uncolorProfileImageView()
     }
     
-    func colorProfileImageView() {
+    private func colorProfileImageView() {
         self.layer.borderColor = UIColor.mainTheme.cgColor
         self.layer.borderWidth = 3
         self.alpha = 1
     }
     
-    func uncolorProfileImageView() {
+    private func uncolorProfileImageView() {
         self.layer.borderColor = UIColor.disabled.cgColor
         self.layer.borderWidth = 1
         self.alpha = 0.5
