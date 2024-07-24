@@ -36,7 +36,10 @@ final class TopicTrendRootView: BaseView {
         $0.allowsSelection = false
         $0.delegate = self
         $0.dataSource = self
+        $0.refreshControl = self.refreshControl
     }
+    
+    let refreshControl = UIRefreshControl()
     
     override func configureHierarchy() {
         self.addSubview(profileImageView)

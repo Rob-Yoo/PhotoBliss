@@ -11,6 +11,7 @@ final class TopicTrendViewModel {
 
     enum Input {
         case viewDidLoad
+        case shouldRefresh
     }
     
     enum Output {
@@ -26,6 +27,8 @@ final class TopicTrendViewModel {
             guard let self else { return }
             switch event {
             case .viewDidLoad:
+                Task { await self.fetchTopicList() }
+            case .shouldRefresh:
                 Task { await self.fetchTopicList() }
             }
         }

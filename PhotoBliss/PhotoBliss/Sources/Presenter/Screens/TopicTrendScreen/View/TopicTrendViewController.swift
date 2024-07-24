@@ -19,6 +19,10 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
         self.configureNavBarAppearence(appearenceType: .hidden)
     }
     
+    override func addUserAction() {
+        self.contentView.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
             .bind { [weak self] event in
@@ -31,5 +35,12 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                     self?.showAlert(message: message)
                 }
             }
+    }
+    
+    @objc private func refreshData(refresh: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.input.value = .shouldRefresh
+            refresh.endRefreshing()
+        }
     }
 }
