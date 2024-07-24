@@ -33,4 +33,8 @@ enum Literal {
         static let complete = "완료"
         static let deleteAccount = "회원탈퇴"
     }
+    
+    enum TopicTrend {
+        static let title = "OUR TOPIC"
+    }
 }

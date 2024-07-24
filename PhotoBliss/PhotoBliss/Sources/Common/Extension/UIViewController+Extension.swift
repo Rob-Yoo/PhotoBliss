@@ -12,9 +12,10 @@ extension UIViewController {
     enum NavBarAppearence {
         case opaque
         case transparent
+        case hidden
     }
     
-    func configureNavigationAppearence(appearenceType: NavBarAppearence) {
+    func configureNavBarAppearence(appearenceType: NavBarAppearence) {
         let appearence = UINavigationBarAppearance()
         
         switch appearenceType {
@@ -22,6 +23,9 @@ extension UIViewController {
             appearence.configureWithOpaqueBackground()
         case .transparent:
             appearence.configureWithTransparentBackground()
+        case .hidden:
+            self.navigationController?.navigationBar.isHidden = true
+            return
         }
         
         self.navigationController?.navigationBar.standardAppearance = appearence

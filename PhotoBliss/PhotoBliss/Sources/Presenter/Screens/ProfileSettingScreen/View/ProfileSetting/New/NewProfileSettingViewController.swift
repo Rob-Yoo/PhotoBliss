@@ -18,7 +18,7 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationAppearence(appearenceType: .opaque)
+        self.configureNavBarAppearence(appearenceType: .opaque)
         self.configureNavBarLeftBarButtonItem()
         self.input.value = .viewDidLoad
     }

@@ -50,7 +50,7 @@ extension TabBarController {
         var viewController: UIViewController {
             switch self {
             case .topic:
-                return ViewController()
+                return TopicTrendViewController()
             case .search:
                 return ViewController()
             case .like:

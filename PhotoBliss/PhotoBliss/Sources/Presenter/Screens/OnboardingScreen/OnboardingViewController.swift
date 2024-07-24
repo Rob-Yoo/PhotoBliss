@@ -41,7 +41,7 @@ final class OnboardingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.configureNavigationAppearence(appearenceType: .transparent)
+        self.configureNavBarAppearence(appearenceType: .transparent)
     }
     
     @objc func startButtonTapped() {
