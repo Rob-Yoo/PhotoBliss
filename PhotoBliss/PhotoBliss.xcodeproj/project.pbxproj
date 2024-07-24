@@ -306,8 +306,8 @@
 		CC5510D62C4E3EC200A042C2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CCFA37F52C4ECA6E00C9ADC1 /* Domain */,
 				CC5510F92C4E6D2E00A042C2 /* Common */,
+				CCFA37F52C4ECA6E00C9ADC1 /* Domain */,
 				CC5510D92C4E3EDA00A042C2 /* Presenter */,
 				CC5510D82C4E3ED200A042C2 /* App */,
 			);

@@ -8,16 +8,16 @@
 import Foundation
 
 struct TopicModel {
-    let name: String
+    let title: String
     let trendPhotos: [PhotoModel]
-    
-    static func createTopicModel(topic: String, dtos: [TopicTrendDTO]) -> Self {
+
+    static func createTopicModel(title: String, dtos: [TopicTrendDTO]) -> Self {
         var trendPhotos = [PhotoModel]()
         
         dtos.forEach {
             let photoModel = PhotoModel.createPhotoModel(dto: $0)
             trendPhotos.append(photoModel)
         }
-        return TopicModel(name: topic, trendPhotos: trendPhotos)
+        return TopicModel(title: title, trendPhotos: trendPhotos)
     }
 }

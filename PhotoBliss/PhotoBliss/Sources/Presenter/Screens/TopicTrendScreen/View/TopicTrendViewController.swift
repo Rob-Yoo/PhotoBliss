@@ -22,10 +22,13 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
             .bind { [weak self] event in
+                self?.contentView.hideToastActivity()
+
                 switch event {
                 case .topicList(let topicList):
-                    self?.contentView.hideToastActivity()
                     self?.contentView.updateUI(data: topicList)
+                case .networkError(let message):
+                    self?.showAlert(message: message)
                 }
             }
     }

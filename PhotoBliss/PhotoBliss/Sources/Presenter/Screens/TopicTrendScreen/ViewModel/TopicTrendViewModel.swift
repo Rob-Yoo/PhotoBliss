@@ -15,6 +15,7 @@ final class TopicTrendViewModel {
     
     enum Output {
         case topicList(_ topicList: [TopicModel])
+        case networkError(_ message: String)
     }
     
     private let output = Observable<Output>()
@@ -34,11 +35,15 @@ final class TopicTrendViewModel {
 
 extension TopicTrendViewModel {
     private func fetchTopicList() async {
-        let topicList = await repository.fetchTopicList()
-        guard !topicList.isEmpty else { return }
+        let result = await repository.fetchTopicList()
         
         DispatchQueue.main.async { [weak self] in
-            self?.output.value = .topicList(topicList)
+            switch result {
+            case .success(let topicList):
+                self?.output.value = .topicList(topicList)
+            case .failure(let error):
+                self?.output.value = .networkError(error.localizedDescription)
+            }
         }
     }
 }

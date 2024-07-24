@@ -65,20 +65,22 @@ final class TopicTrendRepository {
         }
     }
     
-    func fetchTopicList() async -> [TopicModel] {
+    func fetchTopicList() async -> Result<[TopicModel], Error> {
         let randomTopics = Topic.allCases.shuffled().prefix(3)
         var topicList = [TopicModel]()
 
         for topic in randomTopics {
-            guard let topicTrendDTOs = await NetworkManger.requestAPI(req: .topic(topicID: topic.rawValue), type: [TopicTrendDTO].self) else {
-                print("토픽별 트렌드 포토 관련 네트워크 통신 오류")
-                return []
+            let result = await NetworkManger.requestAPI(req: .topic(topicID: topic.rawValue), type: [TopicTrendDTO].self)
+            
+            switch result {
+            case .success(let topicTrendDTOs):
+                let topicModel = TopicModel.createTopicModel(title: topic.title, dtos: topicTrendDTOs)
+                topicList.append(topicModel)
+            case .failure(let error):
+                return .failure(error)
             }
-            let topicModel = TopicModel.createTopicModel(topic: topic.title, dtos: topicTrendDTOs)
-
-            topicList.append(topicModel)
         }
         
-        return topicList
+        return .success(topicList)
     }
 }

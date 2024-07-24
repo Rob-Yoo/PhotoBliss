@@ -8,7 +8,7 @@
 import Alamofire
 
 enum NetworkManger {
-    static func requestAPI<T: Decodable>(req: UnsplashRequest, type: T.Type) async -> T? {
+    static func requestAPI<T: Decodable>(req: UnsplashRequest, type: T.Type) async -> Result<T, Error> {
         do {
             let response = try await AF.request(req.endPoint,
                                                 method: req.method,
@@ -16,11 +16,9 @@ enum NetworkManger {
                                                 encoding: URLEncoding(destination: .queryString))
                 .validate().serializingDecodable(type).value
             
-            return response
+            return .success(response)
         } catch {
-            print(error)
+            return .failure(error)
         }
-        
-        return nil
     }
 }

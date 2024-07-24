@@ -79,7 +79,7 @@ extension TopicTrendRootView: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TopicTrendTableViewCell.reusableIdentifier, for: indexPath) as? TopicTrendTableViewCell else { return UITableViewCell() }
         
-        cell.configureCell(topic: topic.name)
+        cell.configureCell(topic: topic.title)
         
         return cell
     }

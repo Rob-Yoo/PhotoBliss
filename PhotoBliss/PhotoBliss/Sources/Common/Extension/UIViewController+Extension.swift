@@ -31,4 +31,12 @@ extension UIViewController {
         self.navigationController?.navigationBar.standardAppearance = appearence
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
     }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+    }
 }
