@@ -20,4 +20,8 @@ struct PhotoModel: Hashable, Identifiable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+    
+    static func createPhotoModel(dto: TopicTrendDTO) -> Self {
+        return PhotoModel(id: dto.id, imageURL: dto.urls.raw, starCount: dto.likes, isLike: false)
+    }
 }

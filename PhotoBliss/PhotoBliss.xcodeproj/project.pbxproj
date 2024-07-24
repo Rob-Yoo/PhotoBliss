@@ -13,6 +13,20 @@
 		CC1904712C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904702C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift */; };
 		CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904742C5017CF0092F4AF /* NavigationManager.swift */; };
 		CC1904772C5018220092F4AF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904762C5018220092F4AF /* TabBarController.swift */; };
+		CC1904A12C50CCF90092F4AF /* TopicTrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904A02C50CCF90092F4AF /* TopicTrendModel.swift */; };
+		CC1904A72C50D2860092F4AF /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904A62C50D2860092F4AF /* PhotoCollectionViewCell.swift */; };
+		CC1904A92C50D3E20092F4AF /* StarCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904A82C50D3E20092F4AF /* StarCountView.swift */; };
+		CC1904AB2C50D8360092F4AF /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904AA2C50D8360092F4AF /* LikeButton.swift */; };
+		CC1904AE2C50DC9A0092F4AF /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904AD2C50DC9A0092F4AF /* PhotoModel.swift */; };
+		CC1904B02C50E69F0092F4AF /* TopicTrendRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904AF2C50E69F0092F4AF /* TopicTrendRootView.swift */; };
+		CC1904B22C50E8C60092F4AF /* TopicTrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904B12C50E8C60092F4AF /* TopicTrendTableViewCell.swift */; };
+		CC1904B42C5106F20092F4AF /* TopicTrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904B32C5106F20092F4AF /* TopicTrendViewController.swift */; };
+		CC1904B62C5110050092F4AF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904B52C5110050092F4AF /* APIKey.swift */; };
+		CC1904B92C511BD20092F4AF /* TopicTrendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904B82C511BD20092F4AF /* TopicTrendViewModel.swift */; };
+		CC1904BC2C511D000092F4AF /* TopicTrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904BB2C511D000092F4AF /* TopicTrendRepository.swift */; };
+		CC1904BE2C511D3B0092F4AF /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904BD2C511D3B0092F4AF /* NetworkManger.swift */; };
+		CC1904C12C511D720092F4AF /* UnsplashRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904C02C511D720092F4AF /* UnsplashRequest.swift */; };
+		CC1904C42C51210D0092F4AF /* TopicTrendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1904C32C51210D0092F4AF /* TopicTrendDTO.swift */; };
 		CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */; };
 		CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */; };
 		CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */; };
@@ -73,6 +87,20 @@
 		CC1904702C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewModel.swift; sourceTree = "<group>"; };
 		CC1904742C5017CF0092F4AF /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		CC1904762C5018220092F4AF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CC1904A02C50CCF90092F4AF /* TopicTrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendModel.swift; sourceTree = "<group>"; };
+		CC1904A62C50D2860092F4AF /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC1904A82C50D3E20092F4AF /* StarCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCountView.swift; sourceTree = "<group>"; };
+		CC1904AA2C50D8360092F4AF /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		CC1904AD2C50DC9A0092F4AF /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		CC1904AF2C50E69F0092F4AF /* TopicTrendRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendRootView.swift; sourceTree = "<group>"; };
+		CC1904B12C50E8C60092F4AF /* TopicTrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendTableViewCell.swift; sourceTree = "<group>"; };
+		CC1904B32C5106F20092F4AF /* TopicTrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendViewController.swift; sourceTree = "<group>"; };
+		CC1904B52C5110050092F4AF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		CC1904B82C511BD20092F4AF /* TopicTrendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendViewModel.swift; sourceTree = "<group>"; };
+		CC1904BB2C511D000092F4AF /* TopicTrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendRepository.swift; sourceTree = "<group>"; };
+		CC1904BD2C511D3B0092F4AF /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
+		CC1904C02C511D720092F4AF /* UnsplashRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashRequest.swift; sourceTree = "<group>"; };
+		CC1904C32C51210D0092F4AF /* TopicTrendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTrendDTO.swift; sourceTree = "<group>"; };
 		CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,9 +183,97 @@
 		CC1904732C5017BC0092F4AF /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				CC1904BF2C511D590092F4AF /* Network */,
 				CC1904742C5017CF0092F4AF /* NavigationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		CC19049C2C50CBB80092F4AF /* TopicTrendScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904B72C511BC30092F4AF /* ViewModel */,
+				CC1904A42C50CEB20092F4AF /* View */,
+			);
+			path = TopicTrendScreen;
+			sourceTree = "<group>";
+		};
+		CC19049D2C50CBCE0092F4AF /* TopicTrend */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904C22C5120FF0092F4AF /* DTO */,
+				CC1904BA2C511CF20092F4AF /* Repository */,
+				CC1904A22C50CD6D0092F4AF /* Model */,
+			);
+			path = TopicTrend;
+			sourceTree = "<group>";
+		};
+		CC1904A22C50CD6D0092F4AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904A02C50CCF90092F4AF /* TopicTrendModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC1904A42C50CEB20092F4AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904B32C5106F20092F4AF /* TopicTrendViewController.swift */,
+				CC1904AF2C50E69F0092F4AF /* TopicTrendRootView.swift */,
+				CC1904B12C50E8C60092F4AF /* TopicTrendTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC1904A52C50CF080092F4AF /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904A62C50D2860092F4AF /* PhotoCollectionViewCell.swift */,
+				CC1904A82C50D3E20092F4AF /* StarCountView.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		CC1904AC2C50DC910092F4AF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904AD2C50DC9A0092F4AF /* PhotoModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CC1904B72C511BC30092F4AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904B82C511BD20092F4AF /* TopicTrendViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CC1904BA2C511CF20092F4AF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904BB2C511D000092F4AF /* TopicTrendRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CC1904BF2C511D590092F4AF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904BD2C511D3B0092F4AF /* NetworkManger.swift */,
+				CC1904C02C511D720092F4AF /* UnsplashRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CC1904C22C5120FF0092F4AF /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904C32C51210D0092F4AF /* TopicTrendDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		CC5510A22C4E3C0100A042C2 = {
@@ -182,6 +298,7 @@
 				CC5510D72C4E3EC900A042C2 /* Resources */,
 				CC5510D62C4E3EC200A042C2 /* Sources */,
 				CC5510BC2C4E3C0200A042C2 /* Info.plist */,
+				CC1904B52C5110050092F4AF /* APIKey.swift */,
 			);
 			path = PhotoBliss;
 			sourceTree = "<group>";
@@ -251,6 +368,7 @@
 			children = (
 				CC5510E82C4E586300A042C2 /* OnboardingScreen */,
 				CCFA37DD2C4E952300C9ADC1 /* ProfileSettingScreen */,
+				CC19049C2C50CBB80092F4AF /* TopicTrendScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -306,6 +424,7 @@
 		CC5510FD2C4E6ECA00A042C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC1904A52C50CF080092F4AF /* Photo */,
 				CCFA37D62C4E917000C9ADC1 /* Profile */,
 				CC5511012C4E704300A042C2 /* Buttons */,
 			);
@@ -325,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5510FF2C4E700300A042C2 /* TextButton.swift */,
+				CC1904AA2C50D8360092F4AF /* LikeButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -411,7 +531,9 @@
 		CCFA37F52C4ECA6E00C9ADC1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CC1904AC2C50DC910092F4AF /* Common */,
 				CCFA37F62C4ECA7400C9ADC1 /* ProfileSetting */,
+				CC19049D2C50CBCE0092F4AF /* TopicTrend */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -512,6 +634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC1904A12C50CCF90092F4AF /* TopicTrendModel.swift in Sources */,
 				CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */,
 				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
 				CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */,
@@ -519,22 +642,34 @@
 				CCFA37DC2C4E946A00C9ADC1 /* CamerImageView.swift in Sources */,
 				CC5511002C4E700300A042C2 /* TextButton.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
+				CC1904A92C50D3E20092F4AF /* StarCountView.swift in Sources */,
 				CC1904712C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift in Sources */,
 				CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */,
 				CC19046F2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift in Sources */,
+				CC1904A72C50D2860092F4AF /* PhotoCollectionViewCell.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
 				CCFA37FA2C4ECAB900C9ADC1 /* UserDefaultsKey.swift in Sources */,
+				CC1904BE2C511D3B0092F4AF /* NetworkManger.swift in Sources */,
+				CC1904B22C50E8C60092F4AF /* TopicTrendTableViewCell.swift in Sources */,
 				CCFA37E72C4E996500C9ADC1 /* ProfileSettingType.swift in Sources */,
+				CC1904B02C50E69F0092F4AF /* TopicTrendRootView.swift in Sources */,
 				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
 				CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */,
 				CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */,
 				CCFA37D82C4E917F00C9ADC1 /* ProfileImageView.swift in Sources */,
+				CC1904B62C5110050092F4AF /* APIKey.swift in Sources */,
 				CC19046B2C4FC0E40092F4AF /* ProfileImageSettingViewController.swift in Sources */,
+				CC1904B42C5106F20092F4AF /* TopicTrendViewController.swift in Sources */,
+				CC1904AB2C50D8360092F4AF /* LikeButton.swift in Sources */,
 				CCFA37DA2C4E941700C9ADC1 /* CurrentProfileImageView.swift in Sources */,
 				CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */,
+				CC1904C12C511D720092F4AF /* UnsplashRequest.swift in Sources */,
+				CC1904B92C511BD20092F4AF /* TopicTrendViewModel.swift in Sources */,
+				CC1904AE2C50DC9A0092F4AF /* PhotoModel.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
 				CCFA37E42C4E98BD00C9ADC1 /* NicknameValidationStatus.swift in Sources */,
 				CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */,
+				CC1904BC2C511D000092F4AF /* TopicTrendRepository.swift in Sources */,
 				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
 				CC1904772C5018220092F4AF /* TabBarController.swift in Sources */,
 				CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */,
@@ -543,6 +678,7 @@
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
 				CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */,
 				CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */,
+				CC1904C42C51210D0092F4AF /* TopicTrendDTO.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
 				CCFA37F82C4ECA8600C9ADC1 /* ProfileRepository.swift in Sources */,
 			);
