@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     
@@ -13,6 +14,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     private let viewModel = TopicTrendViewModel()
     
     override func viewDidLoad() {
+        self.contentView.makeToastActivity(.center)
         super.viewDidLoad()
         self.configureNavBarAppearence(appearenceType: .hidden)
     }
@@ -22,6 +24,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
             .bind { [weak self] event in
                 switch event {
                 case .topicList(let topicList):
+                    self?.contentView.hideToastActivity()
                     self?.contentView.updateUI(data: topicList)
                 }
             }
