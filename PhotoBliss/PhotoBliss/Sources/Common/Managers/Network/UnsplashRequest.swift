@@ -8,7 +8,8 @@
 import Alamofire
 
 enum UnsplashRequest {
-    case topic(topicID: String)
+    case topic(topicID: String, queryDTO: TopicTrendQueryDTO)
+    case search(query: PhotoSearchQueryDTO)
     
     private var baseURL: String {
         return "https://api.unsplash.com"
@@ -16,8 +17,10 @@ enum UnsplashRequest {
     
     var endPoint: String {
         switch self {
-        case .topic(let topicID):
+        case .topic(let topicID, _):
             return baseURL + "/topics/\(topicID)/photos"
+        case .search:
+            return baseURL + "/search/photos"
         }
     }
     
@@ -25,10 +28,12 @@ enum UnsplashRequest {
         return .get
     }
     
-    var parameters: Parameters {
+    var parameters: Encodable {
         switch self {
-        case .topic(_):
-            return ["page": 1, "client_id": APIKey.key]
+        case .topic(_, let queryDTO):
+            return queryDTO
+        case .search(let query):
+            return query
         }
     }
 }

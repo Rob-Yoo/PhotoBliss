@@ -52,7 +52,7 @@ extension TabBarController {
             case .topic:
                 return TopicTrendViewController()
             case .search:
-                return ViewController()
+                return PhotoSearchViewController()
             case .like:
                 return ViewController()
             }

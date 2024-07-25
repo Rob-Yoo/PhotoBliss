@@ -9,13 +9,13 @@ import Foundation
 
 struct TopicModel {
     let title: String
-    let trendPhotos: [PhotoModel]
+    let trendPhotos: [PhotoCellModel]
 
-    static func createTopicModel(title: String, dtos: [TopicTrendDTO]) -> Self {
-        var trendPhotos = [PhotoModel]()
+    static func createTopicModel(title: String, dtos: [PhotoDTO]) -> Self {
+        var trendPhotos = [PhotoCellModel]()
         
         dtos.forEach {
-            let photoModel = PhotoModel.createPhotoModel(dto: $0)
+            let photoModel = PhotoCellModel.createPhotoCellModel(dto: $0)
             trendPhotos.append(photoModel)
         }
         return TopicModel(title: title, trendPhotos: trendPhotos)

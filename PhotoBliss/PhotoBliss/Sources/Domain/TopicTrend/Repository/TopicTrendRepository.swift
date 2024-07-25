@@ -66,11 +66,12 @@ final class TopicTrendRepository {
     }
     
     func fetchTopicList() async -> Result<[TopicModel], Error> {
+        let queryDTO = TopicTrendQueryDTO(page: 1, client_id: APIKey.key)
         let randomTopics = Topic.allCases.shuffled().prefix(3)
         var topicList = [TopicModel]()
 
         for topic in randomTopics {
-            let result = await NetworkManger.requestAPI(req: .topic(topicID: topic.rawValue), type: [TopicTrendDTO].self)
+            let result = await NetworkManger.requestAPI(req: .topic(topicID: topic.rawValue, queryDTO: queryDTO), type: [PhotoDTO].self)
             
             switch result {
             case .success(let topicTrendDTOs):

@@ -20,6 +20,7 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     
     private let imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     private lazy var starCountView = StarCountView()
@@ -38,7 +39,7 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configureCell(cellType: CellType, data model : PhotoModel) {
+    func configureCell(cellType: CellType, data model : PhotoCellModel) {
         self.configureAdditionalViews(cellType: cellType)
         
         self.imageView.kf.setImage(with: URL(string: model.imageURL))
