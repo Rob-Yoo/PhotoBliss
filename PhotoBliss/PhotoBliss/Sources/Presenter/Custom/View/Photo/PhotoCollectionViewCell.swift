@@ -19,6 +19,7 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     }
     
     private let imageView = UIImageView().then {
+        $0.backgroundColor = .lightGray
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
@@ -28,21 +29,17 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     private lazy var likeButton = LikeButton(isCircle: true)
     
     override func configureView() {
-        self.contentView.backgroundColor = .lightGray
+        self.contentView.backgroundColor = .clear
     }
     
-    override func configureLayout() {
+    override func configureHierarchy() {
         self.contentView.addSubview(imageView)
-        
-        imageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
     }
     
     func configureCell(cellType: CellType, data model : PhotoCellModel) {
         self.configureAdditionalViews(cellType: cellType)
         
-        self.imageView.kf.setImage(with: URL(string: model.imageURL))
+        self.imageView.kf.setImage(with: URL(string: model.smallPhotoImageUrl))
         
         switch cellType {
         case .topicTrend:
@@ -59,13 +56,25 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
 //MARK: - Configure Subviews
 extension PhotoCollectionViewCell {
     private func configureAdditionalViews(cellType: CellType) {
-        // ImageView만 있을 경우에만
+        // ImageView만 있을 경우에만, 즉 맨 처음 셀을 그릴 때에만 호출
         guard self.contentView.subviews.count == 1 else { return }
     
+        imageView.snp.makeConstraints {
+            if (cellType == .topicTrend) {
+                $0.verticalEdges.equalToSuperview().inset(5)
+                $0.horizontalEdges.equalToSuperview()
+            } else {
+                $0.edges.equalToSuperview()
+            }
+        }
+        
         switch cellType {
         case .topicTrend:
-            self.contentView.layer.cornerRadius = 17
-            self.contentView.clipsToBounds = true
+            self.imageView.layer.cornerRadius = 17
+            self.contentView.layer.shadowOffset = CGSize(width: 3, height: 3)
+            self.contentView.layer.shadowOpacity = 0.4
+            self.contentView.layer.shadowRadius = 2
+            self.contentView.layer.masksToBounds = false
             self.configureStarCountView()
         case .searchResult:
             self.configureStarCountView()
