@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol TopicTrendRootViewDelegate: AnyObject {
+    func refresh()
+}
+
 final class TopicTrendRootView: BaseView {
     
     private var topicList = [TopicModel]()
@@ -39,7 +43,11 @@ final class TopicTrendRootView: BaseView {
         $0.refreshControl = self.refreshControl
     }
     
-    let refreshControl = UIRefreshControl()
+    private lazy var refreshControl = UIRefreshControl().then {
+        $0.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    weak var delegate: TopicTrendRootViewDelegate?
     
     override func configureHierarchy() {
         self.addSubview(profileImageView)
@@ -70,6 +78,13 @@ final class TopicTrendRootView: BaseView {
         self.topicList = data
         self.tableView.reloadData()
     }
+    
+    @objc private func refreshData(refresh: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.delegate?.refresh()
+            refresh.endRefreshing()
+        }
+    }
 }
 
 extension TopicTrendRootView: UITableViewDelegate, UITableViewDataSource {
@@ -95,6 +110,10 @@ extension TopicTrendRootView: UITableViewDelegate, UITableViewDataSource {
         topicCell.collectionView.tag = indexPath.row
         topicCell.collectionView.delegate = self
         topicCell.collectionView.dataSource = self
+        
+        // 리로드가 되면 맨 처음 Cell로 이동시켜야 하는데, left로 하게 되면 EdgeInset이 먹히지 않는 것처럼 동작함 -> centeredHorizontally로 하니까 성공함
+        let indexPath = IndexPath(row: 0, section: 0)
+        topicCell.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 }
 

@@ -20,7 +20,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     }
     
     override func addUserAction() {
-        self.contentView.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        self.contentView.delegate = self
     }
     
     override func bindViewModel() {
@@ -37,11 +37,10 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                 self?.contentView.hideToastActivity()
             }
     }
-    
-    @objc private func refreshData(refresh: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            refresh.endRefreshing()
-            self.input.value = .shouldRefresh
-        }
+}
+
+extension TopicTrendViewController: TopicTrendRootViewDelegate {
+    func refresh() {
+        self.input.value = .shouldRefresh
     }
 }
