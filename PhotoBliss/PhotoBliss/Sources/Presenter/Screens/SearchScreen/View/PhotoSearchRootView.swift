@@ -14,6 +14,7 @@ import Toast
 protocol PhotoSearchRootViewDelegate: AnyObject {
     func searchButtonTapped(searchText: String)
     func doPagination(currentPhotoList: [PhotoCellModel])
+    func photoCellTapped(photo: PhotoCellModel)
 }
 
 final class PhotoSearchRootView: BaseView, RootViewProtocol {
@@ -121,6 +122,12 @@ extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSou
                 delegate?.doPagination(currentPhotoList: photoList)
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = self.photoList[indexPath.item]
+        
+        delegate?.photoCellTapped(photo: photo)
     }
 }
 

@@ -22,6 +22,7 @@ final class LikeButton: UIButton {
     init(isCircle: Bool) {
         self.isCircle = isCircle
         super.init(frame: .zero)
+        self.backgroundColor = .lightGray // TODO: - 바꿔야함
     }
     
     required init?(coder: NSCoder) {

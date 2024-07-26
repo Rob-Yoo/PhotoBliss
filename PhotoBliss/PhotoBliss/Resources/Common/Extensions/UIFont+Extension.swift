@@ -34,4 +34,22 @@ extension UIFont {
     static let bold18 = UIFont.systemFont(ofSize: 18, weight: .bold)
     static let bold19 = UIFont.systemFont(ofSize: 19, weight: .bold)
     static let bold20 = UIFont.systemFont(ofSize: 20, weight: .bold)
+    
+    static let heavy13 = UIFont.systemFont(ofSize: 13, weight: .heavy)
+    static let heavy14 = UIFont.systemFont(ofSize: 14, weight: .heavy)
+    static let heavy15 = UIFont.systemFont(ofSize: 15, weight: .heavy)
+    static let heavy16 = UIFont.systemFont(ofSize: 16, weight: .heavy)
+    static let heavy17 = UIFont.systemFont(ofSize: 17, weight: .heavy)
+    static let heavy18 = UIFont.systemFont(ofSize: 18, weight: .heavy)
+    static let heavy19 = UIFont.systemFont(ofSize: 19, weight: .heavy)
+    static let heavy20 = UIFont.systemFont(ofSize: 20, weight: .heavy)
+
+    static let black13 = UIFont.systemFont(ofSize: 13, weight: .black)
+    static let black14 = UIFont.systemFont(ofSize: 14, weight: .black)
+    static let black15 = UIFont.systemFont(ofSize: 15, weight: .black)
+    static let black16 = UIFont.systemFont(ofSize: 16, weight: .black)
+    static let black17 = UIFont.systemFont(ofSize: 17, weight: .black)
+    static let black18 = UIFont.systemFont(ofSize: 18, weight: .black)
+    static let black19 = UIFont.systemFont(ofSize: 19, weight: .black)
+    static let black20 = UIFont.systemFont(ofSize: 20, weight: .black)
 }

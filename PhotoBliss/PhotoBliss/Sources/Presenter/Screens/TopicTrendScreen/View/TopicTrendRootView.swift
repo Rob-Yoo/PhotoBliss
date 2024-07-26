@@ -11,6 +11,7 @@ import Then
 
 protocol TopicTrendRootViewDelegate: AnyObject {
     func refresh()
+    func photoCellTapped(photo: PhotoCellModel)
 }
 
 final class TopicTrendRootView: BaseView {
@@ -117,5 +118,11 @@ extension TopicTrendRootView: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureCell(cellType: .topicTrend, data: trendPhoto)
         return cell
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let idx = collectionView.tag
+        let photo = self.topicList[idx].trendPhotos[indexPath.item]
+        
+        delegate?.photoCellTapped(photo: photo)
+    }
 }

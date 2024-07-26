@@ -37,4 +37,11 @@ enum Literal {
     enum TopicTrend {
         static let title = "OUR TOPIC"
     }
+    
+    enum PhotoDetail {
+        static let info = "정보"
+        static let size = "크기"
+        static let viewCount = "조회수"
+        static let downloadCount = "다운로드"
+    }
 }

@@ -40,11 +40,17 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
 //MARK: - User Action Handling
 extension PhotoSearchViewController: PhotoSearchRootViewDelegate {
     func searchButtonTapped(searchText: String) {
-        self.addKeyboardDismissAction()
+        self.contentView.endEditing(true)
         self.input.value = .searchButtonTapped(searchText)
     }
     
     func doPagination(currentPhotoList: [PhotoCellModel]) {
         self.input.value = .doPagination(currentPhotoList)
+    }
+    
+    func photoCellTapped(photo: PhotoCellModel) {
+        let nextVC = PhotoDetailViewController(photo: photo)
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

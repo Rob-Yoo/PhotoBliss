@@ -9,8 +9,14 @@ import Foundation
 
 struct PhotoCellModel: Hashable, Identifiable {
     let id: String
-    let imageURL: String
+    let smallPhotoImageUrl: String
     let starCount: Int
+    let photographerImageUrl: String
+    let photographerName: String
+    let publishedDate: String
+    let rawPhotoImageUrl: String
+    let width: Int
+    let height: Int
     let isLike: Bool
     
     static func ==(lhs: PhotoCellModel, rhs: PhotoCellModel) -> Bool {
@@ -22,6 +28,6 @@ struct PhotoCellModel: Hashable, Identifiable {
     }
     
     static func createPhotoCellModel(dto: PhotoDTO) -> Self {
-        return PhotoCellModel(id: dto.id, imageURL: dto.urls.small, starCount: dto.likes, isLike: false)
+        return PhotoCellModel(id: dto.id, smallPhotoImageUrl: dto.urls.small, starCount: dto.likes, photographerImageUrl: dto.user.profileImage.medium, photographerName: dto.user.name, publishedDate: dto.createdAt, rawPhotoImageUrl: dto.urls.raw, width: dto.width, height: dto.height, isLike: false)
     }
 }

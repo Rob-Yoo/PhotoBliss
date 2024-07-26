@@ -13,6 +13,7 @@ extension UIImage {
     static let star = UIImage(systemName: "star.fill")
     static let camera = UIImage(systemName: "camera.fill")
     static let leftArrow = UIImage(systemName: "chevron.left")
+    static let person = UIImage(systemName: "person.fill")
     
     func resizeImage(size: CGSize) -> UIImage {
       let originalSize = self.size

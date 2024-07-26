@@ -71,4 +71,10 @@ extension TopicTrendViewController: TopicTrendRootViewDelegate {
     @objc private func profileImageViewTapped() {
         print("adsf")
     }
+    
+    func photoCellTapped(photo: PhotoCellModel) {
+        let nextVC = PhotoDetailViewController(photo: photo)
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
