@@ -10,6 +10,7 @@ import Alamofire
 enum UnsplashRequest {
     case topic(topicID: String, queryDTO: TopicTrendQueryDTO)
     case search(query: PhotoSearchQueryDTO)
+    case statistic(imageID: String)
     
     private var baseURL: String {
         return "https://api.unsplash.com"
@@ -21,6 +22,8 @@ enum UnsplashRequest {
             return baseURL + "/topics/\(topicID)/photos"
         case .search:
             return baseURL + "/search/photos"
+        case .statistic(let imageID):
+            return baseURL + "/photos/\(imageID)/statistics"
         }
     }
     
@@ -34,6 +37,8 @@ enum UnsplashRequest {
             return queryDTO
         case .search(let query):
             return query
+        case .statistic:
+            return PhotoStatisticQueryDTO()
         }
     }
 }

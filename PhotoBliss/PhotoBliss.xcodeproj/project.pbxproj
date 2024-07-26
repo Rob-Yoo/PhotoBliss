@@ -13,6 +13,11 @@
 		CC07AD522C538538008146BF /* PhotoDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD512C538538008146BF /* PhotoDetailInfoView.swift */; };
 		CC07AD562C538A22008146BF /* PhotoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD552C538A22008146BF /* PhotoDetailModel.swift */; };
 		CC07AD582C538F46008146BF /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD572C538F46008146BF /* PhotoDetailViewController.swift */; };
+		CC07AD5B2C53BDC2008146BF /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD5A2C53BDC2008146BF /* PhotoDetailViewModel.swift */; };
+		CC07AD5E2C53C49E008146BF /* PhotoStatisticDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD5D2C53C49E008146BF /* PhotoStatisticDTO.swift */; };
+		CC07AD622C53C839008146BF /* PhotoStatisticQueryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */; };
+		CC07AD652C53C8D1008146BF /* PhotoDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */; };
+		CC07AD672C53D31E008146BF /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07AD662C53D31E008146BF /* DateFormatManager.swift */; };
 		CC19046B2C4FC0E40092F4AF /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19046A2C4FC0E40092F4AF /* ProfileImageSettingViewController.swift */; };
 		CC19046D2C4FC17B0092F4AF /* ProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19046C2C4FC17B0092F4AF /* ProfileImageSettingView.swift */; };
 		CC19046F2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19046E2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift */; };
@@ -100,6 +105,11 @@
 		CC07AD512C538538008146BF /* PhotoDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailInfoView.swift; sourceTree = "<group>"; };
 		CC07AD552C538A22008146BF /* PhotoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailModel.swift; sourceTree = "<group>"; };
 		CC07AD572C538F46008146BF /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		CC07AD5A2C53BDC2008146BF /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		CC07AD5D2C53C49E008146BF /* PhotoStatisticDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticDTO.swift; sourceTree = "<group>"; };
+		CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticQueryDTO.swift; sourceTree = "<group>"; };
+		CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailRepository.swift; sourceTree = "<group>"; };
+		CC07AD662C53D31E008146BF /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		CC19046A2C4FC0E40092F4AF /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 		CC19046C2C4FC17B0092F4AF /* ProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC19046E2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +199,7 @@
 		CC07AD4B2C537E24008146BF /* PhotoDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CC07AD592C53BDB4008146BF /* ViewModel */,
 				CC07AD4C2C537E43008146BF /* View */,
 			);
 			path = PhotoDetailScreen;
@@ -197,10 +208,10 @@
 		CC07AD4C2C537E43008146BF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC07AD572C538F46008146BF /* PhotoDetailViewController.swift */,
 				CC07AD4D2C537E51008146BF /* PhotoDetailRootView.swift */,
 				CC07AD4F2C537F42008146BF /* PhotoDetailHeaderView.swift */,
 				CC07AD512C538538008146BF /* PhotoDetailInfoView.swift */,
-				CC07AD572C538F46008146BF /* PhotoDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +219,8 @@
 		CC07AD532C538A01008146BF /* PhotoDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CC07AD632C53C881008146BF /* Repository */,
+				CC07AD5C2C53C475008146BF /* DTO */,
 				CC07AD542C538A0D008146BF /* Model */,
 			);
 			path = PhotoDetail;
@@ -219,6 +232,47 @@
 				CC07AD552C538A22008146BF /* PhotoDetailModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CC07AD592C53BDB4008146BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD5A2C53BDC2008146BF /* PhotoDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CC07AD5C2C53C475008146BF /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD602C53C824008146BF /* Encodable */,
+				CC07AD5F2C53C81B008146BF /* Decodable */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		CC07AD5F2C53C81B008146BF /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD5D2C53C49E008146BF /* PhotoStatisticDTO.swift */,
+			);
+			path = Decodable;
+			sourceTree = "<group>";
+		};
+		CC07AD602C53C824008146BF /* Encodable */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */,
+			);
+			path = Encodable;
+			sourceTree = "<group>";
+		};
+		CC07AD632C53C881008146BF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		CC1904682C4FC0540092F4AF /* Common */ = {
@@ -254,6 +308,7 @@
 			children = (
 				CC1904BF2C511D590092F4AF /* Network */,
 				CC1904742C5017CF0092F4AF /* NavigationManager.swift */,
+				CC07AD662C53D31E008146BF /* DateFormatManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -809,6 +864,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC07AD5B2C53BDC2008146BF /* PhotoDetailViewModel.swift in Sources */,
 				CC5EC3522C5248B700A54FE4 /* TopicTrendQueryDTO.swift in Sources */,
 				CC1904A12C50CCF90092F4AF /* TopicTrendModel.swift in Sources */,
 				CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */,
@@ -819,12 +875,15 @@
 				CC07AD562C538A22008146BF /* PhotoDetailModel.swift in Sources */,
 				CC5511002C4E700300A042C2 /* TextButton.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
+				CC07AD622C53C839008146BF /* PhotoStatisticQueryDTO.swift in Sources */,
 				CC1904A92C50D3E20092F4AF /* StarCountView.swift in Sources */,
 				CC1904712C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift in Sources */,
+				CC07AD5E2C53C49E008146BF /* PhotoStatisticDTO.swift in Sources */,
 				CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */,
 				CC19046F2C4FC1D70092F4AF /* ProfileImageCollectionViewCell.swift in Sources */,
 				CC1904A72C50D2860092F4AF /* PhotoCollectionViewCell.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
+				CC07AD652C53C8D1008146BF /* PhotoDetailRepository.swift in Sources */,
 				CCFA37FA2C4ECAB900C9ADC1 /* UserDefaultsKey.swift in Sources */,
 				CC1904BE2C511D3B0092F4AF /* NetworkManger.swift in Sources */,
 				CC07AD582C538F46008146BF /* PhotoDetailViewController.swift in Sources */,
@@ -857,6 +916,7 @@
 				CC5EC3412C520F2D00A54FE4 /* PhotoSearchRootView.swift in Sources */,
 				CCFA37E42C4E98BD00C9ADC1 /* NicknameValidationStatus.swift in Sources */,
 				CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */,
+				CC07AD672C53D31E008146BF /* DateFormatManager.swift in Sources */,
 				CC1904BC2C511D000092F4AF /* TopicTrendRepository.swift in Sources */,
 				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
 				CC5EC3452C5215B300A54FE4 /* PhotoSearchViewModel.swift in Sources */,

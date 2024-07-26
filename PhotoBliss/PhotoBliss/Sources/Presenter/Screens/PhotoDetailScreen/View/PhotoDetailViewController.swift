@@ -9,17 +9,28 @@ import UIKit
 
 final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     
-    private let photo: PhotoCellModel
+    private let input = Observable<PhotoDetailViewModel.Input>(.viewDidLoad)
+    private let viewModel: PhotoDetailViewModel
     
     init(photo: PhotoCellModel) {
-        self.photo = photo
+        self.viewModel = PhotoDetailViewModel(photo: photo)
         super.init()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavBarAppearence(appearenceType: .opaque)
-        let dummyData = PhotoDetailModel(photographerImageUrl: photo.photographerImageUrl, photographerName: photo.photographerName, publishedDate: photo.publishedDate, photoImageUrl: photo.rawPhotoImageUrl, width: photo.width, height: photo.height, viewCount: 98934938, downloadCount: 688418, isLike: false)
-        self.contentView.updateUI(data: dummyData)
+    }
+    
+    override func bindViewModel() {
+        self.viewModel.transform(input: self.input)
+            .bind { [weak self] event in
+                switch event {
+                case .photoDetail(let data):
+                    self?.contentView.updateUI(photoDetail: data)
+                case .networkError(let message):
+                    self?.showAlert(message: message)
+                }
+            }
     }
 }

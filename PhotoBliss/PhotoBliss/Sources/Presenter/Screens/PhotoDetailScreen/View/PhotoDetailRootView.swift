@@ -50,11 +50,11 @@ final class PhotoDetailRootView: BaseView {
         }
     }
     
-    func updateUI(data: PhotoDetailModel) {
-        let imageUrl = URL(string: data.photoImageUrl)
+    func updateUI(photoDetail: PhotoDetailModel) {
+        let imageUrl = URL(string: photoDetail.photoImageUrl)
         
         self.photoView.kf.setImage(with: imageUrl)
-        self.headerView.update(photoDetail: data)
-        self.photoDetailInfoView.update(photoDetail: data)
+        self.headerView.update(photoDetail: photoDetail)
+        self.photoDetailInfoView.update(photoDetail: photoDetail)
     }
 }

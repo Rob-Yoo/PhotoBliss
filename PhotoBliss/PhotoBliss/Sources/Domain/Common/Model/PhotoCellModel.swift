@@ -28,6 +28,8 @@ struct PhotoCellModel: Hashable, Identifiable {
     }
     
     static func createPhotoCellModel(dto: PhotoDTO) -> Self {
-        return PhotoCellModel(id: dto.id, smallPhotoImageUrl: dto.urls.small, starCount: dto.likes, photographerImageUrl: dto.user.profileImage.medium, photographerName: dto.user.name, publishedDate: dto.createdAt, rawPhotoImageUrl: dto.urls.raw, width: dto.width, height: dto.height, isLike: false)
+        let convertedDateString = DateFormatManager.shared.convertDateFormat(inputDateFormat: "yyyy-MM-dd'T'HH:mm:ssZ", outputDateFormat: "yyyy년 MM월 dd일", dateString: dto.createdAt) ?? "0000년 00월 00일"
+        
+        return PhotoCellModel(id: dto.id, smallPhotoImageUrl: dto.urls.small, starCount: dto.likes, photographerImageUrl: dto.user.profileImage.medium, photographerName: dto.user.name, publishedDate: convertedDateString, rawPhotoImageUrl: dto.urls.raw, width: dto.width, height: dto.height, isLike: false)
     }
 }

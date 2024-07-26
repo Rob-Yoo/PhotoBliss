@@ -65,6 +65,7 @@ private final class DetailInfoLabelView: BaseView {
         $0.font = .regular15
         $0.textColor = .black
         $0.textAlignment = .center
+        $0.numberOfLines = 1
     }
     
     private let publishedDateLabel = UILabel().then {
@@ -86,6 +87,7 @@ private final class DetailInfoLabelView: BaseView {
         photographerNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(2)
             $0.leading.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
         publishedDateLabel.snp.makeConstraints {
