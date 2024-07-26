@@ -17,14 +17,6 @@ final class TopicTrendRootView: BaseView {
     
     private var topicList = [TopicModel]()
     
-    private let profileImageView = ProfileImageView().then {
-        $0.isUserInteractionEnabled = true
-        $0.backgroundColor = .unselected
-        $0.layer.borderColor = UIColor.mainTheme.cgColor
-        $0.layer.borderWidth = 3
-        $0.alpha = 1
-    }
-    
     private let titleLabel = UILabel().then {
         $0.text = Literal.TopicTrend.title
         $0.textColor = .black
@@ -50,20 +42,13 @@ final class TopicTrendRootView: BaseView {
     weak var delegate: TopicTrendRootViewDelegate?
     
     override func configureHierarchy() {
-        self.addSubview(profileImageView)
         self.addSubview(titleLabel)
         self.addSubview(tableView)
     }
     
     override func configureLayout() {
-        profileImageView.snp.makeConstraints {
-            $0.top.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
-            $0.width.equalToSuperview().multipliedBy(0.1)
-            $0.height.equalTo(profileImageView.snp.width)
-        }
-        
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(50)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.equalToSuperview().offset(10)
         }
         
