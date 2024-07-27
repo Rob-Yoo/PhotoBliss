@@ -10,7 +10,7 @@ import UIKit.UIImage
 
 final class PhotoLikeViewModel {
     enum Input {
-        case viewDidLoad
+        case viewIsAppearing
         case orderBy(_ orderBy: OrderBy)
         case likeButtonTapped(photo: PhotoCellModel)
     }
@@ -27,7 +27,7 @@ final class PhotoLikeViewModel {
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
             switch event {
-            case .viewDidLoad:
+            case .viewIsAppearing:
                 self?.fetchPhotoLikeList()
             case .orderBy(let orderBy):
                 self?.orderByOption = orderBy

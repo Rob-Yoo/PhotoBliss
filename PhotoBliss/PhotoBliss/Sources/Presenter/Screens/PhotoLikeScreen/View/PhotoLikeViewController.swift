@@ -9,12 +9,17 @@ import UIKit
 
 final class PhotoLikeViewController: BaseViewController<PhotoLikeRootView> {
     
-    private let input = Observable<PhotoLikeViewModel.Input>(.viewDidLoad)
+    private let input = Observable<PhotoLikeViewModel.Input>()
     private let viewModel = PhotoLikeViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBarAppearence(appearenceType: .opaque)
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.input.value = .viewIsAppearing
     }
     
     override func addUserAction() {
