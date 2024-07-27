@@ -76,6 +76,7 @@ extension TopicTrendViewController: TopicTrendRootViewDelegate {
     func photoCellTapped(photo: PhotoCellModel) {
         let nextVC = PhotoDetailViewController(photo: photo)
         
+        nextVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
