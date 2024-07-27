@@ -27,11 +27,7 @@ struct PhotoSearchQueryModel {
 }
 
 extension PhotoSearchQueryModel {
-    func convertToDTO() -> PhotoSearchQueryDTO {
-        return PhotoSearchQueryDTO(query: searchText, page: page, per_page: perPage, order_by: orderBy.rawValue, color: color?.rawValue, client_id: clientID)
-    }
-    
-    mutating func changeQuery(type: PhotoSearchRepository.FetchType) {
+    mutating func makeQueryDTO(type: PhotoSearchRepository.FetchType) -> PhotoSearchQueryDTO {
         switch type {
         case .searchText(let text):
             self.searchText = text
@@ -45,5 +41,11 @@ extension PhotoSearchQueryModel {
             self.orderBy = orderBy
             self.page = 1
         }
+        
+        return convertToDTO()
+    }
+    
+    private func convertToDTO() -> PhotoSearchQueryDTO {
+        return PhotoSearchQueryDTO(query: searchText, page: page, per_page: perPage, order_by: orderBy.rawValue, color: color?.rawValue, client_id: clientID)
     }
 }

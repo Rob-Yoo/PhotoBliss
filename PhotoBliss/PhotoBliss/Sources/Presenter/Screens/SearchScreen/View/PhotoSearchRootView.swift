@@ -12,7 +12,6 @@ import Toast
 
 
 protocol PhotoSearchRootViewDelegate: AnyObject {
-    func searchButtonTapped(searchText: String)
     func doPagination(currentPhotoList: [PhotoCellModel])
     func photoCellTapped(photo: PhotoCellModel)
 }
@@ -23,15 +22,18 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
     
     let navigationTitle = Literal.NavigationTitle.search
     
-    private lazy var searchBar = UISearchBar().then {
-        $0.placeholder = Literal.Placeholder.search
-        $0.searchBarStyle = .minimal
-        $0.delegate = self
-    }
+//    private lazy var searchBar = UISearchBar().then {
+//        $0.placeholder = Literal.Placeholder.search
+//        $0.searchBarStyle = .minimal
+//        $0.auto
+//        $0.delegate = self
+//    }
     
-    private let line = UIView().then {
-        $0.backgroundColor = .disabled
-    }
+//    private let line = UIView().then {
+//        $0.backgroundColor = .disabled
+//    }
+    
+    private let emptyResultView = EmptyResultView()
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.backgroundColor = .clear
@@ -60,41 +62,46 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
     }
     
     override func configureHierarchy() {
-        self.addSubview(searchBar)
-        self.addSubview(line)
+//        self.addSubview(searchBar)
+//        self.addSubview(line)
         self.addSubview(collectionView)
+        self.addSubview(emptyResultView)
     }
     
     override func configureLayout() {
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(10)
-            $0.height.equalToSuperview().multipliedBy(0.05)
-        }
-        
-        line.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(10)
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(0.5)
-        }
-        
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(line.snp.bottom).offset(10)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        emptyResultView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+
     }
     
-    func updateUI(data: [PhotoCellModel]) {
+    func showSearchResult(data: [PhotoCellModel]) {
+        self.emptyResultView.isHidden = true
         self.photoList = data
         self.collectionView.reloadData()
         self.hideToastActivity()
+        self.collectionView.isHidden = false
+    }
+
+    func showEmptyResult(emptyStatus: PhotoSearchViewModel.EmptyStatus) {
+        self.collectionView.isHidden = true
+        self.emptyResultView.isHidden = false
+        self.emptyResultView.update(emptyStatus: emptyStatus)
     }
     
     func scrollUpToTop() {
         let indexPath = IndexPath(row: 0, section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
     }
+
 }
 
 extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
@@ -128,13 +135,5 @@ extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSou
         let photo = self.photoList[indexPath.item]
         
         delegate?.photoCellTapped(photo: photo)
-    }
-}
-
-extension PhotoSearchRootView: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        
-        delegate?.searchButtonTapped(searchText: searchText)
     }
 }

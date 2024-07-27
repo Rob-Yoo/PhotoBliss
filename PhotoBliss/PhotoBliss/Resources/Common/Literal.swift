@@ -38,6 +38,11 @@ enum Literal {
         static let title = "OUR TOPIC"
     }
     
+    enum PhotoSearch {
+        static let emptySearchKeyword = "사진을 검색해보세요."
+        static let emptySearchResult = "검색 결과가 없어요."
+    }
+    
     enum PhotoDetail {
         static let info = "정보"
         static let size = "크기"

@@ -22,12 +22,14 @@ final class PhotoSearchRepository {
     
     func fetchPhotoList(fetchType: FetchType) async -> Result<[PhotoCellModel], Error> {
         
-        self.searchQuery.changeQuery(type: fetchType)
+        switch fetchType {
+        case .page:
+            if (totalPages < searchQuery.page + 1) { return .success([]) }
+        default:
+            self.totalPages = -1
+        }
         
-        // 마지막 페이지의 페이지네이션 예외 처리
-        guard totalPages == -1 || totalPages >= searchQuery.page else { return .success([]) }
-
-        let result = await fetchSearchResult()
+        let result = await fetchSearchResult(fetchType: fetchType)
         
         switch result {
         case .success(let data):
@@ -42,8 +44,8 @@ final class PhotoSearchRepository {
 }
 
 extension PhotoSearchRepository {
-    private func fetchSearchResult() async -> Result<PhotoSearchResultDTO, Error> {
-        let searchQueryDTO = searchQuery.convertToDTO()
+    private func fetchSearchResult(fetchType: FetchType) async -> Result<PhotoSearchResultDTO, Error> {
+        let searchQueryDTO = searchQuery.makeQueryDTO(type: fetchType)
         let result = await NetworkManger.requestAPI(req: .search(query: searchQueryDTO), type: PhotoSearchResultDTO.self)
         
         return result

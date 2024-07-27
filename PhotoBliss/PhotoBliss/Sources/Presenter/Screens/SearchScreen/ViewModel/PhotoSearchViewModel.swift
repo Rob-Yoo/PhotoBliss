@@ -10,13 +10,16 @@ import Foundation
 final class PhotoSearchViewModel {
     
     enum Input {
+        case viewDidLoad
+        case inputEmptyStatus(_ status: EmptyStatus)
         case searchButtonTapped(_ text: String)
-        case sortButtonTapped(_ orderBy: PhotoSearchQueryModel.OrderBy)
-        case colorButtonTapped(_ color: PhotoSearchQueryModel.Color)
+        case sortButtonTapped(_ orderBy: OrderBy)
+        case colorButtonTapped(_ color: Color)
         case doPagination(_ currentPhotolist: [PhotoCellModel])
     }
     
     enum Output {
+        case outputEmptyStatus(_ status: EmptyStatus)
         case photoList(_ list: [PhotoCellModel])
         case shouldScrollUp(_ value: Bool)
         case networkError(_ message: String)
@@ -29,12 +32,29 @@ final class PhotoSearchViewModel {
         input.bind { [weak self] event in
             guard let self else { return }
             switch event {
+            case .viewDidLoad:
+                self.output.value = .outputEmptyStatus(.emptySearchKeyword)
+                
+            case .inputEmptyStatus(let status):
+                self.output.value = .outputEmptyStatus(status)
+                
             case .searchButtonTapped(let text):
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
+                
             case .sortButtonTapped(let orderBy):
+                guard let orderBy = PhotoSearchQueryModel.OrderBy(rawValue: orderBy.rawValue) else {
+                    print("API 쿼리 파라미터와 다른 값이 존재합니다!")
+                    return
+                }
                 Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
+                
             case .colorButtonTapped(let color):
+                guard let color = PhotoSearchQueryModel.Color(rawValue: color.rawValue) else {
+                    print("API 쿼리 파라미터와 다른 값이 존재합니다!")
+                    return
+                }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
+                
             case .doPagination(let list):
                 Task { await self.fetchPhotoList(fetchType: .page, currentPhotoList: list) }
             }
@@ -56,13 +76,42 @@ extension PhotoSearchViewModel {
                 let isLastPage = !currentPhotoList.isEmpty && photoList.isEmpty
                 
                 guard !isLastPage else { return }
-
+                
                 currentPhotoList.append(contentsOf: photoList)
-                self?.output.value = .photoList(currentPhotoList)
-                self?.output.value = .shouldScrollUp(shouldScrollUp)
+                if (currentPhotoList.isEmpty) {
+                    self?.output.value = .outputEmptyStatus(.emptySearchResult) }
+                else {
+                    self?.output.value = .photoList(currentPhotoList)
+                    self?.output.value = .shouldScrollUp(shouldScrollUp)
+                }
             case .failure(let error):
                 self?.output.value = .networkError(error.localizedDescription)
             }
         }
+    }
+}
+
+extension PhotoSearchViewModel {
+    enum EmptyStatus {
+        case emptySearchKeyword
+        case emptySearchResult
+        
+        var labelText: String {
+            switch self {
+            case .emptySearchKeyword:
+                return Literal.PhotoSearch.emptySearchKeyword
+            case .emptySearchResult:
+                return Literal.PhotoSearch.emptySearchResult
+            }
+        }
+    }
+    
+    enum OrderBy: String {
+        case relevant
+        case latest
+    }
+    
+    enum Color: String {
+        case black, white, yellow, red, purple, green, blue
     }
 }
