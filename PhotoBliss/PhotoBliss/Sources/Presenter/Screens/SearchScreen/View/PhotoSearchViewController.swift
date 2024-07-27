@@ -55,7 +55,7 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
 
 //MARK: - User Action Handling
 extension PhotoSearchViewController: PhotoSearchRootViewDelegate, UISearchBarDelegate {
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         self.input.value = .searchButtonTapped(searchText)
@@ -78,5 +78,9 @@ extension PhotoSearchViewController: PhotoSearchRootViewDelegate, UISearchBarDel
     func photoCellTapped(photo: PhotoCellModel) {
         let nextVC = PhotoDetailViewController(photo: photo)
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func likeButtonTapped(photo: PhotoCellModel, image: UIImage) {
+        self.input.value = .likeButtonTapped(photo: photo, image: image)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 final class PhotoSearchViewModel {
     
@@ -16,6 +17,7 @@ final class PhotoSearchViewModel {
         case sortButtonTapped(_ orderBy: OrderBy)
         case colorButtonTapped(_ color: Color)
         case doPagination(_ currentPhotolist: [PhotoCellModel])
+        case likeButtonTapped(photo: PhotoCellModel, image: UIImage)
     }
     
     enum Output {
@@ -26,7 +28,7 @@ final class PhotoSearchViewModel {
     }
     
     private let output = Observable<Output>()
-    private let repository = PhotoSearchRepository()
+    private let service = PhotoSearchService()
     
     func tranform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
@@ -42,13 +44,18 @@ final class PhotoSearchViewModel {
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
                 
             case .sortButtonTapped(let orderBy):
+                guard let orderBy = PhotoSearchDomain.OrderBy(rawValue: orderBy.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
                 
             case .colorButtonTapped(let color):
+                guard let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
                 
             case .doPagination(let list):
                 Task { await self.fetchPhotoList(fetchType: .page, currentPhotoList: list) }
+                
+            case .likeButtonTapped(let photo, let image):
+                self.updatePhotoLike(photo: photo, image: image)
             }
         }
         
@@ -56,9 +63,10 @@ final class PhotoSearchViewModel {
     }
 }
 
+//MARK: - 
 extension PhotoSearchViewModel {
-    private func fetchPhotoList(fetchType: PhotoSearchRepository.FetchType, currentPhotoList: [PhotoCellModel] = []) async {
-        let result = await repository.fetchPhotoList(fetchType: fetchType)
+    private func fetchPhotoList(fetchType: PhotoSearchDomain.FetchType, currentPhotoList: [PhotoCellModel] = []) async {
+        let result = await service.fetchPhotoList(fetchType: fetchType)
 
         DispatchQueue.main.async { [weak self] in
             switch result {
@@ -79,6 +87,17 @@ extension PhotoSearchViewModel {
             case .failure(let error):
                 self?.output.value = .networkError(error.localizedDescription)
             }
+        }
+    }
+    
+    private func updatePhotoLike(photo: PhotoCellModel, image: UIImage) {
+        let isLike = photo.isLike
+        
+        if (isLike) {
+            self.service.removePhotoLike(photo: photo)
+        } else {
+            guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+            self.service.savePhotoLike(photo: photo, imageData: data)
         }
     }
 }

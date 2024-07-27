@@ -12,7 +12,7 @@ enum Literal {
         static let newProfile = "PROFILE SETTING"
         static let search = "SEARCH PHOTO"
         static let editProfile = "EDIT PROFILE"
-        static let wishList = "MY POLAROID"
+        static let likeList = "MY PhotoBliss"
     }
     
     enum Placeholder {
@@ -48,5 +48,9 @@ enum Literal {
         static let size = "크기"
         static let viewCount = "조회수"
         static let downloadCount = "다운로드"
+    }
+    
+    enum LikeList {
+        static let emptyLikeList = "저장된 사진이 없어요."
     }
 }

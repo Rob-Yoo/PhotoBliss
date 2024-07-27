@@ -56,7 +56,7 @@ final class PhotoDetailHeaderView: BaseView {
         
         self.photographerImageView.kf.setImage(with: imageUrl)
         self.detailInfoLabelView.update(photoDetail: photoDetail)
-        self.likeButton.update(isLike: photoDetail.isLike)
+        self.likeButton.isLike = photoDetail.isLike
     }
 }
 

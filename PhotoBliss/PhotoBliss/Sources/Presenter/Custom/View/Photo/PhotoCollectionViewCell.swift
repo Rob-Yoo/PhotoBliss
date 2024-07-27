@@ -10,6 +10,10 @@ import SnapKit
 import Then
 import Kingfisher
 
+protocol PhotoCollectionViewCellDelegate: AnyObject {
+    func likeButtonTapped(idx: Int, selectedImage: UIImage)
+}
+
 final class PhotoCollectionViewCell: BaseCollectionViewCell {
     
     enum CellType {
@@ -26,7 +30,9 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     
     private lazy var starCountView = StarCountView()
     
-    private lazy var likeButton = LikeButton(isCircle: true)
+    private lazy var likeButton = LikeButton(isCircle: true).then {
+        $0.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+    }
     
     override func configureView() {
         self.contentView.backgroundColor = .clear
@@ -46,10 +52,22 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
             self.starCountView.update(count: model.starCount)
         case .searchResult:
             self.starCountView.update(count: model.starCount)
-            self.likeButton.update(isLike: model.isLike)
+            self.likeButton.isLike = model.isLike
         case .like:
-            self.likeButton.update(isLike: model.isLike)
+            self.likeButton.isLike = model.isLike
         }
+    }
+    
+    @objc private func likeButtonTapped() {
+        guard let collectionView = superview as? UICollectionView, let indexPath = collectionView.indexPath(for: self) else { return }
+
+        guard let delegate = collectionView.delegate as? PhotoCollectionViewCellDelegate else {
+            print("PhotoCollectionViewCellDelegate를 채택하지 않았습니다")
+            return
+        }
+        
+        self.likeButton.isLike.toggle()
+        delegate.likeButtonTapped(idx: indexPath.item, selectedImage: self.imageView.image!)
     }
 }
 

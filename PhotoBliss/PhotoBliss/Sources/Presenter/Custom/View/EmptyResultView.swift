@@ -26,7 +26,7 @@ final class EmptyResultView: BaseView {
         }
     }
     
-    func update(emptyStatus: PhotoSearchViewModel.EmptyStatus) {
-        self.titleLabel.text = emptyStatus.labelText
+    func update(emptyText: String) {
+        self.titleLabel.text = emptyText
     }
 }

@@ -54,7 +54,7 @@ extension TabBarController {
             case .search:
                 return PhotoSearchViewController()
             case .like:
-                return ViewController()
+                return PhotoLikeViewController()
             }
         }
         

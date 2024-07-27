@@ -11,6 +11,15 @@ final class LikeButton: UIButton {
     
     private let isCircle: Bool
     
+    var isLike: Bool = false {
+        didSet {
+            let like = self.likeImage
+            let image = isLike ? like.selected : like.unselected
+            
+            self.setImage(image, for: .normal)
+        }
+    }
+
     private var likeImage: (selected: UIImage, unselected: UIImage) {
         if (isCircle) {
             return (selected: .likeCircle, unselected: .likeCircleInactive)
@@ -27,12 +36,5 @@ final class LikeButton: UIButton {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func update(isLike: Bool) {
-        let like = self.likeImage
-        let image = isLike ? like.selected : like.unselected
-        
-        self.setImage(image, for: .normal)
     }
 }
