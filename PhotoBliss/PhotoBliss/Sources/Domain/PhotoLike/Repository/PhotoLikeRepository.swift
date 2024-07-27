@@ -17,11 +17,10 @@ final class PhotoLikeRepository {
         print(realm.configuration.fileURL ?? "")
     }
     
-    //MARK: - Service <-> Repository
-    
     func savePhotoLike(photo: PhotoCellModel, imageData: Data) {
-        self.createItem(photo: photo)
-        self.saveImageToDocument(imageData: imageData, filename: photo.id)
+        guard let savedFilePath = self.saveImageToDocument(imageData: imageData, filename: photo.id) else { return }
+        
+        self.createItem(photo: photo, filePath: savedFilePath)
     }
     
     func removePhotoLike(photo: PhotoCellModel) {
@@ -32,37 +31,16 @@ final class PhotoLikeRepository {
     func fetchPhotoLikeList() -> [PhotoCellModel] {
         return list.map { PhotoCellModel.createPhotoCellModel(dto: $0) }
     }
-
-    func loadImageFilePath(filename: String) -> String? {
-        guard let documentDirectory = FileManager.default.urls(
-            for: .documentDirectory,
-            in: .userDomainMask).first else { return nil }
-        let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
-        let filePath: String
-        
-        if #available(iOS 16.0, *) {
-            filePath = fileURL.path()
-        } else {
-            filePath = fileURL.path
-        }
-        
-        if FileManager.default.fileExists(atPath: filePath) {
-            return filePath
-//            return UIImage(contentsOfFile: filePath)
-        } else {
-            return nil
-        }
-    }
-
+    
 }
 
 //MARK: - Repository <-> Local Storage
 extension PhotoLikeRepository {
     
-    private func createItem(photo: PhotoCellModel) {
+    private func createItem(photo: PhotoCellModel, filePath: String) {
         do {
             try realm.write {
-                realm.add(PhotoLikeDTO(photo: photo))
+                realm.add(PhotoLikeDTO(photo: photo, imageFilePath: filePath))
             }
         } catch {
             print(error)
@@ -83,16 +61,26 @@ extension PhotoLikeRepository {
         }
     }
     
-    private func saveImageToDocument(imageData: Data, filename: String) {
+    private func saveImageToDocument(imageData: Data, filename: String) -> String? {
         guard let documentDirectory = FileManager.default.urls(
             for: .documentDirectory,
-            in: .userDomainMask).first else { return }
+            in: .userDomainMask).first else { return nil }
         let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
         
         do {
             try imageData.write(to: fileURL)
+            let filePath: String
+
+            if #available(iOS 16.0, *) {
+                filePath = fileURL.path()
+            } else {
+                filePath = fileURL.path
+            }
+            
+            return filePath
         } catch {
             print("file save error", error)
+            return nil
         }
     }
     
@@ -121,5 +109,26 @@ extension PhotoLikeRepository {
             print("file no exist")
         }
         
+    }
+    
+    private func loadImageFilePath(filename: String) -> String? {
+        guard let documentDirectory = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask).first else { return nil }
+        let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
+        let filePath: String
+        
+        if #available(iOS 16.0, *) {
+            filePath = fileURL.path()
+        } else {
+            filePath = fileURL.path
+        }
+        
+        if FileManager.default.fileExists(atPath: filePath) {
+            return filePath
+//            return UIImage(contentsOfFile: filePath)
+        } else {
+            return nil
+        }
     }
 }

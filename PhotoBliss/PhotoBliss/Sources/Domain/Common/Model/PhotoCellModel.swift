@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct PhotoCellModel: Hashable, Identifiable {
     let id: String
@@ -17,6 +18,7 @@ struct PhotoCellModel: Hashable, Identifiable {
     let rawPhotoImageUrl: String
     let width: Int
     let height: Int
+    var savedImageFilePath: String?
     var isLike: Bool
     
     static func ==(lhs: PhotoCellModel, rhs: PhotoCellModel) -> Bool {
@@ -34,7 +36,7 @@ struct PhotoCellModel: Hashable, Identifiable {
     }
     
     static func createPhotoCellModel(dto: PhotoLikeDTO) -> Self {
-        return PhotoCellModel(id: dto.photoId, smallPhotoImageUrl: "", starCount: dto.starCount, photographerImageUrl: dto.photographerImageUrl, photographerName: dto.photographerName, publishedDate: dto.publishedDate, rawPhotoImageUrl: dto.rawPhotoImageUrl, width: dto.width, height: dto.height, isLike: true)
+        return PhotoCellModel(id: dto.photoId, smallPhotoImageUrl: "", starCount: dto.starCount, photographerImageUrl: dto.photographerImageUrl, photographerName: dto.photographerName, publishedDate: dto.publishedDate, rawPhotoImageUrl: dto.rawPhotoImageUrl, width: dto.width, height: dto.height, savedImageFilePath: dto.savedImageFilePath, isLike: true)
     }
 
 }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: - ViewModel <-> Service <-> Repository
+
 final class PhotoSearchService {
     private let seachRepository = PhotoSearchRepository()
     private let likeRepository = PhotoLikeRepository()

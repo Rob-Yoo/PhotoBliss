@@ -45,15 +45,17 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     func configureCell(cellType: CellType, data model : PhotoCellModel) {
         self.configureAdditionalViews(cellType: cellType)
         
-        self.imageView.kf.setImage(with: URL(string: model.smallPhotoImageUrl))
-        
         switch cellType {
         case .topicTrend:
+            self.imageView.kf.setImage(with: URL(string: model.smallPhotoImageUrl))
             self.starCountView.update(count: model.starCount)
         case .searchResult:
+            self.imageView.kf.setImage(with: URL(string: model.smallPhotoImageUrl))
             self.starCountView.update(count: model.starCount)
             self.likeButton.isLike = model.isLike
         case .like:
+            guard let filePath = model.savedImageFilePath else { return }
+            self.imageView.image = UIImage(contentsOfFile: filePath)
             self.likeButton.isLike = model.isLike
         }
     }
@@ -67,7 +69,9 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
         }
         
         self.likeButton.isLike.toggle()
-        delegate.likeButtonTapped(idx: indexPath.item, selectedImage: self.imageView.image!)
+        guard let selectedImage = self.imageView.image else { return }
+        
+        delegate.likeButtonTapped(idx: indexPath.item, selectedImage: selectedImage)
     }
 }
 

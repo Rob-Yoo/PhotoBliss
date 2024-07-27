@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+protocol PhotoLikeRootViewDelegate: AnyObject {
+    func photoCellTapped(photo: PhotoCellModel)
+    func likeButtonTapped(photo: PhotoCellModel)
+}
+
 final class PhotoLikeRootView: BaseView, RootViewProtocol {
     private var likeList = [PhotoCellModel]()
     
@@ -25,6 +30,8 @@ final class PhotoLikeRootView: BaseView, RootViewProtocol {
     private let emptyResultView = EmptyResultView().then {
         $0.update(emptyText: Literal.LikeList.emptyLikeList)
     }
+    
+    weak var delegate: PhotoLikeRootViewDelegate?
     
     override func configureView() {
         self.backgroundColor = .systemBackground
@@ -49,13 +56,20 @@ final class PhotoLikeRootView: BaseView, RootViewProtocol {
         }
     }
     
+    func showPhotoLikeList(likeList: [PhotoCellModel]) {
+        self.emptyResultView.isHidden = true
+        self.likeList = likeList
+        self.collectionView.reloadData()
+        self.collectionView.isHidden = false
+    }
+    
     func showEmptyResult() {
         self.collectionView.isHidden = true
         self.emptyResultView.isHidden = false
     }
 }
 
-extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSource, PhotoCollectionViewCellDelegate {
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -87,6 +101,12 @@ extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = self.likeList[indexPath.item]
         
-//        delegate?.photoCellTapped(photo: photo)
+        delegate?.photoCellTapped(photo: photo)
+    }
+    
+    func likeButtonTapped(idx: Int, selectedImage: UIImage) {
+        let photo = self.likeList[idx]
+        
+        delegate?.likeButtonTapped(photo: photo)
     }
 }
