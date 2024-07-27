@@ -24,14 +24,13 @@ final class LikeButton: UIButton {
         if (isCircle) {
             return (selected: .likeCircle, unselected: .likeCircleInactive)
         } else {
-            return (selected: .like, unselected: .likeInactive)
+            return (selected: .activeLike, unselected: .inactiveLike)
         }
     }
     
     init(isCircle: Bool) {
         self.isCircle = isCircle
         super.init(frame: .zero)
-        self.backgroundColor = .lightGray // TODO: - 바꿔야함
     }
     
     required init?(coder: NSCoder) {

@@ -14,6 +14,8 @@ extension UIImage {
     static let camera = UIImage(systemName: "camera.fill")
     static let leftArrow = UIImage(systemName: "chevron.left")
     static let person = UIImage(systemName: "person.fill")
+    static let activeLike = UIImage.like.withRenderingMode(.alwaysOriginal).withTintColor(.mainTheme)
+    static let inactiveLike = UIImage.likeInactive.withRenderingMode(.alwaysOriginal).withTintColor(.mainTheme)
     
     func resizeImage(size: CGSize) -> UIImage {
       let originalSize = self.size

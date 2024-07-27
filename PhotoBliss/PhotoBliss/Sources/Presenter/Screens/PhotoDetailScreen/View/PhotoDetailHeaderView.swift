@@ -21,7 +21,7 @@ final class PhotoDetailHeaderView: BaseView {
     
     private let detailInfoLabelView = DetailInfoLabelView()
     
-    let likeButton = LikeButton(isCircle: true)
+    let likeButton = LikeButton(isCircle: false)
     
     override func configureView() {
         self.backgroundColor = .clear
