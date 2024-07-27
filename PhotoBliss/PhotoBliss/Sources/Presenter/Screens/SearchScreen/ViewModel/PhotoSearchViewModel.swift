@@ -42,17 +42,9 @@ final class PhotoSearchViewModel {
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
                 
             case .sortButtonTapped(let orderBy):
-                guard let orderBy = PhotoSearchQueryModel.OrderBy(rawValue: orderBy.rawValue) else {
-                    print("API 쿼리 파라미터와 다른 값이 존재합니다!")
-                    return
-                }
                 Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
                 
             case .colorButtonTapped(let color):
-                guard let color = PhotoSearchQueryModel.Color(rawValue: color.rawValue) else {
-                    print("API 쿼리 파라미터와 다른 값이 존재합니다!")
-                    return
-                }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
                 
             case .doPagination(let list):

@@ -12,8 +12,8 @@ final class PhotoSearchRepository {
     enum FetchType {
         case searchText(_ text: String)
         case page
-        case color(_ color: PhotoSearchQueryModel.Color)
-        case orderBy(_ orderBy: PhotoSearchQueryModel.OrderBy)
+        case color(_ color: PhotoSearchViewModel.Color)
+        case orderBy(_ orderBy: PhotoSearchViewModel.OrderBy)
     }
     
     private var searchQuery = PhotoSearchQueryModel()
@@ -45,9 +45,14 @@ final class PhotoSearchRepository {
 
 extension PhotoSearchRepository {
     private func fetchSearchResult(fetchType: FetchType) async -> Result<PhotoSearchResultDTO, Error> {
-        let searchQueryDTO = searchQuery.makeQueryDTO(type: fetchType)
-        let result = await NetworkManger.requestAPI(req: .search(query: searchQueryDTO), type: PhotoSearchResultDTO.self)
+        let queryResult = searchQuery.makeQueryDTO(type: fetchType)
         
-        return result
+        switch queryResult {
+        case .success(let searchQueryDTO):
+            let result = await NetworkManger.requestAPI(req: .search(query: searchQueryDTO), type: PhotoSearchResultDTO.self)
+            return result
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }

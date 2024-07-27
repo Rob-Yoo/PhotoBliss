@@ -27,22 +27,34 @@ struct PhotoSearchQueryModel {
 }
 
 extension PhotoSearchQueryModel {
-    mutating func makeQueryDTO(type: PhotoSearchRepository.FetchType) -> PhotoSearchQueryDTO {
+    mutating func makeQueryDTO(type: PhotoSearchRepository.FetchType) -> Result<PhotoSearchQueryDTO, Error> {
+        
         switch type {
         case .searchText(let text):
             self.searchText = text
             self.page = 1
+            
         case .page:
             self.page += 1
+            
         case .color(let color):
+            guard let color = Color(rawValue: color.rawValue) else {
+                return .failure(NSError(domain: "더이상 지원하지 않는 컬러 옵션입니다.", code: 404))
+            }
+            
             self.color = color
             self.page = 1
+            
         case .orderBy(let orderBy):
+            guard let orderBy = OrderBy(rawValue: orderBy.rawValue) else {
+                return .failure(NSError(domain: "더이상 지원하지 않는 정렬 옵션입니다.", code: 404))
+            }
+            
             self.orderBy = orderBy
             self.page = 1
         }
         
-        return convertToDTO()
+        return .success(convertToDTO())
     }
     
     private func convertToDTO() -> PhotoSearchQueryDTO {
