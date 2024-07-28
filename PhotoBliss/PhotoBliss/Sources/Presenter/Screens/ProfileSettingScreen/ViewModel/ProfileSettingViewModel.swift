@@ -26,7 +26,7 @@ final class ProfileSettingViewModel {
     }
     
     private let output = Observable<Output>()
-    
+    private var nicknameValidStatus: NicknameValidationStatus = .empty
     private var profileImageNumber = -1
     private let repository = ProfileRepository()
     
@@ -35,12 +35,16 @@ final class ProfileSettingViewModel {
             switch event {
             case .viewDidLoad:
                 self?.loadUserProfile()
+                
             case .nickname(let nickname):
                 self?.checkNicknameValidationStatus(nickname: nickname)
+                
             case .profileImageNumber(let number):
                 self?.changeProfileImage(number: number)
+                
             case .profileImageViewTapped:
                 self?.passThroughProfileImageNumber()
+                
             case .saveButtonTapped:
                 break
             }
@@ -62,9 +66,11 @@ extension ProfileSettingViewModel {
     }
     
     private func checkNicknameValidationStatus(nickname: String) {
-        let isValid = self.validateNickname(nickname: nickname)
+        let status = self.validateNickname(nickname: nickname)
         
-        self.output.value = .nicknameValidationStatus(isValid)
+        self.nicknameValidStatus = status
+        self.checkAllValidation()
+        self.output.value = .nicknameValidationStatus(status)
     }
     
     private func saveProfile() {
@@ -78,6 +84,14 @@ extension ProfileSettingViewModel {
     private func passThroughProfileImageNumber() {
         guard (profileImageNumber != -1) else { return }
         self.output.value = .transition(imageNumber: self.profileImageNumber)
+    }
+    
+    private func checkAllValidation() {
+        if (self.nicknameValidStatus == .ok) {
+            self.output.value = .isValid(true)
+        } else {
+            self.output.value = .isValid(false)
+        }
     }
 }
 

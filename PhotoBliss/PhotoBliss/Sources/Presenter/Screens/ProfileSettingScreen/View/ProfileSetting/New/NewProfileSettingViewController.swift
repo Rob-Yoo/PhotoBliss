@@ -10,7 +10,7 @@ import UIKit
 final class NewProfileSettingViewController: BaseViewController<ProfileSettingRootView> {
     
     private let viewModel = ProfileSettingViewModel()
-    private let input = Observable<ProfileSettingViewModel.Input>(.viewDidLoad)
+    private let input = Observable<ProfileSettingViewModel.Input>()
     
     override init(contentView: ProfileSettingRootView) {
         super.init(contentView: contentView)
@@ -18,6 +18,7 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingRo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.input.value = .viewDidLoad
         self.configureNavBarAppearence(appearenceType: .opaque)
         self.configureNavBarLeftBarButtonItem()
     }
@@ -39,14 +40,13 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingRo
             .bind { [weak self] output in
                 switch output {
                 case .nicknameValidationStatus(let status):
-                    let bgColor: UIColor = (status == .ok) ? .mainTheme : .disabled
-                    let isEnabled = (status == .ok)
-
                     self?.updateNicknameTextField(status: status)
-                    self?.contentView.updateCompleteButton(bgColor: bgColor, isEnabled: isEnabled)
 
                 case .isValid(let isValid):
-                    break
+                    let bgColor: UIColor = isValid ? .mainTheme : .disabled
+                    let isEnabled = isValid
+                    
+                    self?.contentView.updateCompleteButton(bgColor: bgColor, isEnabled: isEnabled)
 
                 case .profileImageNumber(let number):
                     self?.contentView.updateEditableProfileImageView(imageNumber: number)
@@ -77,6 +77,7 @@ extension NewProfileSettingViewController: ProfileSettingRootViewDelegate {
     }
     
     func saveUserProfile() {
+        print(#function)
 //        self.viewModel.inputSaveButtonTapped.value = ()
     }
 }
