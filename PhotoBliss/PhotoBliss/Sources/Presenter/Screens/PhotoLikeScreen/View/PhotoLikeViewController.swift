@@ -36,6 +36,8 @@ final class PhotoLikeViewController: BaseViewController<PhotoLikeRootView> {
                     self.contentView.showPhotoLikeList(likeList: likeList)
                 case .isEmptyList:
                     self.contentView.showEmptyResult()
+                case .orderByDidChange:
+                    self.contentView.updateOrderByButton()
                 }
             }
     }
@@ -54,5 +56,7 @@ extension PhotoLikeViewController: PhotoLikeRootViewDelegate {
         self.input.value = .likeButtonTapped(photo: photo)
     }
     
-    
+    func orderByButtonTapped() {
+        self.input.value = .orderByButtonTapped
+    }
 }

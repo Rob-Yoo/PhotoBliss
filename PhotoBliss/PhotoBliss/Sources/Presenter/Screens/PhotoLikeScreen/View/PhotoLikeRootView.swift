@@ -8,16 +8,22 @@
 import UIKit
 import SnapKit
 import Then
+import Toast
 
 protocol PhotoLikeRootViewDelegate: AnyObject {
     func photoCellTapped(photo: PhotoCellModel)
     func likeButtonTapped(photo: PhotoCellModel)
+    func orderByButtonTapped()
 }
 
 final class PhotoLikeRootView: BaseView, RootViewProtocol {
     private var likeList = [PhotoCellModel]()
     
     let navigationTitle = Literal.NavigationTitle.likeList
+    
+    private lazy var orderByOptionView = PhotoLikeOptionView().then {
+        $0.orderByButton.addTarget(self, action: #selector(orderByButtonTapped), for: .touchUpInside)
+    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.backgroundColor = .clear
@@ -38,23 +44,38 @@ final class PhotoLikeRootView: BaseView, RootViewProtocol {
     }
     
     override func configureHierarchy() {
+        self.addSubview(orderByOptionView)
         self.addSubview(collectionView)
         self.addSubview(emptyResultView)
     }
     
     override func configureLayout() {
-        collectionView.snp.makeConstraints {
+        orderByOptionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(35)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(orderByOptionView.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         emptyResultView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.top.equalTo(orderByOptionView.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
+    
+    @objc private func orderByButtonTapped() {
+        delegate?.orderByButtonTapped()
+    }
+}
+
+//MARK: - Update UI
+extension PhotoLikeRootView {
     
     func showPhotoLikeList(likeList: [PhotoCellModel]) {
         self.emptyResultView.isHidden = true
@@ -67,8 +88,21 @@ final class PhotoLikeRootView: BaseView, RootViewProtocol {
         self.collectionView.isHidden = true
         self.emptyResultView.isHidden = false
     }
+    
+    func updateOrderByButton() {
+        let orderBy = self.orderByOptionView.orderByButton.toggle()
+        let message = "정렬 옵션이 " + orderBy.title + "으로 변경됩니다."
+        var toastStyle = ToastStyle()
+        
+        toastStyle.backgroundColor = .darkGray
+        toastStyle.displayShadow = true
+        toastStyle.shadowRadius = 4
+        toastStyle.horizontalPadding = 30
+        self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
+    }
 }
 
+//MARK: - CollectionView Setting
 extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSource, PhotoCollectionViewCellDelegate {
     
     private func createLayout() -> UICollectionViewLayout {

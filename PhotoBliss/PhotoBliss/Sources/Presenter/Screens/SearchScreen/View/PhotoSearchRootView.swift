@@ -15,6 +15,7 @@ protocol PhotoSearchRootViewDelegate: AnyObject {
     func doPagination(currentPhotoList: [PhotoCellModel])
     func photoCellTapped(photo: PhotoCellModel)
     func likeButtonTapped(photo: PhotoCellModel, image: UIImage)
+    func orderByButtonTapped()
 }
 
 final class PhotoSearchRootView: BaseView, RootViewProtocol {
@@ -22,6 +23,10 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
     private var photoList = [PhotoCellModel]()
     
     let navigationTitle = Literal.NavigationTitle.search
+    
+    private lazy var searchOptionView = PhotoSearchOptionView().then {
+        $0.orderByButton.addTarget(self, action: #selector(orderByButtonTapped), for: .touchUpInside)
+    }
     
     private let emptyResultView = EmptyResultView()
     
@@ -41,25 +46,40 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
     }
     
     override func configureHierarchy() {
+        self.addSubview(searchOptionView)
         self.addSubview(collectionView)
         self.addSubview(emptyResultView)
     }
     
     override func configureLayout() {
-        collectionView.snp.makeConstraints {
+        
+        searchOptionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(35)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(searchOptionView.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         
         emptyResultView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.top.equalTo(searchOptionView.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
 
     }
-    
+
+    @objc private func orderByButtonTapped() {
+        delegate?.orderByButtonTapped()
+    }
+}
+
+//MARK: - Update UI
+extension PhotoSearchRootView {
     func showSearchResult(data: [PhotoCellModel]) {
         self.emptyResultView.isHidden = true
         self.photoList = data
@@ -78,7 +98,18 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
         let indexPath = IndexPath(row: 0, section: 0)
         self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
     }
-
+    
+    func updateOrderByButton() {
+        let orderBy = self.searchOptionView.orderByButton.toggle()
+        let message = "정렬 옵션이 " + orderBy.title + "으로 변경됩니다."
+        var toastStyle = ToastStyle()
+        
+        toastStyle.backgroundColor = .darkGray
+        toastStyle.displayShadow = true
+        toastStyle.shadowRadius = 4
+        toastStyle.horizontalPadding = 30
+        self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
+    }
 }
 
 // MARK: - CollectionView Setting

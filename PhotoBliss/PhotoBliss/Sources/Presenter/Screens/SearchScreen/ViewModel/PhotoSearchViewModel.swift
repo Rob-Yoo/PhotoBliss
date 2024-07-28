@@ -14,7 +14,7 @@ final class PhotoSearchViewModel {
         case viewDidLoad
         case inputEmptyStatus(_ status: EmptyStatus)
         case searchButtonTapped(_ text: String)
-        case sortButtonTapped(_ orderBy: OrderBy)
+        case orderByButtonTapped
         case colorButtonTapped(_ color: Color)
         case doPagination(_ currentPhotolist: [PhotoCellModel])
         case likeButtonTapped(photo: PhotoCellModel, image: UIImage)
@@ -23,10 +23,13 @@ final class PhotoSearchViewModel {
     enum Output {
         case outputEmptyStatus(_ status: EmptyStatus)
         case photoList(_ list: [PhotoCellModel])
+        case orderByDidChange
         case shouldScrollUp(_ value: Bool)
         case networkError(_ message: String)
     }
     
+    private var isEmptyResult = true
+    private var orderBy: OrderBy = .relevant
     private let output = Observable<Output>()
     private let service = PhotoSearchService()
     
@@ -38,17 +41,20 @@ final class PhotoSearchViewModel {
                 self.output.value = .outputEmptyStatus(.emptySearchKeyword)
                 
             case .inputEmptyStatus(let status):
+                self.isEmptyResult = true
                 self.output.value = .outputEmptyStatus(status)
                 
             case .searchButtonTapped(let text):
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
                 
-            case .sortButtonTapped(let orderBy):
-                guard let orderBy = PhotoSearchDomain.OrderBy(rawValue: orderBy.rawValue) else { return }
+            case .orderByButtonTapped:
+                self.orderBy = self.orderBy.toggle()
+                self.output.value = .orderByDidChange
+                guard !self.isEmptyResult, let orderBy = PhotoSearchDomain.OrderBy(rawValue: self.orderBy.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
                 
             case .colorButtonTapped(let color):
-                guard let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
+                guard !self.isEmptyResult, let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
                 
             case .doPagination(let list):
@@ -63,7 +69,6 @@ final class PhotoSearchViewModel {
     }
 }
 
-//MARK: - 
 extension PhotoSearchViewModel {
     private func fetchPhotoList(fetchType: PhotoSearchDomain.FetchType, currentPhotoList: [PhotoCellModel] = []) async {
         let result = await service.fetchPhotoList(fetchType: fetchType)
@@ -79,8 +84,10 @@ extension PhotoSearchViewModel {
                 
                 currentPhotoList.append(contentsOf: photoList)
                 if (currentPhotoList.isEmpty) {
+                    self?.isEmptyResult = true
                     self?.output.value = .outputEmptyStatus(.emptySearchResult) }
                 else {
+                    self?.isEmptyResult = false
                     self?.output.value = .photoList(currentPhotoList)
                     self?.output.value = .shouldScrollUp(shouldScrollUp)
                 }
@@ -120,6 +127,15 @@ extension PhotoSearchViewModel {
     enum OrderBy: String {
         case relevant
         case latest
+        
+        func toggle() -> Self {
+            switch self {
+            case .relevant:
+                return .latest
+            case .latest:
+                return .relevant
+            }
+        }
     }
     
     enum Color: String {

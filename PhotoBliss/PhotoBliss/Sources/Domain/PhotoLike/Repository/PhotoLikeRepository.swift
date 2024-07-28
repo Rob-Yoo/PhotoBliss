@@ -126,7 +126,6 @@ extension PhotoLikeRepository {
         
         if FileManager.default.fileExists(atPath: filePath) {
             return filePath
-//            return UIImage(contentsOfFile: filePath)
         } else {
             return nil
         }

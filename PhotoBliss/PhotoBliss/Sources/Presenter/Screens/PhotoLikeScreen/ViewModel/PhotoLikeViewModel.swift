@@ -11,12 +11,13 @@ import UIKit.UIImage
 final class PhotoLikeViewModel {
     enum Input {
         case viewIsAppearing
-        case orderBy(_ orderBy: OrderBy)
+        case orderByButtonTapped
         case likeButtonTapped(photo: PhotoCellModel)
     }
     
     enum Output {
         case photoLikeList(_ list: [PhotoCellModel])
+        case orderByDidChange
         case isEmptyList
     }
     
@@ -26,14 +27,16 @@ final class PhotoLikeViewModel {
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
+            guard let self else { return }
             switch event {
             case .viewIsAppearing:
-                self?.fetchPhotoLikeList()
-            case .orderBy(let orderBy):
-                self?.orderByOption = orderBy
-                self?.fetchPhotoLikeList()
+                self.fetchPhotoLikeList()
+            case .orderByButtonTapped:
+                self.orderByOption = self.orderByOption.toggle()
+                self.output.value = .orderByDidChange
+                self.fetchPhotoLikeList()
             case .likeButtonTapped(photo: let photo):
-                self?.removePhotoLike(photo: photo)
+                self.removePhotoLike(photo: photo)
             }
         }
         
@@ -69,5 +72,14 @@ extension PhotoLikeViewModel {
     enum OrderBy {
         case latest
         case oldest
+        
+        func toggle() -> Self {
+            switch self {
+            case .latest:
+                return .oldest
+            case .oldest:
+                return .latest
+            }
+        }
     }
 }

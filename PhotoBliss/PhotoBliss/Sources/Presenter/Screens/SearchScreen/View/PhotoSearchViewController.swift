@@ -35,6 +35,8 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
                     if (signal) {
                         self?.contentView.scrollUpToTop()
                     }
+                case .orderByDidChange:
+                    self?.contentView.updateOrderByButton()
                 }
             }
     }
@@ -45,6 +47,8 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
         searchController.searchBar.placeholder = Literal.Placeholder.search
         searchController.searchBar.delegate = self
         searchController.searchBar.searchBarStyle = .prominent
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.autocorrectionType = .no
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.automaticallyShowsCancelButton = true
 
@@ -84,5 +88,9 @@ extension PhotoSearchViewController: PhotoSearchRootViewDelegate, UISearchBarDel
     
     func likeButtonTapped(photo: PhotoCellModel, image: UIImage) {
         self.input.value = .likeButtonTapped(photo: photo, image: image)
+    }
+    
+    func orderByButtonTapped() {
+        self.input.value = .orderByButtonTapped
     }
 }

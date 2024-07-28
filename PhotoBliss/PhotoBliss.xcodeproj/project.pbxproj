@@ -75,6 +75,9 @@
 		CC92041C2C54E00500417B3F /* PhotoLikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92041B2C54E00500417B3F /* PhotoLikeViewModel.swift */; };
 		CC92041F2C54F4A200417B3F /* PhotoSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92041E2C54F4A200417B3F /* PhotoSearchService.swift */; };
 		CC9204212C54F7B000417B3F /* PhotoSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */; };
+		CC9204232C555D4E00417B3F /* PhotoSearchOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */; };
+		CC9204252C555E9E00417B3F /* OrderByButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204242C555E9E00417B3F /* OrderByButton.swift */; };
+		CC9204272C55651A00417B3F /* PhotoLikeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
 		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
@@ -170,6 +173,9 @@
 		CC92041B2C54E00500417B3F /* PhotoLikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeViewModel.swift; sourceTree = "<group>"; };
 		CC92041E2C54F4A200417B3F /* PhotoSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchService.swift; sourceTree = "<group>"; };
 		CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchDomain.swift; sourceTree = "<group>"; };
+		CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchOptionView.swift; sourceTree = "<group>"; };
+		CC9204242C555E9E00417B3F /* OrderByButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByButton.swift; sourceTree = "<group>"; };
+		CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeOptionView.swift; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
@@ -622,6 +628,7 @@
 			children = (
 				CC5510FF2C4E700300A042C2 /* TextButton.swift */,
 				CC1904AA2C50D8360092F4AF /* LikeButton.swift */,
+				CC9204242C555E9E00417B3F /* OrderByButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -640,6 +647,7 @@
 			children = (
 				CC5EC33E2C520F1F00A54FE4 /* PhotoSearchViewController.swift */,
 				CC5EC3402C520F2D00A54FE4 /* PhotoSearchRootView.swift */,
+				CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -701,8 +709,9 @@
 		CC92040C2C54CA6D00417B3F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC92040D2C54CA7A00417B3F /* PhotoLikeRootView.swift */,
 				CC9204102C54D12900417B3F /* PhotoLikeViewController.swift */,
+				CC92040D2C54CA7A00417B3F /* PhotoLikeRootView.swift */,
+				CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -978,6 +987,7 @@
 				CC9204212C54F7B000417B3F /* PhotoSearchDomain.swift in Sources */,
 				CC92040E2C54CA7A00417B3F /* PhotoLikeRootView.swift in Sources */,
 				CC1904B42C5106F20092F4AF /* TopicTrendViewController.swift in Sources */,
+				CC9204232C555D4E00417B3F /* PhotoSearchOptionView.swift in Sources */,
 				CC2A7B7E2C52562200E51944 /* PhotoSearchRepository.swift in Sources */,
 				CC9204192C54DA5900417B3F /* PhotoLikeRepository.swift in Sources */,
 				CC1904AB2C50D8360092F4AF /* LikeButton.swift in Sources */,
@@ -990,6 +1000,7 @@
 				CC2A7B7C2C5255BB00E51944 /* PhotoSearchQueryModel.swift in Sources */,
 				CC1904B92C511BD20092F4AF /* TopicTrendViewModel.swift in Sources */,
 				CC1904AE2C50DC9A0092F4AF /* PhotoCellModel.swift in Sources */,
+				CC9204272C55651A00417B3F /* PhotoLikeOptionView.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
 				CC07AD4E2C537E51008146BF /* PhotoDetailRootView.swift in Sources */,
 				CC5EC3412C520F2D00A54FE4 /* PhotoSearchRootView.swift in Sources */,
@@ -1004,6 +1015,7 @@
 				CC19046D2C4FC17B0092F4AF /* ProfileImageSettingView.swift in Sources */,
 				CCFA37E02C4E96A700C9ADC1 /* ProfileSettingView.swift in Sources */,
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,
+				CC9204252C555E9E00417B3F /* OrderByButton.swift in Sources */,
 				CC9204112C54D12900417B3F /* PhotoLikeViewController.swift in Sources */,
 				CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */,
 				CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */,
