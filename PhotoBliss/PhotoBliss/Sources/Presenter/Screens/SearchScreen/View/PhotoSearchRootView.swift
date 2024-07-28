@@ -12,7 +12,7 @@ import Toast
 
 
 protocol PhotoSearchRootViewDelegate: AnyObject {
-    func doPagination(currentPhotoList: [PhotoCellModel])
+    func doPagination()
     func photoCellTapped(photo: PhotoCellModel)
     func likeButtonTapped(photo: PhotoCellModel, image: UIImage)
     func orderByButtonTapped()
@@ -147,7 +147,7 @@ extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSou
         for indexPath in indexPaths {
             if self.photoList.count - 2 == indexPath.item {
                 self.makeToastActivity(.center)
-                delegate?.doPagination(currentPhotoList: photoList)
+                delegate?.doPagination()
             }
         }
     }

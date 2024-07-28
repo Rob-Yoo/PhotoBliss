@@ -12,11 +12,12 @@ final class PhotoSearchViewModel {
     
     enum Input {
         case viewDidLoad
+        case shouldUpdatePhotoLike
         case inputEmptyStatus(_ status: EmptyStatus)
         case searchButtonTapped(_ text: String)
         case orderByButtonTapped
         case colorButtonTapped(_ color: Color)
-        case doPagination(_ currentPhotolist: [PhotoCellModel])
+        case doPagination
         case likeButtonTapped(photo: PhotoCellModel, image: UIImage)
     }
     
@@ -28,20 +29,28 @@ final class PhotoSearchViewModel {
         case networkError(_ message: String)
     }
     
-    private var isEmptyResult = true
+    private var photoList = [PhotoCellModel]()
     private var orderBy: OrderBy = .relevant
+    private var isEmptyResult: Bool {
+        return photoList.isEmpty
+    }
+
     private let output = Observable<Output>()
     private let service = PhotoSearchService()
     
     func tranform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
             guard let self else { return }
+
             switch event {
             case .viewDidLoad:
                 self.output.value = .outputEmptyStatus(.emptySearchKeyword)
                 
+            case .shouldUpdatePhotoLike:
+                self.updatePhotoLike()
+                
             case .inputEmptyStatus(let status):
-                self.isEmptyResult = true
+                self.photoList = []
                 self.output.value = .outputEmptyStatus(status)
                 
             case .searchButtonTapped(let text):
@@ -54,8 +63,8 @@ final class PhotoSearchViewModel {
                 guard !self.isEmptyResult, let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
                 
-            case .doPagination(let list):
-                Task { await self.fetchPhotoList(fetchType: .page, currentPhotoList: list) }
+            case .doPagination:
+                Task { await self.fetchPhotoList(fetchType: .page) }
                 
             case .likeButtonTapped(let photo, let image):
                 self.updatePhotoLike(photo: photo, image: image)
@@ -67,29 +76,37 @@ final class PhotoSearchViewModel {
 }
 
 extension PhotoSearchViewModel {
-    private func fetchPhotoList(fetchType: PhotoSearchDomain.FetchType, currentPhotoList: [PhotoCellModel] = []) async {
+    private func fetchPhotoList(fetchType: PhotoSearchDomain.FetchType) async {
         let result = await service.fetchPhotoList(fetchType: fetchType)
 
+        switch fetchType {
+        case .page:
+            break
+        default:
+            self.photoList = []
+        }
+        
         DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+
             switch result {
-            case .success(let photoList):
-                var currentPhotoList = currentPhotoList
-                let shouldScrollUp = currentPhotoList.isEmpty && !photoList.isEmpty
-                let isLastPage = !currentPhotoList.isEmpty && photoList.isEmpty
+            case .success(let newPhotoList):
+
+                let shouldScrollUp = self.isEmptyResult && !newPhotoList.isEmpty
+                let isLastPage = !self.isEmptyResult && newPhotoList.isEmpty
                 
                 guard !isLastPage else { return }
                 
-                currentPhotoList.append(contentsOf: photoList)
-                if (currentPhotoList.isEmpty) {
-                    self?.isEmptyResult = true
-                    self?.output.value = .outputEmptyStatus(.emptySearchResult) }
+                self.photoList.append(contentsOf: newPhotoList)
+                if (self.isEmptyResult) {
+                    self.output.value = .outputEmptyStatus(.emptySearchResult) }
                 else {
-                    self?.isEmptyResult = false
-                    self?.output.value = .photoList(currentPhotoList)
-                    self?.output.value = .shouldScrollUp(shouldScrollUp)
+                    self.output.value = .photoList(self.photoList)
+                    self.output.value = .shouldScrollUp(shouldScrollUp)
                 }
+                
             case .failure(let error):
-                self?.output.value = .networkError(error.localizedDescription)
+                self.output.value = .networkError(error.localizedDescription)
             }
         }
     }
@@ -113,6 +130,14 @@ extension PhotoSearchViewModel {
         
         guard let orderBy = PhotoSearchDomain.OrderBy(rawValue: self.orderBy.rawValue) else { return }
         Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
+    }
+    
+    private func updatePhotoLike() {
+        guard !self.isEmptyResult else { return }
+        
+        let updatedPhotoList = self.service.updatePhotoLikeList(currentList: self.photoList)
+        
+        self.output.value = .photoList(updatedPhotoList)
     }
 }
 

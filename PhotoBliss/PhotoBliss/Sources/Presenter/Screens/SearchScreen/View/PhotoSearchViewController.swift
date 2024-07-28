@@ -18,6 +18,11 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
         configureSearchController()
     }
     
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.input.value = .shouldUpdatePhotoLike
+    }
+    
     override func addUserAction() {
         self.contentView.delegate = self
     }
@@ -28,14 +33,18 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
                 switch event {
                 case .outputEmptyStatus(let status):
                     self?.contentView.showEmptyResult(emptyStatus: status)
+                    
                 case .photoList(let photoList):
                     self?.contentView.showSearchResult(data: photoList)
+                    
                 case .networkError(let message):
                     self?.showAlert(message: message)
+                    
                 case .shouldScrollUp(let signal):
                     if (signal) {
                         self?.contentView.scrollUpToTop()
                     }
+
                 case .orderByDidChange:
                     self?.contentView.updateOrderByButton()
                 }
@@ -76,9 +85,9 @@ extension PhotoSearchViewController: PhotoSearchRootViewDelegate, UISearchBarDel
         self.contentView.hideToast()
         self.input.value = .inputEmptyStatus(.emptySearchKeyword)
     }
-    
-    func doPagination(currentPhotoList: [PhotoCellModel]) {
-        self.input.value = .doPagination(currentPhotoList)
+
+    func doPagination() {
+        self.input.value = .doPagination
     }
     
     func photoCellTapped(photo: PhotoCellModel) {

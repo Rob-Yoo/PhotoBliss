@@ -36,6 +36,18 @@ final class PhotoSearchService {
         }
     }
     
+    func updatePhotoLikeList(currentList: [PhotoCellModel]) -> [PhotoCellModel] {
+        var photoList = currentList
+        let photoLikeList = self.likeRepository.fetchPhotoLikeList()
+        let photoLikeSet = Set(photoLikeList)
+        
+        for (idx, photo) in photoList.enumerated() where photoLikeSet.contains(photo) {
+            photoList[idx].isLike = true
+        }
+        
+        return photoList
+    }
+    
     func savePhotoLike(photo: PhotoCellModel, imageData: Data) {
         self.likeRepository.savePhotoLike(photo: photo, imageData: imageData)
     }
