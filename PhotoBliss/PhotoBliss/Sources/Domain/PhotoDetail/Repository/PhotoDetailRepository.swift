@@ -10,7 +10,7 @@ import Foundation
 final class PhotoDetailRepository {
     
     func fetchPhotoDetail(photo: PhotoCellModel) async -> Result<PhotoDetailModel, Error> {
-        let result = await NetworkManger.requestAPI(req: .statistic(imageID: photo.id), type: PhotoStatisticDTO.self)
+        let result = await NetworkManger.shared.requestAPI(req: .statistic(imageID: photo.id), type: PhotoStatisticDTO.self)
         
         switch result {
         case .success(let data):

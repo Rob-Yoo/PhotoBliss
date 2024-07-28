@@ -71,7 +71,7 @@ final class TopicTrendRepository {
         var topicList = [TopicModel]()
 
         for topic in randomTopics {
-            let result = await NetworkManger.requestAPI(req: .topic(topicID: topic.rawValue, queryDTO: queryDTO), type: [PhotoDTO].self)
+            let result = await NetworkManger.shared.requestAPI(req: .topic(topicID: topic.rawValue, queryDTO: queryDTO), type: [PhotoDTO].self)
             
             switch result {
             case .success(let topicTrendDTOs):

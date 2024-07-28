@@ -6,10 +6,17 @@
 //
 
 import Alamofire
+import Network
 import Foundation
 
-enum NetworkManger {
-    static func requestAPI<T: Decodable>(req: UnsplashRequest, type: T.Type) async -> Result<T, Error> {
+final class NetworkManger {
+    static let shared = NetworkManger()
+    private let monitor = NWPathMonitor()
+    private var isConnectedNetwork = true
+    
+    private init() {}
+    
+    func requestAPI<T: Decodable>(req: UnsplashRequest, type: T.Type) async -> Result<T, Error> {
         let response = await AF.request(req.endPoint,
                                             method: req.method,
                                             parameters: req.parameters,
@@ -26,5 +33,26 @@ enum NetworkManger {
         case .failure(let error):
             return .failure(error)
         }
+    }
+    
+    func doMornitoringNetwork(reconnectHandler: @escaping () -> Void, offlineHandler: (() -> Void)? = nil) {
+        monitor.pathUpdateHandler = { [weak self] path in
+            
+            guard let self else { return }
+            
+            if path.status == .satisfied && self.isConnectedNetwork == false {
+                reconnectHandler()
+                self.isConnectedNetwork.toggle()
+            } else if path.status == .unsatisfied && self.isConnectedNetwork == true {
+                offlineHandler?()
+                self.isConnectedNetwork.toggle()
+            }
+        }
+        
+        monitor.start(queue: DispatchQueue.global())
+    }
+    
+    func stopNetworkMonitoring() {
+        monitor.cancel()
     }
 }

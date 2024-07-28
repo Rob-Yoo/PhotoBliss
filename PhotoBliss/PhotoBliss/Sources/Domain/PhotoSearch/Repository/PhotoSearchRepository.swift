@@ -40,7 +40,7 @@ final class PhotoSearchRepository {
 extension PhotoSearchRepository {
     private func fetchSearchResult(fetchType: PhotoSearchDomain.FetchType) async -> Result<PhotoSearchResultDTO, Error> {
         let searchQueryDTO = searchQuery.makeQueryDTO(type: fetchType)
-        let result = await NetworkManger.requestAPI(req: .search(query: searchQueryDTO), type: PhotoSearchResultDTO.self)
+        let result = await NetworkManger.shared.requestAPI(req: .search(query: searchQueryDTO), type: PhotoSearchResultDTO.self)
         
         return result
     }

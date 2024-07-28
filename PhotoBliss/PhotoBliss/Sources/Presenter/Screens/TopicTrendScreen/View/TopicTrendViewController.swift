@@ -24,6 +24,10 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configureNavBarAppearence(appearenceType: .transparent)
+        
+        NetworkManger.shared.doMornitoringNetwork(reconnectHandler: { [weak self] in
+            self?.input.value = .shouldRefresh
+        })
     }
     
     override func addUserAction() {

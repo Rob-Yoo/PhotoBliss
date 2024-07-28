@@ -10,7 +10,7 @@ import UIKit.UIImage
 
 final class PhotoDetailViewModel {
     enum Input {
-        case viewDidLoad
+        case shouldLoadPhotoDetail
         case likeButtonTapped(image: UIImage)
     }
     
@@ -34,7 +34,7 @@ final class PhotoDetailViewModel {
             guard let self else { return }
             
             switch event {
-            case .viewDidLoad:
+            case .shouldLoadPhotoDetail:
                 Task { await self.fetchPhotoDetailModel() }
             case .likeButtonTapped(let image):
                 self.updatePhotoLike(photo: photoCellModel, image: image)

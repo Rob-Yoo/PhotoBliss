@@ -9,7 +9,7 @@ import UIKit
 
 final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     
-    private let input = Observable<PhotoDetailViewModel.Input>(.viewDidLoad)
+    private let input = Observable<PhotoDetailViewModel.Input>(.shouldLoadPhotoDetail)
     private let viewModel: PhotoDetailViewModel
     
     init(photo: PhotoCellModel) {
@@ -20,6 +20,14 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavBarAppearence(appearenceType: .opaque)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NetworkManger.shared.doMornitoringNetwork { [weak self] in
+            self?.input.value = .shouldLoadPhotoDetail
+        }
     }
     
     override func addUserAction() {
