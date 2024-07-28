@@ -35,8 +35,8 @@ struct PhotoCellModel: Hashable, Identifiable {
         return PhotoCellModel(id: dto.id, smallPhotoImageUrl: dto.urls.small, starCount: dto.likes, photographerImageUrl: dto.user.profileImage.medium, photographerName: dto.user.name, publishedDate: convertedDateString, rawPhotoImageUrl: dto.urls.raw, width: dto.width, height: dto.height, isLike: false)
     }
     
-    static func createPhotoCellModel(dto: PhotoLikeDTO) -> Self {
-        return PhotoCellModel(id: dto.photoId, smallPhotoImageUrl: "", starCount: dto.starCount, photographerImageUrl: dto.photographerImageUrl, photographerName: dto.photographerName, publishedDate: dto.publishedDate, rawPhotoImageUrl: dto.rawPhotoImageUrl, width: dto.width, height: dto.height, savedImageFilePath: dto.savedImageFilePath, isLike: true)
+    static func createPhotoCellModel(dto: PhotoLikeDTO, savedImageFilePath: String?) -> Self {
+        return PhotoCellModel(id: dto.photoId, smallPhotoImageUrl: "", starCount: dto.starCount, photographerImageUrl: dto.photographerImageUrl, photographerName: dto.photographerName, publishedDate: dto.publishedDate, rawPhotoImageUrl: dto.rawPhotoImageUrl, width: dto.width, height: dto.height, savedImageFilePath: savedImageFilePath, isLike: true)
     }
 
 }

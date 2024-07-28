@@ -18,9 +18,9 @@ final class PhotoLikeRepository {
     }
     
     func savePhotoLike(photo: PhotoCellModel, imageData: Data) {
-        guard let savedFilePath = self.saveImageToDocument(imageData: imageData, filename: photo.id) else { return }
+        self.saveImageToDocument(imageData: imageData, filename: photo.id)
         
-        self.createItem(photo: photo, filePath: savedFilePath)
+        self.createItem(photo: photo)
     }
     
     func removePhotoLike(photo: PhotoCellModel) {
@@ -29,7 +29,10 @@ final class PhotoLikeRepository {
     }
     
     func fetchPhotoLikeList() -> [PhotoCellModel] {
-        return list.map { PhotoCellModel.createPhotoCellModel(dto: $0) }
+        return list.map {
+            let filePath = self.loadImageFilePath(filename: $0.photoId)
+            return PhotoCellModel.createPhotoCellModel(dto: $0, savedImageFilePath: filePath)
+        }
     }
     
 }
@@ -37,10 +40,10 @@ final class PhotoLikeRepository {
 //MARK: - Repository <-> Local Storage
 extension PhotoLikeRepository {
     
-    private func createItem(photo: PhotoCellModel, filePath: String) {
+    private func createItem(photo: PhotoCellModel) {
         do {
             try realm.write {
-                realm.add(PhotoLikeDTO(photo: photo, imageFilePath: filePath))
+                realm.add(PhotoLikeDTO(photo: photo))
             }
         } catch {
             print(error)
@@ -61,26 +64,16 @@ extension PhotoLikeRepository {
         }
     }
     
-    private func saveImageToDocument(imageData: Data, filename: String) -> String? {
+    private func saveImageToDocument(imageData: Data, filename: String) {
         guard let documentDirectory = FileManager.default.urls(
             for: .documentDirectory,
-            in: .userDomainMask).first else { return nil }
+            in: .userDomainMask).first else { return }
         let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
         
         do {
             try imageData.write(to: fileURL)
-            let filePath: String
-
-            if #available(iOS 16.0, *) {
-                filePath = fileURL.path()
-            } else {
-                filePath = fileURL.path
-            }
-            
-            return filePath
         } catch {
             print("file save error", error)
-            return nil
         }
     }
     
@@ -110,7 +103,7 @@ extension PhotoLikeRepository {
         }
         
     }
-    
+
     private func loadImageFilePath(filename: String) -> String? {
         guard let documentDirectory = FileManager.default.urls(
             for: .documentDirectory,

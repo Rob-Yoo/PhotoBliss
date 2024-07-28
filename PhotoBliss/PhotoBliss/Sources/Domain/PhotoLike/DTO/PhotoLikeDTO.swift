@@ -17,9 +17,8 @@ final class PhotoLikeDTO: Object {
     @Persisted var rawPhotoImageUrl: String
     @Persisted var width: Int
     @Persisted var height: Int
-    @Persisted var savedImageFilePath: String
-    
-    convenience init(photo: PhotoCellModel, imageFilePath: String) {
+
+    convenience init(photo: PhotoCellModel) {
         self.init()
         self.photoId = photo.id
         self.starCount = photo.starCount
@@ -29,7 +28,6 @@ final class PhotoLikeDTO: Object {
         self.rawPhotoImageUrl = photo.rawPhotoImageUrl
         self.width = photo.width
         self.height = photo.width
-        self.savedImageFilePath = imageFilePath
     }
     
 }
