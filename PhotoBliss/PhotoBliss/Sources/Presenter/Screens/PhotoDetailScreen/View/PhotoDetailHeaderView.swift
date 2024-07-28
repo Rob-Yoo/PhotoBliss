@@ -43,6 +43,7 @@ final class PhotoDetailHeaderView: BaseView {
         detailInfoLabelView.snp.makeConstraints {
             $0.leading.equalTo(photographerImageView.snp.trailing).offset(10)
             $0.verticalEdges.equalToSuperview().inset(11)
+            $0.width.equalToSuperview().multipliedBy(0.7)
         }
         
         likeButton.snp.makeConstraints {
@@ -51,11 +52,14 @@ final class PhotoDetailHeaderView: BaseView {
         }
     }
     
-    func update(photoDetail: PhotoDetailModel) {
+    func updatePhotographerInfoView(photoDetail: PhotoDetailModel) {
         let imageUrl = URL(string: photoDetail.photo.photographerImageUrl)
         
         self.photographerImageView.kf.setImage(with: imageUrl)
         self.detailInfoLabelView.update(photoDetail: photoDetail)
+    }
+    
+    func updateLikeButton(photoDetail: PhotoDetailModel) {
         self.likeButton.isLike = photoDetail.photo.isLike
     }
 }
@@ -64,14 +68,14 @@ private final class DetailInfoLabelView: BaseView {
     private let photographerNameLabel = UILabel().then {
         $0.font = .regular15
         $0.textColor = .black
-        $0.textAlignment = .center
+        $0.textAlignment = .left
         $0.numberOfLines = 1
     }
     
     private let publishedDateLabel = UILabel().then {
         $0.font = .bold13
         $0.textColor = .black
-        $0.textAlignment = .center
+        $0.textAlignment = .left
     }
     
     override func configureView() {
@@ -86,8 +90,8 @@ private final class DetailInfoLabelView: BaseView {
     override func configureLayout() {
         photographerNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(2)
+            $0.horizontalEdges.equalToSuperview()
             $0.leading.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.5)
         }
         
         publishedDateLabel.snp.makeConstraints {

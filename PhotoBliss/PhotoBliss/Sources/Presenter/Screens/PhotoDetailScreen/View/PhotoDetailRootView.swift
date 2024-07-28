@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import Kingfisher
+import Toast
 
 protocol PhotoDetailRootViewDelegate: AnyObject {
     func likeButtonTapped(image: UIImage)
@@ -61,8 +62,18 @@ final class PhotoDetailRootView: BaseView {
     func updateUI(photoDetail: PhotoDetailModel) {
         let imageUrl = URL(string: photoDetail.photo.rawPhotoImageUrl)
         
-        self.photoView.kf.setImage(with: imageUrl)
-        self.headerView.update(photoDetail: photoDetail)
+        self.makeToastActivity(.center)
+        self.photoView.kf.setImage(with: imageUrl) { [weak self] result in
+            switch result {
+            case .success:
+                self?.hideToastActivity()
+                self?.headerView.updateLikeButton(photoDetail: photoDetail)
+            case .failure:
+                return
+            }
+        }
+
+        self.headerView.updatePhotographerInfoView(photoDetail: photoDetail)
         self.photoDetailInfoView.update(photoDetail: photoDetail)
     }
     
