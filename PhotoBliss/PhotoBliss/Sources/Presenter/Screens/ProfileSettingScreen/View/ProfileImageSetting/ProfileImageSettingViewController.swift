@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingView> {
+final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingRootView> {
     
     private let viewModel = ProfileImageSettingViewModel()
     private let input: Observable<ProfileImageSettingViewModel.Input>
     
     var deliverProfileImageNumber: ((Int) -> Void)?
     
-    init(contentView: ProfileImageSettingView, profileImageNumber: Int) {
+    init(contentView: ProfileImageSettingRootView, profileImageNumber: Int) {
         self.input = Observable<ProfileImageSettingViewModel.Input>(.profileImageNumber(profileImageNumber))
         super.init(contentView: contentView)
     }

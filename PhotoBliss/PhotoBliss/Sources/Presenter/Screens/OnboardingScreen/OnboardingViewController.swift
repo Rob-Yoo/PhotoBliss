@@ -46,7 +46,7 @@ final class OnboardingViewController: UIViewController {
     }
     
     @objc func startButtonTapped() {
-        let nextVC = NewProfileSettingViewController(contentView: ProfileSettingView(type: .New))
+        let nextVC = NewProfileSettingViewController(contentView: ProfileSettingRootView(type: .New))
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

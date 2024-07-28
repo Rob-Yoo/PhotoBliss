@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class NewProfileSettingViewController: BaseViewController<ProfileSettingView> {
+final class NewProfileSettingViewController: BaseViewController<ProfileSettingRootView> {
     
     private let viewModel = ProfileSettingViewModel()
     private let input = Observable<ProfileSettingViewModel.Input>()
     
-    override init(contentView: ProfileSettingView) {
+    override init(contentView: ProfileSettingRootView) {
         super.init(contentView: contentView)
     }
     
@@ -104,7 +104,7 @@ extension NewProfileSettingViewController {
     }
     
     private func moveToProfileImageSettingView(imageNumber: Int) {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), profileImageNumber: imageNumber)
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingRootView(type: .New), profileImageNumber: imageNumber)
         
         nextVC.deliverProfileImageNumber = { [weak self] number in
             self?.input.value = .profileImageNumber(number)
