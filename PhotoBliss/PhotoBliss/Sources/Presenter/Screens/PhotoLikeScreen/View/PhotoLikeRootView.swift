@@ -82,11 +82,13 @@ extension PhotoLikeRootView {
         self.likeList = likeList
         self.collectionView.reloadData()
         self.collectionView.isHidden = false
+        self.orderByOptionView.isHidden = false
     }
     
     func showEmptyResult() {
         self.collectionView.isHidden = true
         self.emptyResultView.isHidden = false
+        self.orderByOptionView.isHidden = true
     }
     
     func updateOrderByButton() {
@@ -100,6 +102,10 @@ extension PhotoLikeRootView {
         toastStyle.horizontalPadding = 30
         self.hideToast()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
+    }
+    
+    func resetOrderByButton() {
+        self.orderByOptionView.orderByButton.resetOrderBy()
     }
 }
 

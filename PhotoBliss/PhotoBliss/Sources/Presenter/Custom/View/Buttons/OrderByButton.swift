@@ -10,14 +10,18 @@ import UIKit
 final class OrderByButton: UIButton {
     
     private var orderBy: OrderBy
+    private let type: OrderByButton.ButtonType
     
-    init(type: ButtonType) {
+    init(type: OrderByButton.ButtonType) {
+        self.type = type
+
         switch type {
         case .search:
             self.orderBy = .relevant
         case .like:
             self.orderBy = .newest
         }
+
         super.init(frame: .zero)
         self.configure()
     }
@@ -38,8 +42,21 @@ final class OrderByButton: UIButton {
             self.orderBy = .newest
         }
         
+        print(self.orderBy.buttonTitle)
         self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
         return self.orderBy
+    }
+    
+    func resetOrderBy() {
+        switch self.type {
+        case .like:
+            self.orderBy = .newest
+        case .search:
+            self.orderBy = .relevant
+        }
+        
+        print(self.orderBy.buttonTitle)
+        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
     }
 }
 

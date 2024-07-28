@@ -17,10 +17,12 @@ final class PhotoLikeViewModel {
     
     enum Output {
         case photoLikeList(_ list: [PhotoCellModel])
+        case resetOrderByButton
         case orderByDidChange
         case isEmptyList
     }
     
+    private lazy var photoLikeList = self.repository.fetchPhotoLikeList()
     private var orderByOption: OrderBy = .latest
     private let output = Observable<Output>()
     private let repository = PhotoLikeRepository()
@@ -54,16 +56,24 @@ extension PhotoLikeViewModel {
         case .oldest:
             photoLikeList = self.repository.fetchPhotoLikeList()
         }
-        
+
         if (photoLikeList.isEmpty) {
+            self.orderByOption = .latest
             self.output.value = .isEmptyList
         } else {
             self.output.value = .photoLikeList(photoLikeList)
         }
+        
+        self.photoLikeList = photoLikeList
     }
     
     private func removePhotoLike(photo: PhotoCellModel) {
         self.repository.removePhotoLike(photo: photo)
+        
+        if (self.photoLikeList.count == 1) {
+            self.output.value = .resetOrderByButton
+        }
+        
         self.fetchPhotoLikeList()
     }
 }

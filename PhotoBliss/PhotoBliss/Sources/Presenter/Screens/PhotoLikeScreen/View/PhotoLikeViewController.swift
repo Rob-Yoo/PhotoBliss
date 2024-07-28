@@ -38,6 +38,8 @@ final class PhotoLikeViewController: BaseViewController<PhotoLikeRootView> {
                     self.contentView.showEmptyResult()
                 case .orderByDidChange:
                     self.contentView.updateOrderByButton()
+                case .resetOrderByButton:
+                    self.contentView.resetOrderByButton()
                 }
             }
     }
