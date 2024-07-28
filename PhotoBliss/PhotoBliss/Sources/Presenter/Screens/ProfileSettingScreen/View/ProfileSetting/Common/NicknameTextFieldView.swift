@@ -19,7 +19,9 @@ final class NicknameTextFieldView: BaseView {
         $0.delegate = self
     }
     
-    private let line = UIView()
+    private let line = UIView().then {
+        $0.backgroundColor = .lightGray
+    }
     
     let statusLabel = UILabel().then {
         $0.textColor = .mainTheme
@@ -51,13 +53,10 @@ final class NicknameTextFieldView: BaseView {
         }
     }
     
-    func update(status: NicknameValidationStatus) {
-        let statusColor: UIColor = (status == .ok) ? .mainTheme : .warning
-        let lineColor: UIColor = (status == .empty) ? .lightGray : .black
-
+    func update(lineColor: UIColor, text: String, textColor: UIColor) {
         self.line.backgroundColor = lineColor
-        self.statusLabel.text = status.statusText
-        self.statusLabel.textColor = statusColor
+        self.statusLabel.text = text
+        self.statusLabel.textColor = textColor
     }
     
 }

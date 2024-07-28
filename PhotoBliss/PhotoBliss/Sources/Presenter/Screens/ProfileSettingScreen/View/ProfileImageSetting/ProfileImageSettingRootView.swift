@@ -9,14 +9,22 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ProfileImageSettingRootViewDelegate: AnyObject {
+    func profileImageSelected(idx: Int)
+}
+
 class ProfileImageSettingRootView: BaseView, RootViewProtocol {
     var navigationTitle: String
     
-    let currentProfileImageView = CurrentProfileImageView()
+    private let currentProfileImageView = CurrentProfileImageView()
     
-    lazy var profileImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
+    private lazy var profileImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.reusableIdentifier)
+        $0.delegate = self
+        $0.delegate = self
     }
+    
+    weak var delegate: ProfileImageSettingRootViewDelegate?
     
     init(type: ProfileSettingType) {
         self.navigationTitle = type.navigationTitle
@@ -52,5 +60,36 @@ class ProfileImageSettingRootView: BaseView, RootViewProtocol {
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         return layout
+    }
+    
+    func updateUI(selectedImage: UIImage) {
+        self.currentProfileImageView.profileImageView.image = selectedImage
+        self.profileImageCollectionView.reloadData()
+    }
+}
+
+//MARK: - CollectionView Setting
+extension ProfileImageSettingRootView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return UIImage.profileImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let profileImage = UIImage.profileImages[indexPath.item]
+        let profileImageView = currentProfileImageView.profileImageView
+        guard let selectedImage = profileImageView.image else { return UICollectionViewCell() }
+        let isSelected = (profileImage == selectedImage)
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.reusableIdentifier, for: indexPath) as? ProfileImageCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configureCellData(image: profileImage, isSelected: isSelected)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let idx = indexPath.item
+        delegate?.profileImageSelected(idx: idx)
     }
 }

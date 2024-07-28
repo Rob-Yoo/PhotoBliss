@@ -2,8 +2,10 @@
 //  ProfileSettingType.swift
 //  PhotoBliss
 //
-//  Created by Jinyoung Yoo on 7/22/24.
+//  Created by Jinyoung Yoo on 7/29/24.
 //
+
+import Foundation
 
 enum ProfileSettingType {
     case New

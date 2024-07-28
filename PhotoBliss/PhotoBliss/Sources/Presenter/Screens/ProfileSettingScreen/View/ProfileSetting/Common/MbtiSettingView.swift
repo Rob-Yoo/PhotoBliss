@@ -9,20 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-typealias MbtiInfo = (title: String, selected: Bool)
-
 final class MbtiSettingView: BaseView {
-    
-    private var mbti: [MbtiInfo] = [
-        (title: "E", selected: true),
-        (title: "S", selected: true),
-        (title: "T", selected: false),
-        (title: "J", selected: true),
-        (title: "I", selected: false),
-        (title: "N", selected: false),
-        (title: "F", selected: true),
-        (title: "P", selected: false)
-    ]
     
     private let titleLabel = UILabel().then {
         $0.text = "MBTI"
@@ -30,11 +17,9 @@ final class MbtiSettingView: BaseView {
         $0.font = .heavy17
     }
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.isScrollEnabled = false
         $0.register(MbtiCollectionViewCell.self, forCellWithReuseIdentifier: MbtiCollectionViewCell.reusableIdentifier)
-        $0.delegate = self
-        $0.dataSource = self
     }
     
     override func configureView() {
@@ -74,23 +59,5 @@ final class MbtiSettingView: BaseView {
         let height = width
         
         layout.itemSize = CGSize(width: width, height: height)
-    }
-}
-
-extension MbtiSettingView: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mbti.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let mbtiInfo = mbti[indexPath.item]
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MbtiCollectionViewCell.reusableIdentifier, for: indexPath) as? MbtiCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        cell.configureCell(mbtiInfo: mbtiInfo)
-        return cell
     }
 }
