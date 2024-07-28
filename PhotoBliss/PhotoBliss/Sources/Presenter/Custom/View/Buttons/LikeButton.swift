@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class LikeButton: UIButton {
+final class LikeButton: BaseButton {
     
     private let isCircle: Bool
     
@@ -31,9 +31,5 @@ final class LikeButton: UIButton {
     init(isCircle: Bool) {
         self.isCircle = isCircle
         super.init(frame: .zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

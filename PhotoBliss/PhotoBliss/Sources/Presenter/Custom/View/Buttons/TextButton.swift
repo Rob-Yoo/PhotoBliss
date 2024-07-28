@@ -7,27 +7,20 @@
 
 import UIKit
 
-class TextButton: UIButton {
+final class TextButton: BaseButton {
     
-    init(title: String, titleColor: UIColor = .white, font: UIFont = .bold15, bgColor: UIColor = .mainTheme) {
+    init(type: TextButtonType) {
         super.init(frame: .zero)
-        
-        self.setTitle(title, for: .normal)
-        self.setTitleColor(titleColor, for: .normal)
-        self.titleLabel?.font = font
-        self.backgroundColor = bgColor
+        self.setTitle(type.title, for: .normal)
+    }
+    
+    override func configureButton() {
+        self.setTitleColor(.white, for: .normal)
+        self.titleLabel?.font = .bold15
+        self.backgroundColor = .mainTheme
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
     }
-    
-    convenience init(type: TextButtonType) {
-        self.init(title: type.title)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
 
 extension TextButton {

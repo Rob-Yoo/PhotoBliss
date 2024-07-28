@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OrderByButton: UIButton {
+final class OrderByButton: BaseButton {
     
     private var orderBy: OrderBy
     private let type: OrderByButton.ButtonType
@@ -23,11 +23,18 @@ final class OrderByButton: UIButton {
         }
 
         super.init(frame: .zero)
-        self.configure()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func configureButton() {
+        self.backgroundColor = .white
+        self.setImage(.sort, for: .normal)
+        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
+        self.setTitleColor(.black, for: .normal)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 2
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = 15
     }
     
     func toggle() -> OrderBy {
@@ -41,8 +48,7 @@ final class OrderByButton: UIButton {
         case .oldest:
             self.orderBy = .newest
         }
-        
-        print(self.orderBy.buttonTitle)
+
         self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
         return self.orderBy
     }
@@ -54,23 +60,8 @@ final class OrderByButton: UIButton {
         case .search:
             self.orderBy = .relevant
         }
-        
-        print(self.orderBy.buttonTitle)
-        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
-    }
-}
 
-extension OrderByButton {
-    private func configure() {
-        self.backgroundColor = .white
-        self.setImage(.sort, for: .normal)
         self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
-        self.setTitleColor(.black, for: .normal)
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 2
-        self.layer.masksToBounds = false
-        self.layer.cornerRadius = 15
     }
 }
 

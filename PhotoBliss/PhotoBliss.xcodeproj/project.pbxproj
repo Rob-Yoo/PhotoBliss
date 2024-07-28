@@ -80,6 +80,7 @@
 		CC9204272C55651A00417B3F /* PhotoLikeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */; };
 		CCA266062C5674D800826F9F /* MbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266052C5674D800826F9F /* MbtiCollectionViewCell.swift */; };
 		CCA266082C5677E200826F9F /* ToastStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266072C5677E200826F9F /* ToastStyle+Extension.swift */; };
+		CCA2660A2C567CB700826F9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266092C567CB700826F9F /* BaseButton.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
 		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
@@ -180,6 +181,7 @@
 		CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeOptionView.swift; sourceTree = "<group>"; };
 		CCA266052C5674D800826F9F /* MbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		CCA266072C5677E200826F9F /* ToastStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastStyle+Extension.swift"; sourceTree = "<group>"; };
+		CCA266092C567CB700826F9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 				CC5510F32C4E6AAD00A042C2 /* BaseView.swift */,
 				CC5510F52C4E6BC300A042C2 /* BaseTableViewCell.swift */,
 				CC5510F72C4E6CD300A042C2 /* BaseCollectionViewCell.swift */,
+				CCA266092C567CB700826F9F /* BaseButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				CC2A7B7C2C5255BB00E51944 /* PhotoSearchQueryModel.swift in Sources */,
 				CC1904B92C511BD20092F4AF /* TopicTrendViewModel.swift in Sources */,
 				CC1904AE2C50DC9A0092F4AF /* PhotoCellModel.swift in Sources */,
+				CCA2660A2C567CB700826F9F /* BaseButton.swift in Sources */,
 				CC9204272C55651A00417B3F /* PhotoLikeOptionView.swift in Sources */,
 				CC5510DF2C4E455700A042C2 /* UIFont+Extension.swift in Sources */,
 				CC07AD4E2C537E51008146BF /* PhotoDetailRootView.swift in Sources */,
