@@ -31,4 +31,5 @@ final class PhotoLikeDTO: Object {
         self.height = photo.width
         self.savedImageFilePath = imageFilePath
     }
+    
 }

@@ -52,11 +52,11 @@ final class PhotoDetailHeaderView: BaseView {
     }
     
     func update(photoDetail: PhotoDetailModel) {
-        let imageUrl = URL(string: photoDetail.photographerImageUrl)
+        let imageUrl = URL(string: photoDetail.photo.photographerImageUrl)
         
         self.photographerImageView.kf.setImage(with: imageUrl)
         self.detailInfoLabelView.update(photoDetail: photoDetail)
-        self.likeButton.isLike = photoDetail.isLike
+        self.likeButton.isLike = photoDetail.photo.isLike
     }
 }
 
@@ -97,7 +97,7 @@ private final class DetailInfoLabelView: BaseView {
     }
     
     func update(photoDetail: PhotoDetailModel) {
-        self.photographerNameLabel.text = photoDetail.photographerName
-        self.publishedDateLabel.text = photoDetail.publishedDate + " 게시됨"
+        self.photographerNameLabel.text = photoDetail.photo.photographerName
+        self.publishedDateLabel.text = photoDetail.photo.publishedDate + " 게시됨"
     }
 }

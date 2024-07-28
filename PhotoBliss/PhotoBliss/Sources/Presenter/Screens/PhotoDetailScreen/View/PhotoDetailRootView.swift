@@ -10,8 +10,14 @@ import SnapKit
 import Then
 import Kingfisher
 
+protocol PhotoDetailRootViewDelegate: AnyObject {
+    func likeButtonTapped(image: UIImage)
+}
+
 final class PhotoDetailRootView: BaseView {
-    private let headerView = PhotoDetailHeaderView()
+    private lazy var headerView = PhotoDetailHeaderView().then {
+        $0.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+    }
     
     private let photoView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
@@ -20,6 +26,8 @@ final class PhotoDetailRootView: BaseView {
     }
     
     private let photoDetailInfoView = PhotoDetailInfoView()
+    
+    weak var delegate: PhotoDetailRootViewDelegate?
     
     override func configureView() {
         self.backgroundColor = .systemBackground
@@ -51,10 +59,17 @@ final class PhotoDetailRootView: BaseView {
     }
     
     func updateUI(photoDetail: PhotoDetailModel) {
-        let imageUrl = URL(string: photoDetail.photoImageUrl)
+        let imageUrl = URL(string: photoDetail.photo.rawPhotoImageUrl)
         
         self.photoView.kf.setImage(with: imageUrl)
         self.headerView.update(photoDetail: photoDetail)
         self.photoDetailInfoView.update(photoDetail: photoDetail)
+    }
+    
+    @objc private func likeButtonTapped() {
+        guard let image = self.photoView.image else { return }
+        
+        self.headerView.likeButton.isLike.toggle()
+        delegate?.likeButtonTapped(image: image)
     }
 }

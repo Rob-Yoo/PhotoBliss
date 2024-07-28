@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 final class PhotoDetailViewModel {
     enum Input {
         case viewDidLoad
+        case likeButtonTapped(image: UIImage)
     }
     
     enum Output {
@@ -18,8 +20,10 @@ final class PhotoDetailViewModel {
     }
     
     private let photoCellModel: PhotoCellModel
+    private var isLike = false
     private let output = Observable<Output>()
-    private let repository = PhotoDetailRepository()
+    private let detailRepository = PhotoDetailRepository()
+    private let likeRepository = PhotoLikeRepository()
 
     init(photo: PhotoCellModel) {
         self.photoCellModel = photo
@@ -32,6 +36,8 @@ final class PhotoDetailViewModel {
             switch event {
             case .viewDidLoad:
                 Task { await self.fetchPhotoDetailModel() }
+            case .likeButtonTapped(let image):
+                self.updatePhotoLike(photo: photoCellModel, image: image)
             }
         }
         
@@ -41,15 +47,36 @@ final class PhotoDetailViewModel {
 
 extension PhotoDetailViewModel {
     private func fetchPhotoDetailModel() async {
-        let result = await repository.fetchPhotoDetail(photo: self.photoCellModel)
-
+        let result = await detailRepository.fetchPhotoDetail(photo: self.photoCellModel)
+        let likeList = await fetchPhotoLikeList()
+        
         DispatchQueue.main.async { [weak self] in
             switch result {
-            case .success(let photoDetail):
+            case .success(var photoDetail):
+                let isLike = likeList.contains(where: { $0.id == photoDetail.photo.id })
+                
+                self?.isLike = isLike
+                photoDetail.photo.isLike = isLike
                 self?.output.value = .photoDetail(photoDetail)
             case .failure(let error):
                 self?.output.value = .networkError(error.localizedDescription)
             }
         }
+    }
+    
+    @MainActor
+    private func fetchPhotoLikeList() -> [PhotoCellModel] {
+        return self.likeRepository.fetchPhotoLikeList()
+    }
+    
+    private func updatePhotoLike(photo: PhotoCellModel, image: UIImage) {
+        if (self.isLike) {
+            self.likeRepository.removePhotoLike(photo: photo)
+        } else {
+            guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+            self.likeRepository.savePhotoLike(photo: photo, imageData: data)
+        }
+        
+        self.isLike.toggle()
     }
 }

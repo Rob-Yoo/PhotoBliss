@@ -22,6 +22,10 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
         self.configureNavBarAppearence(appearenceType: .opaque)
     }
     
+    override func addUserAction() {
+        self.contentView.delegate = self
+    }
+    
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
             .bind { [weak self] event in
@@ -32,5 +36,12 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
                     self?.showAlert(message: message)
                 }
             }
+    }
+}
+
+//MARK: - User Action Handling
+extension PhotoDetailViewController: PhotoDetailRootViewDelegate {
+    func likeButtonTapped(image: UIImage) {
+        self.input.value = .likeButtonTapped(image: image)
     }
 }

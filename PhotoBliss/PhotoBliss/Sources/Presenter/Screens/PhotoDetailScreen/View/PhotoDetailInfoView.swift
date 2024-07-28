@@ -127,7 +127,7 @@ private final class InfoView: BaseView {
     }
     
     func update(photoDetail: PhotoDetailModel) {
-        self.sizeLabel.text = "\(photoDetail.width) x \(photoDetail.height)"
+        self.sizeLabel.text = "\(photoDetail.photo.width) x \(photoDetail.photo.height)"
         self.viewCountLabel.text = photoDetail.viewCount.formatted()
         self.downloadCountLabel.text = photoDetail.downloadCount.formatted()
     }
