@@ -98,6 +98,7 @@ extension PhotoLikeRootView {
         toastStyle.displayShadow = true
         toastStyle.shadowRadius = 4
         toastStyle.horizontalPadding = 30
+        self.hideToast()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
     }
 }

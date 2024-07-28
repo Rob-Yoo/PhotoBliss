@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
     private let input = Observable<PhotoSearchViewModel.Input>(.viewDidLoad)
@@ -72,6 +73,7 @@ extension PhotoSearchViewController: PhotoSearchRootViewDelegate, UISearchBarDel
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.contentView.hideToast()
         self.input.value = .inputEmptyStatus(.emptySearchKeyword)
     }
     

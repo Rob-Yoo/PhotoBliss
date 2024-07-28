@@ -48,11 +48,8 @@ final class PhotoSearchViewModel {
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
                 
             case .orderByButtonTapped:
-                self.orderBy = self.orderBy.toggle()
-                self.output.value = .orderByDidChange
-                guard !self.isEmptyResult, let orderBy = PhotoSearchDomain.OrderBy(rawValue: self.orderBy.rawValue) else { return }
-                Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
-                
+                self.changeOrderByOption()
+
             case .colorButtonTapped(let color):
                 guard !self.isEmptyResult, let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
@@ -107,6 +104,16 @@ extension PhotoSearchViewModel {
             self.service.savePhotoLike(photo: photo, imageData: data)
         }
     }
+    
+    private func changeOrderByOption() {
+        guard !self.isEmptyResult else { return }
+
+        self.orderBy.toggle()
+        self.output.value = .orderByDidChange
+        
+        guard let orderBy = PhotoSearchDomain.OrderBy(rawValue: self.orderBy.rawValue) else { return }
+        Task { await self.fetchPhotoList(fetchType: .orderBy(orderBy)) }
+    }
 }
 
 extension PhotoSearchViewModel {
@@ -128,12 +135,12 @@ extension PhotoSearchViewModel {
         case relevant
         case latest
         
-        func toggle() -> Self {
+        mutating func toggle() {
             switch self {
             case .relevant:
-                return .latest
+                self = .latest
             case .latest:
-                return .relevant
+                self = .relevant
             }
         }
     }
