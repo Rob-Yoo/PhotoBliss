@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileSettingView: BaseView, RootViewProtocol {
+final class ProfileSettingRootView: BaseView, RootViewProtocol {
     var navigationTitle: String
     
     let editableProfileImageView = CurrentProfileImageView()
@@ -24,7 +24,7 @@ final class ProfileSettingView: BaseView, RootViewProtocol {
 }
 
 //MARK: - Configure Subviews
-extension ProfileSettingView {
+extension ProfileSettingRootView {
     private func configureSubviews(type: ProfileSettingType) {
         self.configureEditableProfileImageView()
         self.configureNicknameTextFieldView()

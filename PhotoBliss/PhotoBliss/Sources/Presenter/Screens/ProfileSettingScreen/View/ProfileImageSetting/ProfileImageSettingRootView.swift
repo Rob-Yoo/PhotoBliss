@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ProfileImageSettingView: BaseView, RootViewProtocol {
+class ProfileImageSettingRootView: BaseView, RootViewProtocol {
     var navigationTitle: String
     
     let currentProfileImageView = CurrentProfileImageView()

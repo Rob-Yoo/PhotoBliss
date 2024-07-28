@@ -19,6 +19,7 @@ final class CameraImageView: UIImageView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.layer.cornerRadius = self.frame.width / 2
         self.clipsToBounds = true
     }
