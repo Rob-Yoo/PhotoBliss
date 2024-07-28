@@ -78,6 +78,8 @@
 		CC9204232C555D4E00417B3F /* PhotoSearchOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */; };
 		CC9204252C555E9E00417B3F /* OrderByButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204242C555E9E00417B3F /* OrderByButton.swift */; };
 		CC9204272C55651A00417B3F /* PhotoLikeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */; };
+		CCA266062C5674D800826F9F /* MbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266052C5674D800826F9F /* MbtiCollectionViewCell.swift */; };
+		CCA266082C5677E200826F9F /* ToastStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266072C5677E200826F9F /* ToastStyle+Extension.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
 		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
@@ -176,6 +178,8 @@
 		CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchOptionView.swift; sourceTree = "<group>"; };
 		CC9204242C555E9E00417B3F /* OrderByButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByButton.swift; sourceTree = "<group>"; };
 		CC9204262C55651A00417B3F /* PhotoLikeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeOptionView.swift; sourceTree = "<group>"; };
+		CCA266052C5674D800826F9F /* MbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCA266072C5677E200826F9F /* ToastStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToastStyle+Extension.swift"; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 			children = (
 				CCFA37DF2C4E96A700C9ADC1 /* ProfileSettingView.swift */,
 				CCFA37E12C4E980C00C9ADC1 /* NicknameTextFieldView.swift */,
+				CCA266052C5674D800826F9F /* MbtiCollectionViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 			children = (
 				CC5510DE2C4E455700A042C2 /* UIFont+Extension.swift */,
 				CC5510E12C4E45F000A042C2 /* UIImage+Extension.swift */,
+				CCA266072C5677E200826F9F /* ToastStyle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -950,6 +956,7 @@
 				CC1904A12C50CCF90092F4AF /* TopicTrendModel.swift in Sources */,
 				CC9204162C54D65B00417B3F /* PhotoLikeDTO.swift in Sources */,
 				CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */,
+				CCA266082C5677E200826F9F /* ToastStyle+Extension.swift in Sources */,
 				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
 				CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
@@ -958,6 +965,7 @@
 				CC5511002C4E700300A042C2 /* TextButton.swift in Sources */,
 				CC5510ED2C4E58DE00A042C2 /* RootViewProtocol.swift in Sources */,
 				CC07AD622C53C839008146BF /* PhotoStatisticQueryDTO.swift in Sources */,
+				CCA266062C5674D800826F9F /* MbtiCollectionViewCell.swift in Sources */,
 				CC1904A92C50D3E20092F4AF /* StarCountView.swift in Sources */,
 				CC1904712C4FC44C0092F4AF /* ProfileImageSettingViewModel.swift in Sources */,
 				CC07AD5E2C53C49E008146BF /* PhotoStatisticDTO.swift in Sources */,

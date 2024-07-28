@@ -53,4 +53,9 @@ enum Literal {
     enum LikeList {
         static let emptyLikeList = "저장된 사진이 없어요."
     }
+    
+    enum ToastMessage {
+        static let addLike = "사진이 좋아요 목록에 저장됩니다."
+        static let deleteLike = "사진이 좋아요 목록에서 삭제됩니다."
+    }
 }

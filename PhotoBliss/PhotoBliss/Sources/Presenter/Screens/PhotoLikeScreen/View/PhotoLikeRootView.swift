@@ -145,8 +145,13 @@ extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSourc
         delegate?.photoCellTapped(photo: photo)
     }
     
-    func likeButtonTapped(idx: Int, selectedImage: UIImage) {
+    func likeButtonTapped(idx: Int, selectedImage: UIImage, wasLike: Bool) {
         let photo = self.likeList[idx]
+        let message = wasLike ? Literal.ToastMessage.deleteLike : Literal.ToastMessage.addLike
+        let toastStyle = ToastStyle.shadowToastStyle
+        
+        self.hideToast()
+        self.makeToast(message, duration: 1.0, position: .top, style: toastStyle)
         
         delegate?.likeButtonTapped(photo: photo)
     }

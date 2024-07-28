@@ -102,12 +102,8 @@ extension PhotoSearchRootView {
     func updateOrderByButton() {
         let orderBy = self.searchOptionView.orderByButton.toggle()
         let message = "정렬 옵션이 " + orderBy.title + "으로 변경됩니다."
-        var toastStyle = ToastStyle()
+        let toastStyle = ToastStyle.shadowToastStyle
         
-        toastStyle.backgroundColor = .darkGray
-        toastStyle.displayShadow = true
-        toastStyle.shadowRadius = 4
-        toastStyle.horizontalPadding = 30
         self.hideToast()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
     }
@@ -158,9 +154,13 @@ extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSou
         delegate?.photoCellTapped(photo: photo)
     }
     
-    func likeButtonTapped(idx: Int, selectedImage: UIImage) {
+    func likeButtonTapped(idx: Int, selectedImage: UIImage, wasLike: Bool) {
         let photo = self.photoList[idx]
-
+        let message = wasLike ? Literal.ToastMessage.deleteLike : Literal.ToastMessage.addLike
+        let toastStyle = ToastStyle.shadowToastStyle
+        
+        self.hideToast()
+        self.makeToast(message, duration: 1.0, position: .top, style: toastStyle)
         delegate?.likeButtonTapped(photo: photo, image: selectedImage)
         self.photoList[idx].isLike.toggle()
     }
