@@ -64,6 +64,7 @@
 		CC5510FC2C4E6D4600A042C2 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */; };
 		CC5511002C4E700300A042C2 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510FF2C4E700300A042C2 /* TextButton.swift */; };
 		CC575BDE2C56C2A500F5C212 /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC575BDD2C56C2A500F5C212 /* ProfileSettingType.swift */; };
+		CC575BE12C57205C00F5C212 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC575BE02C57205C00F5C212 /* UserDefaultsStorage.swift */; };
 		CC5EC33F2C520F1F00A54FE4 /* PhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5EC33E2C520F1F00A54FE4 /* PhotoSearchViewController.swift */; };
 		CC5EC3412C520F2D00A54FE4 /* PhotoSearchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5EC3402C520F2D00A54FE4 /* PhotoSearchRootView.swift */; };
 		CC5EC3452C5215B300A54FE4 /* PhotoSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5EC3442C5215B300A54FE4 /* PhotoSearchViewModel.swift */; };
@@ -96,7 +97,6 @@
 		CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F02C4EB81900C9ADC1 /* ProfileSettingViewModel.swift */; };
 		CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F22C4EB9F000C9ADC1 /* Observable.swift */; };
 		CCFA37F82C4ECA8600C9ADC1 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F72C4ECA8600C9ADC1 /* ProfileRepository.swift */; };
-		CCFA37FA2C4ECAB900C9ADC1 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F92C4ECAB900C9ADC1 /* UserDefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,6 +166,7 @@
 		CC5510FB2C4E6D4600A042C2 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		CC5510FF2C4E700300A042C2 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		CC575BDD2C56C2A500F5C212 /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
+		CC575BE02C57205C00F5C212 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		CC5EC33E2C520F1F00A54FE4 /* PhotoSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewController.swift; sourceTree = "<group>"; };
 		CC5EC3402C520F2D00A54FE4 /* PhotoSearchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchRootView.swift; sourceTree = "<group>"; };
 		CC5EC3442C5215B300A54FE4 /* PhotoSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewModel.swift; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 		CCFA37F02C4EB81900C9ADC1 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
 		CCFA37F22C4EB9F000C9ADC1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CCFA37F72C4ECA8600C9ADC1 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
-		CCFA37F92C4ECAB900C9ADC1 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -538,7 +538,6 @@
 			children = (
 				CC5510DD2C4E454700A042C2 /* Extensions */,
 				CC5510DB2C4E453F00A042C2 /* Literal.swift */,
-				CCFA37F92C4ECAB900C9ADC1 /* UserDefaultsKey.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -598,6 +597,7 @@
 		CC5510F92C4E6D2E00A042C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CC575BDF2C57203900F5C212 /* Util */,
 				CC1904732C5017BC0092F4AF /* Managers */,
 				CCEF3E412C4FBA5B006CAA4E /* Extension */,
 				CCFA37F42C4EB9F800C9ADC1 /* CustomObservable */,
@@ -644,6 +644,14 @@
 				CCA2660B2C567F1300826F9F /* MbtiButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CC575BDF2C57203900F5C212 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CC575BE02C57205C00F5C212 /* UserDefaultsStorage.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		CC5EC33C2C520ECD00A54FE4 /* SearchScreen */ = {
@@ -955,6 +963,7 @@
 				CC9204162C54D65B00417B3F /* PhotoLikeDTO.swift in Sources */,
 				CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */,
 				CCA266082C5677E200826F9F /* ToastStyle+Extension.swift in Sources */,
+				CC575BE12C57205C00F5C212 /* UserDefaultsStorage.swift in Sources */,
 				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
 				CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
@@ -973,7 +982,6 @@
 				CC1904A72C50D2860092F4AF /* PhotoCollectionViewCell.swift in Sources */,
 				CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */,
 				CC07AD652C53C8D1008146BF /* PhotoDetailRepository.swift in Sources */,
-				CCFA37FA2C4ECAB900C9ADC1 /* UserDefaultsKey.swift in Sources */,
 				CC1904BE2C511D3B0092F4AF /* NetworkManger.swift in Sources */,
 				CC07AD582C538F46008146BF /* PhotoDetailViewController.swift in Sources */,
 				CC1904B22C50E8C60092F4AF /* TopicTrendTableViewCell.swift in Sources */,
