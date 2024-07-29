@@ -11,7 +11,7 @@ import Then
 import Kingfisher
 
 protocol PhotoCollectionViewCellDelegate: AnyObject {
-    func likeButtonTapped(idx: Int, selectedImage: UIImage, wasLike: Bool)
+    func likeButtonTapped(idx: Int, selectedImage: UIImage?, wasLike: Bool)
 }
 
 final class PhotoCollectionViewCell: BaseCollectionViewCell {
@@ -70,10 +70,11 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
         
         let wasLike = self.likeButton.isLike
         
-        self.likeButton.isLike.toggle()
-        guard let selectedImage = self.imageView.image else { return }
+        if let selectedImage = self.imageView.image {
+            self.likeButton.isLike.toggle()
+        }
         
-        delegate.likeButtonTapped(idx: indexPath.item, selectedImage: selectedImage, wasLike: wasLike)
+        delegate.likeButtonTapped(idx: indexPath.item, selectedImage: imageView.image, wasLike: wasLike)
     }
 }
 

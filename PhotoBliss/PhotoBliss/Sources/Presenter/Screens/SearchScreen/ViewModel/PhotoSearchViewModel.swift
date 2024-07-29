@@ -44,30 +44,30 @@ final class PhotoSearchViewModel {
 
             switch event {
             case .viewDidLoad:
-                self.output.value = .outputEmptyStatus(.emptySearchKeyword)
+                output.value = .outputEmptyStatus(.emptySearchKeyword)
                 
             case .shouldUpdatePhotoLike:
-                self.updatePhotoLike()
+                updatePhotoLike()
                 
             case .inputEmptyStatus(let status):
-                self.photoList = []
-                self.output.value = .outputEmptyStatus(status)
+                photoList = []
+                output.value = .outputEmptyStatus(status)
                 
             case .searchButtonTapped(let text):
                 Task { await self.fetchPhotoList(fetchType: .searchText(text)) }
                 
             case .orderByButtonTapped:
-                self.changeOrderByOption()
+                changeOrderByOption()
 
             case .colorButtonTapped(let color):
-                guard !self.isEmptyResult, let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
+                guard !isEmptyResult, let color = PhotoSearchDomain.Color(rawValue: color.rawValue) else { return }
                 Task { await self.fetchPhotoList(fetchType: .color(color)) }
                 
             case .doPagination:
                 Task { await self.fetchPhotoList(fetchType: .page) }
                 
             case .likeButtonTapped(let photo, let image):
-                self.updatePhotoLike(photo: photo, image: image)
+                updatePhotoLike(photo: photo, image: image)
             }
         }
         
@@ -97,16 +97,16 @@ extension PhotoSearchViewModel {
                 
                 guard !isLastPage else { return }
                 
-                self.photoList.append(contentsOf: newPhotoList)
-                if (self.isEmptyResult) {
-                    self.output.value = .outputEmptyStatus(.emptySearchResult) }
+                photoList.append(contentsOf: newPhotoList)
+                if (isEmptyResult) {
+                    output.value = .outputEmptyStatus(.emptySearchResult) }
                 else {
-                    self.output.value = .photoList(self.photoList)
-                    self.output.value = .shouldScrollUp(shouldScrollUp)
+                    output.value = .photoList(self.photoList)
+                    output.value = .shouldScrollUp(shouldScrollUp)
                 }
                 
             case .failure(let error):
-                self.output.value = .networkError(error.localizedDescription)
+                output.value = .networkError(error.localizedDescription)
             }
         }
     }

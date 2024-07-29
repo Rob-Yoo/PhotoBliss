@@ -40,12 +40,12 @@ final class NetworkManger {
             
             guard let self else { return }
             
-            if path.status == .satisfied && self.isConnectedNetwork == false {
+            if path.status == .satisfied && isConnectedNetwork == false {
                 reconnectHandler()
-                self.isConnectedNetwork.toggle()
-            } else if path.status == .unsatisfied && self.isConnectedNetwork == true {
+                isConnectedNetwork.toggle()
+            } else if path.status == .unsatisfied && isConnectedNetwork == true {
                 offlineHandler?()
-                self.isConnectedNetwork.toggle()
+                isConnectedNetwork.toggle()
             }
         }
         

@@ -32,9 +32,9 @@ extension UIViewController {
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
     }
     
-    func showNetworkErrorAlert(message: String) {
+    func showNetworkErrorAlert(message: String, handler: @escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: handler)
         
         alert.addAction(ok)
         self.present(alert, animated: true)

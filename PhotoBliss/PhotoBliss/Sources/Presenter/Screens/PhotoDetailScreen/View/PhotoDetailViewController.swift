@@ -36,12 +36,18 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
-            .bind { [weak self] event in
-                switch event {
+            .bind { [weak self] output in
+                
+                guard let self else { return }
+                
+                switch output {
                 case .photoDetail(let data):
-                    self?.contentView.updateUI(photoDetail: data)
+                    contentView.updateUI(photoDetail: data)
+                
                 case .networkError(let message):
-                    self?.showNetworkErrorAlert(message: message)
+                    showNetworkErrorAlert(message: message) { _ in
+                        self.contentView.hideAllToasts()
+                    }
                 }
             }
     }

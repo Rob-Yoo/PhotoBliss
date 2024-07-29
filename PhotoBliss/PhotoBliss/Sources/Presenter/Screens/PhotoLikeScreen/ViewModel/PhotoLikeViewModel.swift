@@ -30,15 +30,18 @@ final class PhotoLikeViewModel {
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
             guard let self else { return }
+            
             switch event {
             case .viewIsAppearing:
-                self.fetchPhotoLikeList()
+                fetchPhotoLikeList()
+                
             case .orderByButtonTapped:
-                self.orderByOption = self.orderByOption.toggle()
-                self.output.value = .orderByDidChange
-                self.fetchPhotoLikeList()
+                orderByOption = orderByOption.toggle()
+                output.value = .orderByDidChange
+                fetchPhotoLikeList()
+                
             case .likeButtonTapped(photo: let photo):
-                self.removePhotoLike(photo: photo)
+                removePhotoLike(photo: photo)
             }
         }
         

@@ -107,7 +107,7 @@ extension PhotoLikeRootView {
 
 //MARK: - CollectionView Setting
 extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSource, PhotoCollectionViewCellDelegate {
-    
+
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = (UIScreen.main.bounds.width - 2) / 2
@@ -141,7 +141,7 @@ extension PhotoLikeRootView: UICollectionViewDelegate, UICollectionViewDataSourc
         delegate?.photoCellTapped(photo: photo)
     }
     
-    func likeButtonTapped(idx: Int, selectedImage: UIImage, wasLike: Bool) {
+    func likeButtonTapped(idx: Int, selectedImage: UIImage?, wasLike: Bool) {
         let photo = self.likeList[idx]
         let message = wasLike ? Literal.ToastMessage.deleteLike : Literal.ToastMessage.addLike
         let toastStyle = ToastStyle.shadowToastStyle

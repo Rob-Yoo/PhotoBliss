@@ -37,7 +37,7 @@ final class PhotoDetailViewModel {
             case .shouldLoadPhotoDetail:
                 Task { await self.fetchPhotoDetailModel() }
             case .likeButtonTapped(let image):
-                self.updatePhotoLike(photo: photoCellModel, image: image)
+                updatePhotoLike(photo: photoCellModel, image: image)
             }
         }
         

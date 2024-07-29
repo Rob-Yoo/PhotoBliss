@@ -29,24 +29,29 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
     
     override func bindViewModel() {
         self.viewModel.tranform(input: self.input)
-            .bind { [weak self] event in
-                switch event {
+            .bind { [weak self] output in
+                
+                guard let self else { return }
+                
+                switch output {
                 case .outputEmptyStatus(let status):
-                    self?.contentView.showEmptyResult(emptyStatus: status)
+                    contentView.showEmptyResult(emptyStatus: status)
                     
                 case .photoList(let photoList):
-                    self?.contentView.showSearchResult(data: photoList)
+                    contentView.showSearchResult(data: photoList)
                     
                 case .networkError(let message):
-                    self?.showNetworkErrorAlert(message: message)
+                    showNetworkErrorAlert(message: message) { _ in
+                        self.contentView.hideAllToasts()
+                    }
                     
                 case .shouldScrollUp(let signal):
                     if (signal) {
-                        self?.contentView.scrollUpToTop()
+                        contentView.scrollUpToTop()
                     }
 
                 case .orderByDidChange:
-                    self?.contentView.updateOrderByButton()
+                    contentView.updateOrderByButton()
                 }
             }
     }

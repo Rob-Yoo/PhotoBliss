@@ -28,18 +28,21 @@ final class PhotoLikeViewController: BaseViewController<PhotoLikeRootView> {
     
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
-            .bind { [weak self] event in
+            .bind { [weak self] output in
                 guard let self else { return }
 
-                switch event {
+                switch output {
                 case .photoLikeList(let likeList):
-                    self.contentView.showPhotoLikeList(likeList: likeList)
+                    contentView.showPhotoLikeList(likeList: likeList)
+                    
                 case .isEmptyList:
-                    self.contentView.showEmptyResult()
+                    contentView.showEmptyResult()
+                    
                 case .orderByDidChange:
-                    self.contentView.updateOrderByButton()
+                    contentView.updateOrderByButton()
+                    
                 case .resetOrderByButton:
-                    self.contentView.resetOrderByButton()
+                    contentView.resetOrderByButton()
                 }
             }
     }

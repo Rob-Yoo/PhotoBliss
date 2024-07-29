@@ -58,5 +58,6 @@ enum Literal {
     enum ToastMessage {
         static let addLike = "사진이 좋아요 목록에 저장됩니다."
         static let deleteLike = "사진이 좋아요 목록에서 삭제됩니다."
+        static let invalidLike = "사진 정보를 받아올 수 없어\n 좋아요 처리 되지 못합니다."
     }
 }

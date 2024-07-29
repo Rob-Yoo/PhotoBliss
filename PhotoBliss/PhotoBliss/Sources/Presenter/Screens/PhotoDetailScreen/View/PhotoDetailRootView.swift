@@ -81,8 +81,13 @@ final class PhotoDetailRootView: BaseView {
     }
     
     @objc private func likeButtonTapped() {
-        guard let image = self.photoView.image else { return }
         let wasLike = self.headerView.likeButton.isLike
+        
+        guard let image = self.photoView.image else {
+            if (!wasLike) { self.showInvalidLikeToastMessage() }
+            return
+        }
+
         let message = wasLike ? Literal.ToastMessage.deleteLike : Literal.ToastMessage.addLike
         let toastStyle = ToastStyle.shadowToastStyle
         
@@ -91,5 +96,12 @@ final class PhotoDetailRootView: BaseView {
         
         self.headerView.likeButton.isLike.toggle()
         delegate?.likeButtonTapped(image: image)
+    }
+    
+    private func showInvalidLikeToastMessage() {
+        let toastStyle = ToastStyle.shadowToastStyle
+        
+        self.hideToast()
+        self.makeToast(Literal.ToastMessage.invalidLike, duration: 1.5, position: .center, style: toastStyle)
     }
 }

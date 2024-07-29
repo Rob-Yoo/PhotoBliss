@@ -76,6 +76,13 @@ final class PhotoSearchRootView: BaseView, RootViewProtocol {
     @objc private func orderByButtonTapped() {
         delegate?.orderByButtonTapped()
     }
+    
+    private func showInvalidLikeToastMessage() {
+        let toastStyle = ToastStyle.shadowToastStyle
+        
+        self.hideToast()
+        self.makeToast(Literal.ToastMessage.invalidLike, duration: 1.5, position: .center, style: toastStyle)
+    }
 }
 
 //MARK: - Update UI
@@ -154,14 +161,20 @@ extension PhotoSearchRootView: UICollectionViewDelegate, UICollectionViewDataSou
         delegate?.photoCellTapped(photo: photo)
     }
     
-    func likeButtonTapped(idx: Int, selectedImage: UIImage, wasLike: Bool) {
+    func likeButtonTapped(idx: Int, selectedImage: UIImage?, wasLike: Bool) {
         let photo = self.photoList[idx]
+        
+        guard let selectedImage else {
+            if (!wasLike) { self.showInvalidLikeToastMessage() }
+            return
+        }
+        
         let message = wasLike ? Literal.ToastMessage.deleteLike : Literal.ToastMessage.addLike
         let toastStyle = ToastStyle.shadowToastStyle
         
         self.hideToast()
         self.makeToast(message, duration: 1.0, position: .top, style: toastStyle)
-        delegate?.likeButtonTapped(photo: photo, image: selectedImage)
         self.photoList[idx].isLike.toggle()
+        delegate?.likeButtonTapped(photo: photo, image: selectedImage)
     }
 }

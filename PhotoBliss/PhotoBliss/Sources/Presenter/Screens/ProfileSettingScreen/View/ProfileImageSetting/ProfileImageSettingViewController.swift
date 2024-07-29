@@ -30,11 +30,11 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
     
     override func bindViewModel() {
         self.viewModel.transform(input: input)
-            .bind { [weak self] event in
+            .bind { [weak self] output in
                 
                 guard let self else { return }
                 
-                switch event {
+                switch output {
                 case .profileImageNumber(let number):
                     let profileImage = UIImage.profileImages[number]
                     
