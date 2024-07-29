@@ -11,6 +11,7 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     
     private let input = Observable<PhotoDetailViewModel.Input>(.shouldLoadPhotoDetail)
     private let viewModel: PhotoDetailViewModel
+    private var monitorId: Int?
     
     init(photo: PhotoCellModel) {
         self.viewModel = PhotoDetailViewModel(photo: photo)
@@ -20,14 +21,7 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavBarAppearence(appearenceType: .opaque)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        NetworkManger.shared.doMornitoringNetwork { [weak self] in
-            self?.input.value = .shouldLoadPhotoDetail
-        }
+        self.addNetworkMonitor()
     }
     
     override func addUserAction() {
@@ -46,10 +40,24 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
                 
                 case .networkError(let message):
                     showNetworkErrorAlert(message: message) { _ in
-                        self.contentView.hideAllToasts()
+                        self.contentView.hideToastActivity()
                     }
                 }
             }
+    }
+    
+    deinit {
+        print("Photo Detail Deinit")
+        guard let monitorId else { return }
+        
+        NetworkManger.shared.stopNetworkMonitoring(monitorId: monitorId)
+    }
+    
+    private func addNetworkMonitor() {
+        let id = NetworkManger.shared.doMonitoringNetwork { [weak self] in
+            self?.input.value = .shouldLoadPhotoDetail
+        }
+        self.monitorId = id
     }
 }
 

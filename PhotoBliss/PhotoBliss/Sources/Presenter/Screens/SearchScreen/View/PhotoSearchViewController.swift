@@ -9,18 +9,28 @@ import UIKit
 import Toast
 
 final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
-    private let input = Observable<PhotoSearchViewModel.Input>(.viewDidLoad)
+    private let input = Observable<PhotoSearchViewModel.Input>()
     private let viewModel = PhotoSearchViewModel()
+    private var monitorId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBarAppearence(appearenceType: .opaque)
         configureSearchController()
+        addNetworkMonitor()
+        self.input.value = .viewDidLoad
     }
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         self.input.value = .shouldUpdatePhotoLike
+    }
+    
+    deinit {
+        print("PhotoSearch deinit")
+        guard let monitorId else { return }
+        
+        NetworkManger.shared.stopNetworkMonitoring(monitorId: monitorId)
     }
     
     override func addUserAction() {
@@ -42,7 +52,7 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
                     
                 case .networkError(let message):
                     showNetworkErrorAlert(message: message) { _ in
-                        self.contentView.hideAllToasts()
+                        self.contentView.hideToastActivity()
                     }
                     
                 case .shouldScrollUp(let signal):
@@ -69,6 +79,15 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
 
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    private func addNetworkMonitor() {
+        let id = NetworkManger.shared.doMonitoringNetwork { [weak self] in
+            guard let self else { return }
+            contentView.reloadPhotoList()
+        }
+        
+        self.monitorId = id
     }
 }
 

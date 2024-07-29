@@ -14,6 +14,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     
     private let input = Observable<TopicTrendViewModel.Input>()
     private let viewModel = TopicTrendViewModel()
+    private var monitorId: Int?
     
     private lazy var profileImageView = ProfileImageView().then {
         let size = self.navigationController?.navigationBar.frame.height ?? 44
@@ -30,6 +31,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
         self.contentView.makeToastActivity(.center)
         super.viewDidLoad()
         self.configureNavigationRightBarButtonItem()
+        self.addNetworkMonitor()
         self.input.value = .viewDidLoad
     }
     
@@ -39,13 +41,13 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
         self.input.value = .reloadUserProfileImage
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    deinit {
+        print("Topic Trend Deinit")
+        guard let monitorId else { return }
         
-        NetworkManger.shared.doMornitoringNetwork(reconnectHandler: { [weak self] in
-            self?.input.value = .shouldRefresh
-        })
+        NetworkManger.shared.stopNetworkMonitoring(monitorId: monitorId)
     }
+
     
     override func addUserAction() {
         self.contentView.delegate = self
@@ -66,9 +68,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                     updateProfileImage(imageNumber: number)
                     
                 case .networkError(let message):
-                    showNetworkErrorAlert(message: message) { _ in
-                        self.contentView.hideAllToasts()
-                    }
+                    showNetworkErrorAlert(message: message)
                     
                 }
 
@@ -82,6 +82,14 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
         
         self.navigationItem.rightBarButtonItem = barButton
         profileImageView.addGestureRecognizer(tapGR)
+    }
+    
+    private func addNetworkMonitor() {
+        let id = NetworkManger.shared.doMonitoringNetwork { [weak self] in
+            self?.input.value = .shouldRefresh
+        }
+        
+        self.monitorId = id
     }
 }
 

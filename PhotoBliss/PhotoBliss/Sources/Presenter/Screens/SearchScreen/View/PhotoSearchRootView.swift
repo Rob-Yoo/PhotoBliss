@@ -114,6 +114,12 @@ extension PhotoSearchRootView {
         self.hideAllToasts()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
     }
+    
+    func reloadPhotoList() {
+        if (self.collectionView.isHidden == false) {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - CollectionView Setting

@@ -11,8 +11,9 @@ import Foundation
 
 final class NetworkManger {
     static let shared = NetworkManger()
-    private let monitor = NWPathMonitor()
-    private var isConnectedNetwork = true
+    private var monitorArray = [Int: NWPathMonitor]()
+    private var monitorStateArray = [Int: Bool]()
+    private var nextMonitorId = 0
     
     private init() {}
     
@@ -35,24 +36,41 @@ final class NetworkManger {
         }
     }
     
-    func doMornitoringNetwork(reconnectHandler: @escaping () -> Void, offlineHandler: (() -> Void)? = nil) {
+    func doMonitoringNetwork(reconnectHandler: @escaping () -> Void) -> Int {
+        let monitor = NWPathMonitor()
+        let monitorId = nextMonitorId
+        
+        self.nextMonitorId += 1
+        
         monitor.pathUpdateHandler = { [weak self] path in
+            guard let self = self else { return }
             
-            guard let self else { return }
-            
-            if path.status == .satisfied && isConnectedNetwork == false {
-                reconnectHandler()
-                isConnectedNetwork.toggle()
-            } else if path.status == .unsatisfied && isConnectedNetwork == true {
-                offlineHandler?()
-                isConnectedNetwork.toggle()
+            if path.status == .satisfied, monitorStateArray[monitorId] == false {
+                
+                DispatchQueue.main.async {
+                    reconnectHandler()
+                }
+                
+                monitorStateArray[monitorId] = true
+            } else if path.status == .satisfied {
+                monitorStateArray[monitorId] = true
+            } else if path.status == .unsatisfied {
+                monitorStateArray[monitorId] = false
             }
         }
         
         monitor.start(queue: DispatchQueue.global())
+        self.monitorArray[monitorId] = monitor
+        self.monitorStateArray[monitorId] = true
+        
+        return monitorId
     }
     
-    func stopNetworkMonitoring() {
+    func stopNetworkMonitoring(monitorId: Int) {
+        guard let monitor = self.monitorArray[monitorId] else { return }
+        
         monitor.cancel()
+        self.monitorArray.removeValue(forKey: monitorId)
+        self.monitorStateArray.removeValue(forKey: monitorId)
     }
 }
