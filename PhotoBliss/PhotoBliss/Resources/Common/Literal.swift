@@ -32,6 +32,7 @@ enum Literal {
         static let start = "시작하기"
         static let complete = "완료"
         static let deleteAccount = "회원탈퇴"
+        static let save = "저장"
     }
     
     enum TopicTrend {

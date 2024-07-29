@@ -9,11 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
-protocol ProfileSettingRootViewDelegate: AnyObject {
+@objc protocol ProfileSettingRootViewDelegate: AnyObject {
     func profileImageViewTapped()
     func nicknameTextFieldDidChange(text: String)
     func mbtiButtonTapped(idx: Int)
-    func saveUserProfile()
+    @objc optional func saveUserProfile()
 }
 
 final class ProfileSettingRootView: BaseView, RootViewProtocol {
@@ -50,6 +50,10 @@ final class ProfileSettingRootView: BaseView, RootViewProtocol {
     
     override func configureView() {
         self.backgroundColor = .systemBackground
+    }
+    
+    func updateNicknameTextField(text: String) {
+        self.nicknameTextFieldView.nicknameTextField.text = text
     }
     
     func updateNicknameTextFieldView(lineColor: UIColor, text: String, textColor: UIColor) {
@@ -89,7 +93,7 @@ extension ProfileSettingRootView: MBTICollectionViewCellDelegate {
     }
     
     @objc private func completeButtonTapped() {
-        delegate?.saveUserProfile()
+        delegate?.saveUserProfile?()
     }
 }
 

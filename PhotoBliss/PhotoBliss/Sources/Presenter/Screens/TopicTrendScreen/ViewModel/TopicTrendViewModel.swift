@@ -12,24 +12,33 @@ final class TopicTrendViewModel {
     enum Input {
         case viewDidLoad
         case shouldRefresh
+        case reloadUserProfileImage
     }
     
     enum Output {
         case topicList(_ topicList: [TopicModel])
+        case userProfileImageNumber(_ number: Int)
         case networkError(_ message: String)
     }
     
     private let output = Observable<Output>()
-    private let repository = TopicTrendRepository()
+    private let topicTrendRepository = TopicTrendRepository()
+    private let profileRepository = ProfileRepository()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
             guard let self else { return }
+            
             switch event {
+                
             case .viewDidLoad:
                 Task { await self.fetchTopicList() }
+                
             case .shouldRefresh:
                 Task { await self.fetchTopicList() }
+                
+            case .reloadUserProfileImage:
+                output.value = .userProfileImageNumber(profileRepository.loadProfileImageNumber())
             }
         }
         return output
@@ -38,7 +47,7 @@ final class TopicTrendViewModel {
 
 extension TopicTrendViewModel {
     private func fetchTopicList() async {
-        let result = await repository.fetchTopicList()
+        let result = await topicTrendRepository.fetchTopicList()
         
         DispatchQueue.main.async { [weak self] in
             switch result {

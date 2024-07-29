@@ -12,18 +12,35 @@ import Toast
 
 final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     
-    private let input = Observable<TopicTrendViewModel.Input>(.viewDidLoad)
+    private let input = Observable<TopicTrendViewModel.Input>()
     private let viewModel = TopicTrendViewModel()
+    
+    private lazy var profileImageView = ProfileImageView().then {
+        let size = self.navigationController?.navigationBar.frame.height ?? 44
+
+        $0.isUserInteractionEnabled = true
+        $0.backgroundColor = .unselected
+        $0.layer.borderColor = UIColor.mainTheme.cgColor
+        $0.layer.borderWidth = 3
+        $0.alpha = 1
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: size, height: size))
+    }
     
     override func viewDidLoad() {
         self.contentView.makeToastActivity(.center)
         super.viewDidLoad()
         self.configureNavigationRightBarButtonItem()
+        self.input.value = .viewDidLoad
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.configureNavBarAppearence(appearenceType: .transparent)
+        self.input.value = .reloadUserProfileImage
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.configureNavBarAppearence(appearenceType: .transparent)
         
         NetworkManger.shared.doMornitoringNetwork(reconnectHandler: { [weak self] in
             self?.input.value = .shouldRefresh
@@ -36,29 +53,28 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     
     override func bindViewModel() {
         self.viewModel.transform(input: self.input)
-            .bind { [weak self] event in
-                switch event {
+            .bind { [weak self] output in
+                
+                guard let self else { return }
+                
+                switch output {
+                    
                 case .topicList(let topicList):
-                    self?.contentView.updateUI(data: topicList)
+                    contentView.updateUI(data: topicList)
+                    
+                case .userProfileImageNumber(let number):
+                    updateProfileImage(imageNumber: number)
+                    
                 case .networkError(let message):
-                    self?.showAlert(message: message)
+                    showAlert(message: message)
+                    
                 }
 
-                self?.contentView.hideToastActivity()
+                contentView.hideToastActivity()
             }
     }
     
     private func configureNavigationRightBarButtonItem() {
-        let size = self.navigationController?.navigationBar.frame.height ?? 44
-        let profileImageView = ProfileImageView().then {
-            $0.isUserInteractionEnabled = true
-            $0.backgroundColor = .unselected
-            $0.layer.borderColor = UIColor.mainTheme.cgColor
-            $0.layer.borderWidth = 3
-            $0.alpha = 1
-            $0.image = .profile0.resizeImage(size: CGSize(width: size, height: size)) // BarButtonItem에 넣을 땐 Resizing 필수?!
-            $0.frame = CGRect(origin: .zero, size: CGSize(width: size, height: size))
-        }
         let barButton = UIBarButtonItem(customView: profileImageView)
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
         
@@ -74,7 +90,10 @@ extension TopicTrendViewController: TopicTrendRootViewDelegate {
     }
     
     @objc private func profileImageViewTapped() {
-        print("adsf")
+        let nextVC = EditProfileSettingViewController(contentView: ProfileSettingRootView(type: .Editing))
+
+        nextVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func photoCellTapped(photo: PhotoCellModel) {
@@ -83,4 +102,15 @@ extension TopicTrendViewController: TopicTrendRootViewDelegate {
         nextVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+}
+
+//MARK: - Update UI
+extension TopicTrendViewController {
+    private func updateProfileImage(imageNumber: Int) {
+        let size = self.navigationController?.navigationBar.frame.height ?? 44
+
+        self.profileImageView.image = UIImage.profileImages[imageNumber].resizeImage(size: CGSize(width: size, height: size))
+    }
+    
+    
 }

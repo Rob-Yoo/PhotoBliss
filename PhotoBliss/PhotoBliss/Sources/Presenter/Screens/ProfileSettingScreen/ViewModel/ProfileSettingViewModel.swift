@@ -24,12 +24,12 @@ final class ProfileSettingViewModel {
         case didPassAllValidation(_ value: Bool)
         case editableProfileImageNumber(_ number: Int)
         case mbtiSelectedArray(_ array: [Bool])
-        case willDeliverProfileImageNumber(imageNumber: Int)
+        case willDeliverProfileImageNumber(_ imageNumber: Int)
         case shouldChangeWindowScene
     }
     
     private var mbtiSelectedArray = [Bool]()
-    private var nickname = ""
+    private var userNickname = ""
     private var nicknameValidStatus: NicknameValidationStatus = .empty
     private var didPassAllValidation = false
     private var profileImageNumber: Int?
@@ -47,6 +47,7 @@ final class ProfileSettingViewModel {
                 loadUserProfile()
                 
             case .nicknameDidChange(let nickname):
+                userNickname = nickname
                 checkNicknameValidationStatus(nickname: nickname)
                 checkAllValidation()
                 
@@ -60,7 +61,7 @@ final class ProfileSettingViewModel {
                 
             case .profileImageViewTapped:
                 guard let profileImageNumber else { return }
-                output.value = .willDeliverProfileImageNumber(imageNumber: profileImageNumber)
+                output.value = .willDeliverProfileImageNumber( profileImageNumber)
                 
             case .saveButtonTapped:
                 saveProfile()
@@ -78,7 +79,7 @@ extension ProfileSettingViewModel {
         let userProfileImageNumber = repository.loadProfileImageNumber()
         let userMbtiSelectedArray = repository.loadMbti()
         
-        self.nickname = userNickname
+        self.userNickname = userNickname
         self.profileImageNumber = userProfileImageNumber
         self.mbtiSelectedArray = userMbtiSelectedArray
         
@@ -112,7 +113,7 @@ extension ProfileSettingViewModel {
         guard didPassAllValidation, let profileImageNumber else { return }
         let isUser = repository.isUser
 
-        self.repository.saveUserProfile(nickname: nickname, profileImageNumber: profileImageNumber, mbtiBoolArray: mbtiSelectedArray)
+        self.repository.saveUserProfile(nickname: userNickname, profileImageNumber: profileImageNumber, mbtiBoolArray: mbtiSelectedArray)
         if (!isUser) { self.output.value = .shouldChangeWindowScene }
     }
     
