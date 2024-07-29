@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MbtiButton: BaseButton {
+final class MBTIElementButton: BaseButton {
     
     var isTapped = false {
         didSet {

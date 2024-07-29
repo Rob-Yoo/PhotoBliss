@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 import Then
 
-protocol MbtiCollectionViewCellDelegate: AnyObject {
+protocol MBTICollectionViewCellDelegate: AnyObject {
     func mbtiButtonTapped(idx: Int)
 }
 
-final class MbtiCollectionViewCell: BaseCollectionViewCell {
+final class MBTICollectionViewCell: BaseCollectionViewCell {
     
-    private lazy var mbtiButton = MbtiButton().then {
+    private lazy var mbtiElementButton = MBTIElementButton().then {
         $0.addTarget(self, action: #selector(mbtiButtonTapped), for: .touchUpInside)
     }
     
@@ -24,28 +24,36 @@ final class MbtiCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureHierarchy() {
-        self.contentView.addSubview(mbtiButton)
+        self.contentView.addSubview(mbtiElementButton)
     }
     
     override func configureLayout() {
-        mbtiButton.snp.makeConstraints {
+        mbtiElementButton.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    func configureCell(mbtiInfo: MbtiInfo) {
-        self.mbtiButton.setTitle(mbtiInfo.title, for: .normal)
-        self.mbtiButton.isTapped = mbtiInfo.selected
+    func configureCell(isTapped: Bool, indexPath: IndexPath) {
+        let mbtiElement = MBTI.allCases[indexPath.item].rawValue
+
+        self.mbtiElementButton.setTitle(mbtiElement, for: .normal)
+        self.mbtiElementButton.isTapped = isTapped
     }
     
     @objc private func mbtiButtonTapped() {
         guard let collectionView = superview as? UICollectionView, let indexPath = collectionView.indexPath(for: self) else { return }
 
-        guard let delegate = collectionView.delegate as? MbtiCollectionViewCellDelegate else {
+        guard let delegate = collectionView.delegate as? MBTICollectionViewCellDelegate else {
             print("MbtiCollectionViewCellDelegate를 채택하지 않았습니다")
             return
         }
         
         delegate.mbtiButtonTapped(idx: indexPath.item)
+    }
+}
+
+extension MBTICollectionViewCell {
+    enum MBTI: String, CaseIterable {
+        case E, S, T, J, I, N, F, P
     }
 }

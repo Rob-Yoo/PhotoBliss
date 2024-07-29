@@ -9,6 +9,11 @@ import Foundation
 import UIKit.UIImage
 
 final class ProfileRepository {
+
+    var isUser: Bool {
+        return UserDefaultsStorage.isUser
+    }
+    
     func loadNickname() -> String {
         return UserDefaultsStorage.nickname ?? ""
     }
@@ -23,14 +28,35 @@ final class ProfileRepository {
         return Int(imageNumber)!
     }
     
-    func saveUserProfile(nickname: String, profileImageNumber: Int) {
+    func loadMbti() -> [Bool] {
+        let mbtiNumberArray = UserDefaultsStorage.mbtiNumberArray
+        var mbtiBoolArray = Array(repeating: false, count: 8)
+        
+        if (mbtiNumberArray.isEmpty) {
+            return mbtiBoolArray
+        } else {
+            for number in mbtiNumberArray {
+                mbtiBoolArray[number] = true
+            }
+            
+            return mbtiBoolArray
+        }
+    }
+    
+    func saveUserProfile(nickname: String, profileImageNumber: Int, mbtiBoolArray: [Bool]) {
         let isUser = UserDefaultsStorage.isUser
+        var mbitNumberArray = [Int]()
 
         if (isUser == false) {
             UserDefaultsStorage.isUser = true
         }
         
+        for (idx, value) in mbtiBoolArray.enumerated() where value {
+            mbitNumberArray.append(idx)
+        }
+        
         UserDefaultsStorage.nickname = nickname
         UserDefaultsStorage.profileImageNumber = String(profileImageNumber)
+        UserDefaultsStorage.mbtiNumberArray = mbitNumberArray
     }
 }

@@ -19,7 +19,7 @@ final class MbtiSettingView: BaseView {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.isScrollEnabled = false
-        $0.register(MbtiCollectionViewCell.self, forCellWithReuseIdentifier: MbtiCollectionViewCell.reusableIdentifier)
+        $0.register(MBTICollectionViewCell.self, forCellWithReuseIdentifier: MBTICollectionViewCell.reusableIdentifier)
     }
     
     override func configureView() {

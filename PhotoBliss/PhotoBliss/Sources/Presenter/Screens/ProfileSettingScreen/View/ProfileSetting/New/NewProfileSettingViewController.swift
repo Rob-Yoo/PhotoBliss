@@ -38,21 +38,28 @@ final class NewProfileSettingViewController: BaseViewController<ProfileSettingRo
     override func bindViewModel() {
         self.viewModel.transform(input: input)
             .bind { [weak self] output in
+                
+                guard let self else { return }
+                
                 switch output {
+
                 case .nicknameValidationStatus(let status):
-                    self?.updateNicknameTextField(status: status)
+                    updateNicknameTextField(status: status)
 
-                case .isValid(let isValid):
-                    let bgColor: UIColor = isValid ? .mainTheme : .disabled
-                    let isEnabled = isValid
+                case .editableProfileImageNumber(let number):
+                    contentView.updateEditableProfileImageView(imageNumber: number)
+
+                case .mbtiSelectedArray(let array):
+                    contentView.updateMbtiSelectionView(mbtiSelectedArray: array)
                     
-                    self?.contentView.updateCompleteButton(bgColor: bgColor, isEnabled: isEnabled)
-
-                case .profileImageNumber(let number):
-                    self?.contentView.updateEditableProfileImageView(imageNumber: number)
-
-                case .transition(let profileImageNumber):
-                    self?.moveToProfileImageSettingView(imageNumber: profileImageNumber)
+                case .willDeliverProfileImageNumber(let profileImageNumber):
+                    moveToProfileImageSettingView(imageNumber: profileImageNumber)
+                    
+                case .didPassAllValidation(let value):
+                    updateCompleteButton(isValid: value)
+                
+                case .shouldChangeWindowScene:
+                    NavigationManager.changeWindowScene(didDeleteAccount: false)
 
                 default:
                     return
@@ -73,7 +80,11 @@ extension NewProfileSettingViewController: ProfileSettingRootViewDelegate {
     }
     
     func nicknameTextFieldDidChange(text: String) {
-        self.input.value = .nickname(text)
+        self.input.value = .nicknameDidChange(text)
+    }
+    
+    func mbtiButtonTapped(idx: Int) {
+        self.input.value = .mbtiButtonTapped(idx)
     }
     
     func saveUserProfile() {
@@ -95,8 +106,15 @@ extension NewProfileSettingViewController {
         let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingRootView(type: .New), profileImageNumber: imageNumber)
         
         nextVC.deliverProfileImageNumber = { [weak self] number in
-            self?.input.value = .profileImageNumber(number)
+            self?.input.value = .profileImageDidChange(number)
         }
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    private func updateCompleteButton(isValid: Bool) {
+        let bgColor: UIColor = isValid ? .mainTheme : .disabled
+        let isEnabled = isValid
+        
+        self.contentView.updateCompleteButton(bgColor: bgColor, isEnabled: isEnabled)
     }
 }

@@ -9,11 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
-typealias MbtiInfo = (title: String, selected: Bool)
-
 protocol ProfileSettingRootViewDelegate: AnyObject {
     func profileImageViewTapped()
     func nicknameTextFieldDidChange(text: String)
+    func mbtiButtonTapped(idx: Int)
     func saveUserProfile()
 }
 
@@ -39,16 +38,7 @@ final class ProfileSettingRootView: BaseView, RootViewProtocol {
         $0.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
     }
     
-    private var mbti: [MbtiInfo] = [
-        (title: "E", selected: true),
-        (title: "S", selected: true),
-        (title: "T", selected: false),
-        (title: "J", selected: true),
-        (title: "I", selected: false),
-        (title: "N", selected: false),
-        (title: "F", selected: true),
-        (title: "P", selected: false)
-    ]
+    private var mbtiSelectedArray: [Bool] = []
     
     weak var delegate: ProfileSettingRootViewDelegate?
     
@@ -75,10 +65,19 @@ final class ProfileSettingRootView: BaseView, RootViewProtocol {
         let profileImage = UIImage.profileImages[imageNumber]
         self.editableProfileImageView.profileImageView.image = profileImage
     }
+    
+    func updateMbtiSelectionView(mbtiSelectedArray: [Bool]) {
+        self.mbtiSelectedArray = mbtiSelectedArray
+        self.mbtiSettingView.collectionView.reloadData()
+    }
 }
 
 //MARK: - User Action Receiving
-extension ProfileSettingRootView {
+extension ProfileSettingRootView: MBTICollectionViewCellDelegate {
+    func mbtiButtonTapped(idx: Int) {
+        delegate?.mbtiButtonTapped(idx: idx)
+    }
+    
     @objc private func profileImageViewTapped() {
         delegate?.profileImageViewTapped()
     }
@@ -152,17 +151,17 @@ extension ProfileSettingRootView {
 extension ProfileSettingRootView: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mbti.count
+        return mbtiSelectedArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let mbtiInfo = mbti[indexPath.item]
+        let isTapped = mbtiSelectedArray[indexPath.item]
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MbtiCollectionViewCell.reusableIdentifier, for: indexPath) as? MbtiCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MBTICollectionViewCell.reusableIdentifier, for: indexPath) as? MBTICollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(mbtiInfo: mbtiInfo)
+        cell.configureCell(isTapped: isTapped, indexPath: indexPath)
         return cell
     }
 }

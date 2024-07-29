@@ -11,42 +11,59 @@ final class ProfileSettingViewModel {
     
     enum Input {
         case viewDidLoad
-        case nickname(_ nickname: String)
-        case profileImageNumber(_ number: Int)
+        case nicknameDidChange(_ nickname: String)
+        case profileImageDidChange(_ number: Int)
         case profileImageViewTapped
+        case mbtiButtonTapped(_ idx: Int)
         case saveButtonTapped
     }
     
     enum Output {
-        case nickname(_ nickname: String)
+        case savedUserNickname(_ nickname: String)
         case nicknameValidationStatus(_ status: NicknameValidationStatus)
-        case isValid(_ status: Bool)
-        case profileImageNumber(_ number: Int)
-        case transition(imageNumber: Int)
+        case didPassAllValidation(_ value: Bool)
+        case editableProfileImageNumber(_ number: Int)
+        case mbtiSelectedArray(_ array: [Bool])
+        case willDeliverProfileImageNumber(imageNumber: Int)
+        case shouldChangeWindowScene
     }
     
-    private let output = Observable<Output>()
+    private var mbtiSelectedArray = [Bool]()
+    private var nickname = ""
     private var nicknameValidStatus: NicknameValidationStatus = .empty
-    private var profileImageNumber = -1
+    private var didPassAllValidation = false
+    private var profileImageNumber: Int?
+
+    private let output = Observable<Output>()
     private let repository = ProfileRepository()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
+            
+            guard let self else { return }
+            
             switch event {
             case .viewDidLoad:
-                self?.loadUserProfile()
+                loadUserProfile()
                 
-            case .nickname(let nickname):
-                self?.checkNicknameValidationStatus(nickname: nickname)
+            case .nicknameDidChange(let nickname):
+                checkNicknameValidationStatus(nickname: nickname)
+                checkAllValidation()
                 
-            case .profileImageNumber(let number):
-                self?.changeProfileImage(number: number)
+            case .mbtiButtonTapped(let idx):
+                mbtiSettingHandler(idx: idx)
+                checkAllValidation()
+                
+            case .profileImageDidChange(let number):
+                profileImageNumber = number
+                output.value = .editableProfileImageNumber(number)
                 
             case .profileImageViewTapped:
-                self?.passThroughProfileImageNumber()
+                guard let profileImageNumber else { return }
+                output.value = .willDeliverProfileImageNumber(imageNumber: profileImageNumber)
                 
             case .saveButtonTapped:
-                break
+                saveProfile()
             }
         }
         
@@ -54,44 +71,57 @@ final class ProfileSettingViewModel {
     }
 }
 
+//MARK: - Publish Output
 extension ProfileSettingViewModel {
     private func loadUserProfile() {
-        let userNickname = self.repository.loadNickname()
-        let userProfileImageNumber = self.repository.loadProfileImageNumber()
+        let userNickname = repository.loadNickname()
+        let userProfileImageNumber = repository.loadProfileImageNumber()
+        let userMbtiSelectedArray = repository.loadMbti()
         
-        self.output.value = .nickname(userNickname)
-        self.checkNicknameValidationStatus(nickname: userNickname)
-        self.output.value = .profileImageNumber(userProfileImageNumber)
+        self.nickname = userNickname
         self.profileImageNumber = userProfileImageNumber
+        self.mbtiSelectedArray = userMbtiSelectedArray
+        
+        self.output.value = .savedUserNickname(userNickname)
+        self.checkNicknameValidationStatus(nickname: userNickname)
+        self.output.value = .editableProfileImageNumber(userProfileImageNumber)
+        self.output.value = .mbtiSelectedArray(userMbtiSelectedArray)
+        self.checkAllValidation()
     }
     
     private func checkNicknameValidationStatus(nickname: String) {
-        let status = self.validateNickname(nickname: nickname)
+        let status = validateNickname(nickname: nickname)
         
         self.nicknameValidStatus = status
-        self.checkAllValidation()
         self.output.value = .nicknameValidationStatus(status)
     }
     
+    private func mbtiSettingHandler(idx: Int) {
+        let oppositeIdx = (idx >= 4) ? idx - 4 : idx + 4
+        let isOppositeTapped = mbtiSelectedArray[oppositeIdx]
+        
+        if (isOppositeTapped) {
+            self.mbtiSelectedArray[oppositeIdx].toggle()
+        }
+        
+        self.mbtiSelectedArray[idx].toggle()
+        self.output.value = .mbtiSelectedArray(mbtiSelectedArray)
+    }
+    
     private func saveProfile() {
-    }
-    
-    private func changeProfileImage(number: Int) {
-        self.output.value = .profileImageNumber(number)
-        self.profileImageNumber = number
-    }
-    
-    private func passThroughProfileImageNumber() {
-        guard (profileImageNumber != -1) else { return }
-        self.output.value = .transition(imageNumber: self.profileImageNumber)
+        guard didPassAllValidation, let profileImageNumber else { return }
+        let isUser = repository.isUser
+        
+        self.repository.saveUserProfile(nickname: nickname, profileImageNumber: profileImageNumber, mbtiBoolArray: mbtiSelectedArray)
+        if (!isUser) { self.output.value = .shouldChangeWindowScene }
     }
     
     private func checkAllValidation() {
-        if (self.nicknameValidStatus == .ok) {
-            self.output.value = .isValid(true)
-        } else {
-            self.output.value = .isValid(false)
-        }
+        let isAllMbtiSelected = mbtiSelectedArray.filter({ $0 }).count == 4
+        let isValid = (nicknameValidStatus == .ok && isAllMbtiSelected)
+        
+        self.didPassAllValidation = isValid
+        self.output.value = .didPassAllValidation(isValid)
     }
 }
 
