@@ -97,7 +97,7 @@
 		CCFA37EC2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37EB2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift */; };
 		CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F02C4EB81900C9ADC1 /* ProfileSettingViewModel.swift */; };
 		CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F22C4EB9F000C9ADC1 /* Observable.swift */; };
-		CCFA37F82C4ECA8600C9ADC1 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F72C4ECA8600C9ADC1 /* ProfileRepository.swift */; };
+		CCFA37F82C4ECA8600C9ADC1 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37F72C4ECA8600C9ADC1 /* UserDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,7 +200,7 @@
 		CCFA37EB2C4E9B8B00C9ADC1 /* NewProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileSettingViewController.swift; sourceTree = "<group>"; };
 		CCFA37F02C4EB81900C9ADC1 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
 		CCFA37F22C4EB9F000C9ADC1 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		CCFA37F72C4ECA8600C9ADC1 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CCFA37F72C4ECA8600C9ADC1 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -875,7 +875,7 @@
 		CCFA37F62C4ECA7400C9ADC1 /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
-				CCFA37F72C4ECA8600C9ADC1 /* ProfileRepository.swift */,
+				CCFA37F72C4ECA8600C9ADC1 /* UserDataRepository.swift */,
 			);
 			path = ProfileSetting;
 			sourceTree = "<group>";
@@ -1048,7 +1048,7 @@
 				CCFA37E22C4E980C00C9ADC1 /* NicknameTextFieldView.swift in Sources */,
 				CC1904752C5017CF0092F4AF /* NavigationManager.swift in Sources */,
 				CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */,
-				CCFA37F82C4ECA8600C9ADC1 /* ProfileRepository.swift in Sources */,
+				CCFA37F82C4ECA8600C9ADC1 /* UserDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

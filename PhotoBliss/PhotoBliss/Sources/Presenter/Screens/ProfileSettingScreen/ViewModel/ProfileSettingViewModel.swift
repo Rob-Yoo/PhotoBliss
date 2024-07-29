@@ -16,6 +16,7 @@ final class ProfileSettingViewModel {
         case profileImageViewTapped
         case mbtiButtonTapped(_ idx: Int)
         case saveButtonTapped
+        case accountShouldDelete
     }
     
     enum Output {
@@ -35,7 +36,7 @@ final class ProfileSettingViewModel {
     private var profileImageNumber: Int?
 
     private let output = Observable<Output>()
-    private let repository = ProfileRepository()
+    private let repository = UserDataRepository()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
@@ -65,6 +66,9 @@ final class ProfileSettingViewModel {
                 
             case .saveButtonTapped:
                 saveProfile()
+                
+            case .accountShouldDelete:
+                repository.deleteAllUserData()
             }
         }
         

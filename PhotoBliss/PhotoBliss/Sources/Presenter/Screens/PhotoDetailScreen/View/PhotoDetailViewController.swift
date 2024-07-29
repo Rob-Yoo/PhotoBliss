@@ -41,7 +41,7 @@ final class PhotoDetailViewController: BaseViewController<PhotoDetailRootView> {
                 case .photoDetail(let data):
                     self?.contentView.updateUI(photoDetail: data)
                 case .networkError(let message):
-                    self?.showAlert(message: message)
+                    self?.showNetworkErrorAlert(message: message)
                 }
             }
     }

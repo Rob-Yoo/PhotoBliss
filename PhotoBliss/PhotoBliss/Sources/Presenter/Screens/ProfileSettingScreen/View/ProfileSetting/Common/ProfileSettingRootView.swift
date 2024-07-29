@@ -14,6 +14,7 @@ import Then
     func nicknameTextFieldDidChange(text: String)
     func mbtiButtonTapped(idx: Int)
     @objc optional func saveUserProfile()
+    @objc optional func deleteAccountButtonTapped()
 }
 
 final class ProfileSettingRootView: BaseView, RootViewProtocol {
@@ -36,6 +37,22 @@ final class ProfileSettingRootView: BaseView, RootViewProtocol {
 
     private lazy var completeButton = TextButton(type: .complete).then {
         $0.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+    }
+    
+    private lazy var deleteAccountButton = UILabel().then {
+        let text = Literal.ButtonTitle.deleteAccount
+        let attributedString = NSMutableAttributedString(string: text)
+        let range = (text as NSString).range(of: text)
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(deleteAccountButtonTapped))
+        
+        attributedString.addAttributes([
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .foregroundColor: UIColor.mainTheme,
+            .font: UIFont.medium15], range: range)
+        $0.attributedText = attributedString
+        $0.textAlignment = .center
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(tapGR)
     }
     
     private var mbtiSelectedArray: [Bool] = []
@@ -95,6 +112,10 @@ extension ProfileSettingRootView: MBTICollectionViewCellDelegate {
     @objc private func completeButtonTapped() {
         delegate?.saveUserProfile?()
     }
+    
+    @objc private func deleteAccountButtonTapped() {
+        delegate?.deleteAccountButtonTapped?()
+    }
 }
 
 //MARK: - Configure Subviews
@@ -106,6 +127,8 @@ extension ProfileSettingRootView {
         
         if (type == .New) {
             self.configureCompleteButton()
+        } else {
+            self.configureDeleteAccountButton()
         }
     }
     
@@ -147,6 +170,15 @@ extension ProfileSettingRootView {
             $0.horizontalEdges.equalToSuperview().inset(30)
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.height.equalToSuperview().multipliedBy(0.05)
+        }
+    }
+    
+    private func configureDeleteAccountButton() {
+        self.addSubview(deleteAccountButton)
+        
+        deleteAccountButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
         }
     }
 }

@@ -66,7 +66,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                     updateProfileImage(imageNumber: number)
                     
                 case .networkError(let message):
-                    showAlert(message: message)
+                    showNetworkErrorAlert(message: message)
                     
                 }
 

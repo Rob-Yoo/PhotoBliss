@@ -1,14 +1,17 @@
 //
-//  ProfileRepository.swift
+//  UserDataRepository.swift
 //  PhotoBliss
 //
 //  Created by Jinyoung Yoo on 7/23/24.
 //
 
 import Foundation
+import RealmSwift
 import UIKit.UIImage
 
-final class ProfileRepository {
+final class UserDataRepository {
+
+    private let likeRepository = PhotoLikeRepository()
 
     var isUser: Bool {
         return UserDefaultsStorage.isUser
@@ -58,5 +61,12 @@ final class ProfileRepository {
         UserDefaultsStorage.nickname = nickname
         UserDefaultsStorage.profileImageNumber = String(profileImageNumber)
         UserDefaultsStorage.mbtiNumberArray = mbitNumberArray
+    }
+    
+    func deleteAllUserData() {
+        let likeList = likeRepository.fetchPhotoLikeList()
+        
+        likeList.forEach { likeRepository.removePhotoLike(photo: $0) }
+        UserDefaultsStorage.removeAll()
     }
 }

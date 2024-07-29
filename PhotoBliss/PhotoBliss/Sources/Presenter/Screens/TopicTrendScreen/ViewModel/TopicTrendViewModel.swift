@@ -23,7 +23,7 @@ final class TopicTrendViewModel {
     
     private let output = Observable<Output>()
     private let topicTrendRepository = TopicTrendRepository()
-    private let profileRepository = ProfileRepository()
+    private let userDataRepository = UserDataRepository()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
@@ -38,7 +38,7 @@ final class TopicTrendViewModel {
                 Task { await self.fetchTopicList() }
                 
             case .reloadUserProfileImage:
-                output.value = .userProfileImageNumber(profileRepository.loadProfileImageNumber())
+                output.value = .userProfileImageNumber(userDataRepository.loadProfileImageNumber())
             }
         }
         return output

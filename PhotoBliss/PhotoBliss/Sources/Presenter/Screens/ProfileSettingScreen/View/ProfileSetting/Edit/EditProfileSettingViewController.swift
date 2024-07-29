@@ -85,6 +85,13 @@ extension EditProfileSettingViewController: ProfileSettingRootViewDelegate {
     func mbtiButtonTapped(idx: Int) {
         self.input.value = .mbtiButtonTapped(idx)
     }
+    
+    func deleteAccountButtonTapped() {
+        self.showDeleteAccountAlert { [weak self] _ in
+            self?.input.value = .accountShouldDelete
+            NavigationManager.changeWindowScene(didDeleteAccount: true)
+        }
+    }
 }
 
 //MARK: - Update Views

@@ -38,7 +38,7 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
                     self?.contentView.showSearchResult(data: photoList)
                     
                 case .networkError(let message):
-                    self?.showAlert(message: message)
+                    self?.showNetworkErrorAlert(message: message)
                     
                 case .shouldScrollUp(let signal):
                     if (signal) {
