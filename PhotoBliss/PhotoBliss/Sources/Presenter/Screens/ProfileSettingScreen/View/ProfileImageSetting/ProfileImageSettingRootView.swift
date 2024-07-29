@@ -21,7 +21,7 @@ class ProfileImageSettingRootView: BaseView, RootViewProtocol {
     private lazy var profileImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.reusableIdentifier)
         $0.delegate = self
-        $0.delegate = self
+        $0.dataSource = self
     }
     
     weak var delegate: ProfileImageSettingRootViewDelegate?

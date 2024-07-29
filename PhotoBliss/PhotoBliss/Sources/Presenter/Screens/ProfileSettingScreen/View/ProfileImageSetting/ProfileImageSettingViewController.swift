@@ -18,6 +18,11 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
         self.input = Observable<ProfileImageSettingViewModel.Input>(.profileImageNumber(profileImageNumber))
         super.init(contentView: contentView)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavBarAppearence(appearenceType: .opaque)
+    }
 
     override func addUserAction() {
         self.contentView.delegate = self
@@ -26,12 +31,15 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
     override func bindViewModel() {
         self.viewModel.transform(input: input)
             .bind { [weak self] event in
+                
+                guard let self else { return }
+                
                 switch event {
                 case .profileImageNumber(let number):
                     let profileImage = UIImage.profileImages[number]
                     
-                    self?.contentView.updateUI(selectedImage: profileImage)
-                    self?.deliverProfileImageNumber?(number)
+                    contentView.updateUI(selectedImage: profileImage)
+                    deliverProfileImageNumber?(number)
                 }
             }
     }
@@ -39,6 +47,7 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
 
 //MARK: - User Action Handling
 extension ProfileImageSettingViewController: ProfileImageSettingRootViewDelegate {
+    
     func profileImageSelected(idx: Int) {
         self.input.value = .profileImageNumber(idx)
     }

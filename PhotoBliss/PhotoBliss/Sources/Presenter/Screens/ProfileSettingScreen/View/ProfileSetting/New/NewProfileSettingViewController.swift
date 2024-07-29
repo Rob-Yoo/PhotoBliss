@@ -88,8 +88,7 @@ extension NewProfileSettingViewController: ProfileSettingRootViewDelegate {
     }
     
     func saveUserProfile() {
-        print(#function)
-//        self.viewModel.inputSaveButtonTapped.value = ()
+        self.input.value = .saveButtonTapped
     }
 }
 

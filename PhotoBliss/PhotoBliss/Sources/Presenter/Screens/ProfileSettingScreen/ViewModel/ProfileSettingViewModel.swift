@@ -111,7 +111,7 @@ extension ProfileSettingViewModel {
     private func saveProfile() {
         guard didPassAllValidation, let profileImageNumber else { return }
         let isUser = repository.isUser
-        
+
         self.repository.saveUserProfile(nickname: nickname, profileImageNumber: profileImageNumber, mbtiBoolArray: mbtiSelectedArray)
         if (!isUser) { self.output.value = .shouldChangeWindowScene }
     }
