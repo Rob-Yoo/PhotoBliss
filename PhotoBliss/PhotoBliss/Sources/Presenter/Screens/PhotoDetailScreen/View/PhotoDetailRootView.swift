@@ -66,11 +66,14 @@ final class PhotoDetailRootView: BaseView {
         self.photoView.kf.setImage(with: imageUrl) { [weak self] result in
             switch result {
             case .success:
-                self?.hideToastActivity()
-                self?.headerView.updateLikeButton(photoDetail: photoDetail)
+                break
             case .failure:
-                return
+                if let imageFilePath = photoDetail.photo.savedImageFilePath {
+                    self?.photoView.image = UIImage(contentsOfFile: imageFilePath)
+                }
             }
+            self?.hideToastActivity()
+            self?.headerView.updateLikeButton(photoDetail: photoDetail)
         }
 
         self.headerView.updatePhotographerInfoView(photoDetail: photoDetail)

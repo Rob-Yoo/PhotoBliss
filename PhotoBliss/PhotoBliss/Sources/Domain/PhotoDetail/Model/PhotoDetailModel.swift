@@ -9,13 +9,15 @@ import Foundation
 
 struct PhotoDetailModel {
     var photo: PhotoCellModel
-    let viewCount: Int
-    let downloadCount: Int
+    let viewCount: Int?
+    let downloadCount: Int?
     
     static func createPhotoDetailModel(photo: PhotoCellModel, photoStatistic: PhotoStatisticDTO) -> Self {
 
         return PhotoDetailModel(photo: photo, viewCount: photoStatistic.views.total, downloadCount: photoStatistic.downloads.total)
     }
     
-    
+    static func createPhotoDetailModel(photo: PhotoCellModel) -> Self {
+        return PhotoDetailModel(photo: photo, viewCount: nil, downloadCount: nil)
+    }
 }

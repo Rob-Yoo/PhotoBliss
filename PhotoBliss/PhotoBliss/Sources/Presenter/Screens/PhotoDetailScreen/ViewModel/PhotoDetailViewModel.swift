@@ -59,6 +59,7 @@ extension PhotoDetailViewModel {
                 photoDetail.photo.isLike = isLike
                 self?.output.value = .photoDetail(photoDetail)
             case .failure(let error):
+                self?.handleTempPhotoDetail(likeList: likeList, error: error as NSError)
                 self?.output.value = .networkError(error.localizedDescription)
             }
         }
@@ -67,6 +68,16 @@ extension PhotoDetailViewModel {
     @MainActor
     private func fetchPhotoLikeList() -> [PhotoCellModel] {
         return self.likeRepository.fetchPhotoLikeList()
+    }
+    
+    private func handleTempPhotoDetail(likeList: [PhotoCellModel], error: NSError) {
+        let userInfoKey = String(describing: PhotoDetailModel.self)
+        guard var tempPhotoDetail = error.userInfo[userInfoKey] as? PhotoDetailModel else { return }
+        let isLike = likeList.contains(where: { $0.id == tempPhotoDetail.photo.id })
+        
+        self.isLike = isLike
+        tempPhotoDetail.photo.isLike = isLike
+        self.output.value = .photoDetail(tempPhotoDetail)
     }
     
     private func updatePhotoLike(photo: PhotoCellModel, image: UIImage) {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class PhotoDetailRepository {
     
@@ -17,7 +18,11 @@ final class PhotoDetailRepository {
             let photoDetail = PhotoDetailModel.createPhotoDetailModel(photo: photo, photoStatistic: data)
             return .success(photoDetail)
         case .failure(let error):
-            return .failure(error)
+            let tempPhotoDetail = PhotoDetailModel.createPhotoDetailModel(photo: photo)
+            let userInfoKey = String(describing: PhotoDetailModel.self)
+            let customError = NSError(domain: "네트워크 연결 문제가 발생하였습니다.", code: 400, userInfo: [userInfoKey: tempPhotoDetail])
+
+            return .failure(customError)
         }
     }
 
