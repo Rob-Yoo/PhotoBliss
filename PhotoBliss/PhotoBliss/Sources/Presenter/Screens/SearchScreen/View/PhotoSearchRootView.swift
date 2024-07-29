@@ -104,7 +104,7 @@ extension PhotoSearchRootView {
         let message = "정렬 옵션이 " + orderBy.title + "으로 변경됩니다."
         let toastStyle = ToastStyle.shadowToastStyle
         
-        self.hideToast()
+        self.hideAllToasts()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
     }
 }

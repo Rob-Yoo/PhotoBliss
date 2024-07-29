@@ -94,13 +94,9 @@ extension PhotoLikeRootView {
     func updateOrderByButton() {
         let orderBy = self.orderByOptionView.orderByButton.toggle()
         let message = "정렬 옵션이 " + orderBy.title + "으로 변경됩니다."
-        var toastStyle = ToastStyle()
+        let toastStyle = ToastStyle.shadowToastStyle
         
-        toastStyle.backgroundColor = .darkGray
-        toastStyle.displayShadow = true
-        toastStyle.shadowRadius = 4
-        toastStyle.horizontalPadding = 30
-        self.hideToast()
+        self.hideAllToasts()
         self.makeToast(message, duration: 1.5, position: .top ,style: toastStyle)
     }
     

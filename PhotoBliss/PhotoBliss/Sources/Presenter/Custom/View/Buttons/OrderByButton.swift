@@ -28,7 +28,7 @@ final class OrderByButton: BaseButton {
     override func configureButton() {
         self.backgroundColor = .white
         self.setImage(.sort, for: .normal)
-        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
+        self.setTitle(" " + self.orderBy.title, for: .normal)
         self.setTitleColor(.black, for: .normal)
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = .zero
@@ -49,7 +49,7 @@ final class OrderByButton: BaseButton {
             self.orderBy = .newest
         }
 
-        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
+        self.setTitle(" " + self.orderBy.title, for: .normal)
         return self.orderBy
     }
     
@@ -61,7 +61,7 @@ final class OrderByButton: BaseButton {
             self.orderBy = .relevant
         }
 
-        self.setTitle(" " + self.orderBy.buttonTitle, for: .normal)
+        self.setTitle(" " + self.orderBy.title, for: .normal)
     }
 }
 
@@ -76,19 +76,6 @@ extension OrderByButton {
         case relevant
         case newest
         case oldest
-        
-        fileprivate var buttonTitle: String {
-            switch self {
-            case .latest:
-                return "관련순"
-            case .relevant:
-                return "최신순"
-            case .newest:
-                return "과거순"
-            case .oldest:
-                return "최신순"
-            }
-        }
         
         var title: String {
             switch self {
