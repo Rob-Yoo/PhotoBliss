@@ -22,10 +22,10 @@ final class PhotoLikeViewModel {
         case isEmptyList
     }
     
-    private lazy var photoLikeList = self.repository.fetchPhotoLikeList()
+    private lazy var photoLikeList = self.service.fetchPhotoLikeList()
     private var orderByOption: OrderBy = .latest
     private let output = Observable<Output>()
-    private let repository = PhotoLikeRepository()
+    private let service = PhotoService()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
@@ -55,9 +55,9 @@ extension PhotoLikeViewModel {
         
         switch self.orderByOption {
         case .latest:
-            photoLikeList = self.repository.fetchPhotoLikeList().reversed()
+            photoLikeList = self.service.fetchPhotoLikeList().reversed()
         case .oldest:
-            photoLikeList = self.repository.fetchPhotoLikeList()
+            photoLikeList = self.service.fetchPhotoLikeList()
         }
 
         if (photoLikeList.isEmpty) {
@@ -71,7 +71,7 @@ extension PhotoLikeViewModel {
     }
     
     private func removePhotoLike(photo: PhotoCellModel) {
-        self.repository.removePhotoLike(photo: photo)
+        self.service.removePhotoLike(photo: photo)
         
         if (self.photoLikeList.count == 1) {
             self.output.value = .resetOrderByButton

@@ -36,7 +36,7 @@ final class PhotoSearchViewModel {
     }
 
     private let output = Observable<Output>()
-    private let service = PhotoSearchService()
+    private let service = PhotoService()
     
     func tranform(input: Observable<Input>) -> Observable<Output> {
         input.bind { [weak self] event in
@@ -77,7 +77,7 @@ final class PhotoSearchViewModel {
 
 extension PhotoSearchViewModel {
     private func fetchPhotoList(fetchType: PhotoSearchDomain.FetchType) async {
-        let result = await service.fetchPhotoList(fetchType: fetchType)
+        let result = await service.fetchSearchResult(fetchType: fetchType)
 
         switch fetchType {
         case .page:

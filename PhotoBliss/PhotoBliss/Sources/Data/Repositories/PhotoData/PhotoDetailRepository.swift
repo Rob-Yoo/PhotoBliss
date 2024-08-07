@@ -8,6 +8,10 @@
 import Foundation
 import Alamofire
 
+enum MyError: Error {
+    
+}
+
 final class PhotoDetailRepository {
     
     func fetchPhotoDetail(photo: PhotoCellModel) async -> Result<PhotoDetailModel, Error> {

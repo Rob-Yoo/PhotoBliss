@@ -22,7 +22,7 @@ final class TopicTrendViewModel {
     }
     
     private let output = Observable<Output>()
-    private let topicTrendRepository = TopicTrendRepository()
+    private let photoService = PhotoService()
     private let userDataRepository = UserDataRepository()
     
     func transform(input: Observable<Input>) -> Observable<Output> {
@@ -47,7 +47,7 @@ final class TopicTrendViewModel {
 
 extension TopicTrendViewModel {
     private func fetchTopicList() async {
-        let result = await topicTrendRepository.fetchTopicList()
+        let result = await photoService.fetchTopicTrendResult()
         
         DispatchQueue.main.async { [weak self] in
             switch result {

@@ -75,7 +75,6 @@
 		CC9204162C54D65B00417B3F /* PhotoLikeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204152C54D65B00417B3F /* PhotoLikeDTO.swift */; };
 		CC9204192C54DA5900417B3F /* PhotoLikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204182C54DA5900417B3F /* PhotoLikeRepository.swift */; };
 		CC92041C2C54E00500417B3F /* PhotoLikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92041B2C54E00500417B3F /* PhotoLikeViewModel.swift */; };
-		CC92041F2C54F4A200417B3F /* PhotoSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92041E2C54F4A200417B3F /* PhotoSearchService.swift */; };
 		CC9204212C54F7B000417B3F /* PhotoSearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */; };
 		CC9204232C555D4E00417B3F /* PhotoSearchOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */; };
 		CC9204252C555E9E00417B3F /* OrderByButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9204242C555E9E00417B3F /* OrderByButton.swift */; };
@@ -85,6 +84,7 @@
 		CCA2660A2C567CB700826F9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266092C567CB700826F9F /* BaseButton.swift */; };
 		CCA2660C2C567F1300826F9F /* MBTIElementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2660B2C567F1300826F9F /* MBTIElementButton.swift */; };
 		CCA2660E2C56A77E00826F9F /* MbtiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2660D2C56A77E00826F9F /* MbtiSettingView.swift */; };
+		CCCCCDBA2C6244F6003FF69A /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCCCDB92C6244F6003FF69A /* PhotoService.swift */; };
 		CCD982142C5785AE00B5C02B /* EditProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
@@ -178,7 +178,6 @@
 		CC9204152C54D65B00417B3F /* PhotoLikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeDTO.swift; sourceTree = "<group>"; };
 		CC9204182C54DA5900417B3F /* PhotoLikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeRepository.swift; sourceTree = "<group>"; };
 		CC92041B2C54E00500417B3F /* PhotoLikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLikeViewModel.swift; sourceTree = "<group>"; };
-		CC92041E2C54F4A200417B3F /* PhotoSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchService.swift; sourceTree = "<group>"; };
 		CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchDomain.swift; sourceTree = "<group>"; };
 		CC9204222C555D4E00417B3F /* PhotoSearchOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchOptionView.swift; sourceTree = "<group>"; };
 		CC9204242C555E9E00417B3F /* OrderByButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderByButton.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		CCA266092C567CB700826F9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		CCA2660B2C567F1300826F9F /* MBTIElementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIElementButton.swift; sourceTree = "<group>"; };
 		CCA2660D2C56A77E00826F9F /* MbtiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiSettingView.swift; sourceTree = "<group>"; };
+		CCCCCDB92C6244F6003FF69A /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSettingViewController.swift; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -220,14 +220,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC07AD462C527280008146BF /* Decodable */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD472C527296008146BF /* PhotoSearchResultDTO.swift */,
-			);
-			path = Decodable;
-			sourceTree = "<group>";
-		};
 		CC07AD4B2C537E24008146BF /* PhotoDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,63 +240,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CC07AD532C538A01008146BF /* PhotoDetail */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD542C538A0D008146BF /* Model */,
-				CC07AD632C53C881008146BF /* Repository */,
-				CC07AD5C2C53C475008146BF /* DTO */,
-			);
-			path = PhotoDetail;
-			sourceTree = "<group>";
-		};
-		CC07AD542C538A0D008146BF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD552C538A22008146BF /* PhotoDetailModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		CC07AD592C53BDB4008146BF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CC07AD5A2C53BDC2008146BF /* PhotoDetailViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CC07AD5C2C53C475008146BF /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD602C53C824008146BF /* Encodable */,
-				CC07AD5F2C53C81B008146BF /* Decodable */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		CC07AD5F2C53C81B008146BF /* Decodable */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD5D2C53C49E008146BF /* PhotoStatisticDTO.swift */,
-			);
-			path = Decodable;
-			sourceTree = "<group>";
-		};
-		CC07AD602C53C824008146BF /* Encodable */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */,
-			);
-			path = Encodable;
-			sourceTree = "<group>";
-		};
-		CC07AD632C53C881008146BF /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		CC1904682C4FC0540092F4AF /* Common */ = {
@@ -357,24 +298,6 @@
 			path = TopicTrendScreen;
 			sourceTree = "<group>";
 		};
-		CC19049D2C50CBCE0092F4AF /* TopicTrend */ = {
-			isa = PBXGroup;
-			children = (
-				CC1904A22C50CD6D0092F4AF /* Model */,
-				CC1904BA2C511CF20092F4AF /* Repository */,
-				CC1904C22C5120FF0092F4AF /* DTO */,
-			);
-			path = TopicTrend;
-			sourceTree = "<group>";
-		};
-		CC1904A22C50CD6D0092F4AF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CC1904A02C50CCF90092F4AF /* TopicTrendModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		CC1904A42C50CEB20092F4AF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,29 +317,12 @@
 			path = Photo;
 			sourceTree = "<group>";
 		};
-		CC1904AC2C50DC910092F4AF /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B7A2C5251A800E51944 /* Model */,
-				CC2A7B792C52519E00E51944 /* DTO */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		CC1904B72C511BC30092F4AF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CC1904B82C511BD20092F4AF /* TopicTrendViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CC1904BA2C511CF20092F4AF /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				CC1904BB2C511D000092F4AF /* TopicTrendRepository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		CC1904BF2C511D590092F4AF /* Network */ = {
@@ -426,46 +332,6 @@
 				CC1904C02C511D720092F4AF /* UnsplashRequest.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		CC1904C22C5120FF0092F4AF /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B712C524C0A00E51944 /* Encodable */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		CC2A7B712C524C0A00E51944 /* Encodable */ = {
-			isa = PBXGroup;
-			children = (
-				CC5EC3512C5248B700A54FE4 /* TopicTrendQueryDTO.swift */,
-			);
-			path = Encodable;
-			sourceTree = "<group>";
-		};
-		CC2A7B732C524C1F00E51944 /* Encodable */ = {
-			isa = PBXGroup;
-			children = (
-				CC5EC34E2C52347F00A54FE4 /* PhotoSearchQueryDTO.swift */,
-			);
-			path = Encodable;
-			sourceTree = "<group>";
-		};
-		CC2A7B792C52519E00E51944 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B772C524E1300E51944 /* PhotoDTO.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		CC2A7B7A2C5251A800E51944 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CC1904AD2C50DC9A0092F4AF /* PhotoCellModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		CC5510A22C4E3C0100A042C2 = {
@@ -499,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5510F92C4E6D2E00A042C2 /* Common */,
+				CCCCCDC82C635106003FF69A /* Data */,
 				CCFA37F52C4ECA6E00C9ADC1 /* Domain */,
 				CC5510D92C4E3EDA00A042C2 /* Presenter */,
 				CC5510D82C4E3ED200A042C2 /* App */,
@@ -684,43 +551,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		CC5EC3492C52325B00A54FE4 /* PhotoSearch */ = {
-			isa = PBXGroup;
-			children = (
-				CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */,
-				CC92041D2C54F49300417B3F /* Service */,
-				CC5EC34B2C52326C00A54FE4 /* Repository */,
-				CC5EC34D2C52346600A54FE4 /* QueryModel */,
-				CC5EC34C2C52329D00A54FE4 /* DTO */,
-			);
-			path = PhotoSearch;
-			sourceTree = "<group>";
-		};
-		CC5EC34B2C52326C00A54FE4 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B7D2C52562200E51944 /* PhotoSearchRepository.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		CC5EC34C2C52329D00A54FE4 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B732C524C1F00E51944 /* Encodable */,
-				CC07AD462C527280008146BF /* Decodable */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		CC5EC34D2C52346600A54FE4 /* QueryModel */ = {
-			isa = PBXGroup;
-			children = (
-				CC2A7B7B2C5255BB00E51944 /* PhotoSearchQueryModel.swift */,
-			);
-			path = QueryModel;
-			sourceTree = "<group>";
-		};
 		CC92040B2C54C8BF00417B3F /* PhotoLikeScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,31 +570,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CC9204132C54D5CD00417B3F /* PhotoLike */ = {
-			isa = PBXGroup;
-			children = (
-				CC9204172C54DA4600417B3F /* Repository */,
-				CC9204142C54D5E900417B3F /* DTO */,
-			);
-			path = PhotoLike;
-			sourceTree = "<group>";
-		};
-		CC9204142C54D5E900417B3F /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				CC9204152C54D65B00417B3F /* PhotoLikeDTO.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
-		CC9204172C54DA4600417B3F /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				CC9204182C54DA5900417B3F /* PhotoLikeRepository.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		CC92041A2C54DFF600417B3F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,12 +578,106 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		CC92041D2C54F49300417B3F /* Service */ = {
+		CCCCCDC82C635106003FF69A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				CC92041E2C54F4A200417B3F /* PhotoSearchService.swift */,
+				CCCCCDCD2C63529C003FF69A /* DTO */,
+				CCCCCDC92C635127003FF69A /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CCCCCDC92C635127003FF69A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CCCCCDD02C635495003FF69A /* UserData */,
+				CCCCCDCC2C635267003FF69A /* PhotoData */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CCCCCDCC2C635267003FF69A /* PhotoData */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904BB2C511D000092F4AF /* TopicTrendRepository.swift */,
+				CC2A7B7D2C52562200E51944 /* PhotoSearchRepository.swift */,
+				CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */,
+				CC9204182C54DA5900417B3F /* PhotoLikeRepository.swift */,
+			);
+			path = PhotoData;
+			sourceTree = "<group>";
+		};
+		CCCCCDCD2C63529C003FF69A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				CCCCCDCE2C6352A9003FF69A /* Encodable */,
+				CCCCCDCF2C6352B7003FF69A /* Decodable */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		CCCCCDCE2C6352A9003FF69A /* Encodable */ = {
+			isa = PBXGroup;
+			children = (
+				CC5EC3512C5248B700A54FE4 /* TopicTrendQueryDTO.swift */,
+				CC5EC34E2C52347F00A54FE4 /* PhotoSearchQueryDTO.swift */,
+				CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */,
+			);
+			path = Encodable;
+			sourceTree = "<group>";
+		};
+		CCCCCDCF2C6352B7003FF69A /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				CC07AD472C527296008146BF /* PhotoSearchResultDTO.swift */,
+				CC07AD5D2C53C49E008146BF /* PhotoStatisticDTO.swift */,
+				CC9204152C54D65B00417B3F /* PhotoLikeDTO.swift */,
+				CC2A7B772C524E1300E51944 /* PhotoDTO.swift */,
+			);
+			path = Decodable;
+			sourceTree = "<group>";
+		};
+		CCCCCDD02C635495003FF69A /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA37F72C4ECA8600C9ADC1 /* UserDataRepository.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		CCCCCDD12C63557C003FF69A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCCCCDB92C6244F6003FF69A /* PhotoService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CCCCCDD22C63558A003FF69A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCCCCDD42C6355F6003FF69A /* QueryModel */,
+				CCCCCDD32C6355BF003FF69A /* PresentationModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCCCCDD32C6355BF003FF69A /* PresentationModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC1904A02C50CCF90092F4AF /* TopicTrendModel.swift */,
+				CC07AD552C538A22008146BF /* PhotoDetailModel.swift */,
+				CC1904AD2C50DC9A0092F4AF /* PhotoCellModel.swift */,
+			);
+			path = PresentationModel;
+			sourceTree = "<group>";
+		};
+		CCCCCDD42C6355F6003FF69A /* QueryModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC2A7B7B2C5255BB00E51944 /* PhotoSearchQueryModel.swift */,
+			);
+			path = QueryModel;
 			sourceTree = "<group>";
 		};
 		CCD982122C57859800B5C02B /* Edit */ = {
@@ -862,22 +761,11 @@
 		CCFA37F52C4ECA6E00C9ADC1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				CC1904AC2C50DC910092F4AF /* Common */,
-				CC9204132C54D5CD00417B3F /* PhotoLike */,
-				CC07AD532C538A01008146BF /* PhotoDetail */,
-				CC5EC3492C52325B00A54FE4 /* PhotoSearch */,
-				CCFA37F62C4ECA7400C9ADC1 /* ProfileSetting */,
-				CC19049D2C50CBCE0092F4AF /* TopicTrend */,
+				CC9204202C54F7B000417B3F /* PhotoSearchDomain.swift */,
+				CCCCCDD22C63558A003FF69A /* Model */,
+				CCCCCDD12C63557C003FF69A /* Service */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		CCFA37F62C4ECA7400C9ADC1 /* ProfileSetting */ = {
-			isa = PBXGroup;
-			children = (
-				CCFA37F72C4ECA8600C9ADC1 /* UserDataRepository.swift */,
-			);
-			path = ProfileSetting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -999,7 +887,6 @@
 				CC1904B22C50E8C60092F4AF /* TopicTrendTableViewCell.swift in Sources */,
 				CC1904B02C50E69F0092F4AF /* TopicTrendRootView.swift in Sources */,
 				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
-				CC92041F2C54F4A200417B3F /* PhotoSearchService.swift in Sources */,
 				CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */,
 				CC07AD482C527296008146BF /* PhotoSearchResultDTO.swift in Sources */,
 				CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */,
@@ -1024,6 +911,7 @@
 				CC5510E22C4E45F000A042C2 /* UIImage+Extension.swift in Sources */,
 				CC07AD522C538538008146BF /* PhotoDetailInfoView.swift in Sources */,
 				CC1904C12C511D720092F4AF /* UnsplashRequest.swift in Sources */,
+				CCCCCDBA2C6244F6003FF69A /* PhotoService.swift in Sources */,
 				CC2A7B7C2C5255BB00E51944 /* PhotoSearchQueryModel.swift in Sources */,
 				CC1904B92C511BD20092F4AF /* TopicTrendViewModel.swift in Sources */,
 				CC1904AE2C50DC9A0092F4AF /* PhotoCellModel.swift in Sources */,
@@ -1184,6 +1072,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoBliss/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1216,6 +1105,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoBliss/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
