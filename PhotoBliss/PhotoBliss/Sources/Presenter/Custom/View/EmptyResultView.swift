@@ -23,7 +23,7 @@ final class EmptyResultView: BaseView {
     override func configureLayout() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(-50)
+            $0.centerY.equalToSuperview().offset(-30)
         }
     }
     

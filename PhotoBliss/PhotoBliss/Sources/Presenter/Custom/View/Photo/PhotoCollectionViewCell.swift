@@ -114,8 +114,8 @@ extension PhotoCollectionViewCell {
         
         starCountView.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview().inset(10)
-            $0.height.equalTo(30)
-            $0.width.equalToSuperview().multipliedBy(0.4)
+            $0.height.equalTo(25)
+            $0.width.equalTo(1)
         }
     }
     
@@ -123,7 +123,7 @@ extension PhotoCollectionViewCell {
         self.contentView.addSubview(likeButton)
         
         likeButton.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().inset(10)
+            $0.trailing.top.equalToSuperview().inset(10)
             $0.size.equalTo(30)
         }
     }
