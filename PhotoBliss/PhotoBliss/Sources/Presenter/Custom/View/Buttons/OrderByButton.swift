@@ -30,10 +30,10 @@ final class OrderByButton: BaseButton {
         self.setImage(.sort, for: .normal)
         self.setTitle(" " + self.orderBy.title, for: .normal)
         self.setTitleColor(.black, for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = 2
-        self.layer.masksToBounds = false
         self.layer.cornerRadius = 15
     }
     

@@ -22,7 +22,7 @@ enum PhotoSearchDomain {
     }
     
     enum Color: String {
-        case black, white, yellow, red, purple, green, blue
+        case black, yellow, red, purple, green, blue
     }
     
 }

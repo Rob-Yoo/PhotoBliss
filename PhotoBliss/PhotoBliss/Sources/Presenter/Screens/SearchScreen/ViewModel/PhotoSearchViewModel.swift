@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit.UIImage
+import UIKit
 
 final class PhotoSearchViewModel {
     
@@ -170,7 +170,41 @@ extension PhotoSearchViewModel {
         }
     }
     
-    enum Color: String {
-        case black, white, yellow, red, purple, green, blue
+    enum Color: String, CaseIterable {
+        case black, yellow, red, purple, green, blue
+        
+        var title: String {
+            switch self {
+            case .black:
+                return "블랙"
+            case .yellow:
+                return "옐로우"
+            case .red:
+                return "레드"
+            case .purple:
+                return "퍼플"
+            case .green:
+                return "그린"
+            case .blue:
+                return "블루"
+            }
+        }
+        
+        var color: UIColor {
+            switch self {
+            case .black:
+                return .black
+            case .yellow:
+                return .yellow
+            case .red:
+                return .red
+            case .purple:
+                return .purple
+            case .green:
+                return .green
+            case .blue:
+                return .blue
+            }
+        }
     }
 }
