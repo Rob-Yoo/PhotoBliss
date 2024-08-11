@@ -41,6 +41,8 @@
 		CC2A7B782C524E1300E51944 /* PhotoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A7B772C524E1300E51944 /* PhotoDTO.swift */; };
 		CC2A7B7C2C5255BB00E51944 /* PhotoSearchQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A7B7B2C5255BB00E51944 /* PhotoSearchQueryModel.swift */; };
 		CC2A7B7E2C52562200E51944 /* PhotoSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A7B7D2C52562200E51944 /* PhotoSearchRepository.swift */; };
+		CC37823C2C689C8400E8E269 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CC37823B2C689C8400E8E269 /* RxCocoa */; };
+		CC37823E2C689C8400E8E269 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC37823D2C689C8400E8E269 /* RxSwift */; };
 		CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */; };
 		CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */; };
 		CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */; };
@@ -211,8 +213,10 @@
 				CC5510D52C4E3E7800A042C2 /* Kingfisher in Frameworks */,
 				CC5510CC2C4E3DF300A042C2 /* RealmSwift in Frameworks */,
 				CC5510CF2C4E3E0C00A042C2 /* Alamofire in Frameworks */,
+				CC37823C2C689C8400E8E269 /* RxCocoa in Frameworks */,
 				CC5510C62C4E3DAD00A042C2 /* Then in Frameworks */,
 				CC5510D22C4E3E1800A042C2 /* Toast in Frameworks */,
+				CC37823E2C689C8400E8E269 /* RxSwift in Frameworks */,
 				CC5510C92C4E3DB800A042C2 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,6 +796,8 @@
 				CC5510CE2C4E3E0C00A042C2 /* Alamofire */,
 				CC5510D12C4E3E1800A042C2 /* Toast */,
 				CC5510D42C4E3E7800A042C2 /* Kingfisher */,
+				CC37823B2C689C8400E8E269 /* RxCocoa */,
+				CC37823D2C689C8400E8E269 /* RxSwift */,
 			);
 			productName = PhotoBliss;
 			productReference = CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */;
@@ -828,6 +834,7 @@
 				CC5510CD2C4E3E0C00A042C2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CC5510D02C4E3E1800A042C2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CC5510D32C4E3E7800A042C2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CC37823A2C689C8400E8E269 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = CC5510AC2C4E3C0100A042C2 /* Products */;
 			projectDirPath = "";
@@ -1152,6 +1159,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CC37823A2C689C8400E8E269 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
 		CC5510C42C4E3DAD00A042C2 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then.git";
@@ -1203,6 +1218,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CC37823B2C689C8400E8E269 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC37823A2C689C8400E8E269 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CC37823D2C689C8400E8E269 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC37823A2C689C8400E8E269 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		CC5510C52C4E3DAD00A042C2 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC5510C42C4E3DAD00A042C2 /* XCRemoteSwiftPackageReference "Then" */;
