@@ -76,6 +76,8 @@ final class PhotoSearchViewController: BaseViewController<PhotoSearchRootView> {
         searchController.searchBar.autocorrectionType = .no
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.automaticallyShowsCancelButton = true
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.setValue("취소", forKey: "cancelButtonText")
 
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
