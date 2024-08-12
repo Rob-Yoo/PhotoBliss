@@ -48,7 +48,7 @@ final class PhotoDetailHeaderView: BaseView {
         
         likeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-15)
-            $0.verticalEdges.equalToSuperview().inset(15)
+            $0.verticalEdges.equalToSuperview()
         }
     }
     
