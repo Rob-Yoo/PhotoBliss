@@ -44,6 +44,7 @@ extension TabBarController {
     
     enum Tab: CaseIterable {
         case topic
+        case random
         case search
         case like
         
@@ -51,6 +52,8 @@ extension TabBarController {
             switch self {
             case .topic:
                 return TopicTrendViewController()
+            case .random:
+                return PhotoRandomViewController()
             case .search:
                 return PhotoSearchViewController()
             case .like:
@@ -62,6 +65,8 @@ extension TabBarController {
             switch self {
             case .topic:
                 return (image: UIImage.tapTrendInactive, selectedImage: UIImage.tabTrend)
+            case .random:
+                return (image: UIImage.tabRandomInactive, selectedImage: UIImage.tabRandom)
             case .search:
                 return (image: UIImage.tabSearchInactive, selectedImage: UIImage.tabSearch)
             case .like:

@@ -44,6 +44,9 @@
 		CC37823C2C689C8400E8E269 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CC37823B2C689C8400E8E269 /* RxCocoa */; };
 		CC37823E2C689C8400E8E269 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC37823D2C689C8400E8E269 /* RxSwift */; };
 		CC3782402C68AE1B00E8E269 /* ColorOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC37823F2C68AE1B00E8E269 /* ColorOptionCollectionViewCell.swift */; };
+		CC5019642C88AE94002E8F8C /* RandomPhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5019632C88AE94002E8F8C /* RandomPhotoRepository.swift */; };
+		CC5019662C88B01F002E8F8C /* RandomPhotoQueryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5019652C88B01F002E8F8C /* RandomPhotoQueryDTO.swift */; };
+		CC50196B2C88B30D002E8F8C /* PhotoRandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC50196A2C88B30D002E8F8C /* PhotoRandomViewModel.swift */; };
 		CC5510AF2C4E3C0100A042C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */; };
 		CC5510B12C4E3C0100A042C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */; };
 		CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5510B22C4E3C0100A042C2 /* OnboardingViewController.swift */; };
@@ -87,6 +90,9 @@
 		CCA2660A2C567CB700826F9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA266092C567CB700826F9F /* BaseButton.swift */; };
 		CCA2660C2C567F1300826F9F /* MBTIElementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2660B2C567F1300826F9F /* MBTIElementButton.swift */; };
 		CCA2660E2C56A77E00826F9F /* MbtiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA2660D2C56A77E00826F9F /* MbtiSettingView.swift */; };
+		CCB97B702C6915BC004A6C94 /* PhotoRandomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB97B6F2C6915BC004A6C94 /* PhotoRandomViewController.swift */; };
+		CCB97B722C6915D6004A6C94 /* PhotoRandomRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB97B712C6915D6004A6C94 /* PhotoRandomRootView.swift */; };
+		CCB97B742C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB97B732C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift */; };
 		CCCCCDBA2C6244F6003FF69A /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCCCDB92C6244F6003FF69A /* PhotoService.swift */; };
 		CCD982142C5785AE00B5C02B /* EditProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
@@ -153,6 +159,9 @@
 		CC2A7B7B2C5255BB00E51944 /* PhotoSearchQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchQueryModel.swift; sourceTree = "<group>"; };
 		CC2A7B7D2C52562200E51944 /* PhotoSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchRepository.swift; sourceTree = "<group>"; };
 		CC37823F2C68AE1B00E8E269 /* ColorOptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC5019632C88AE94002E8F8C /* RandomPhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoRepository.swift; sourceTree = "<group>"; };
+		CC5019652C88B01F002E8F8C /* RandomPhotoQueryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoQueryDTO.swift; sourceTree = "<group>"; };
+		CC50196A2C88B30D002E8F8C /* PhotoRandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRandomViewModel.swift; sourceTree = "<group>"; };
 		CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBliss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5510AE2C4E3C0100A042C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5510B02C4E3C0100A042C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +200,9 @@
 		CCA266092C567CB700826F9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		CCA2660B2C567F1300826F9F /* MBTIElementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTIElementButton.swift; sourceTree = "<group>"; };
 		CCA2660D2C56A77E00826F9F /* MbtiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbtiSettingView.swift; sourceTree = "<group>"; };
+		CCB97B6F2C6915BC004A6C94 /* PhotoRandomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRandomViewController.swift; sourceTree = "<group>"; };
+		CCB97B712C6915D6004A6C94 /* PhotoRandomRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRandomRootView.swift; sourceTree = "<group>"; };
+		CCB97B732C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRandomCollectionViewCell.swift; sourceTree = "<group>"; };
 		CCCCCDB92C6244F6003FF69A /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSettingViewController.swift; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -340,6 +352,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		CC5019692C88B301002E8F8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC50196A2C88B30D002E8F8C /* PhotoRandomViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CC5510A22C4E3C0100A042C2 = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +451,7 @@
 		CC5510E72C4E584500A042C2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CCB97B6D2C691580004A6C94 /* PhotoRandomScreen */,
 				CC92040B2C54C8BF00417B3F /* PhotoLikeScreen */,
 				CC5510E82C4E586300A042C2 /* OnboardingScreen */,
 				CCFA37DD2C4E952300C9ADC1 /* ProfileSettingScreen */,
@@ -585,6 +606,25 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CCB97B6D2C691580004A6C94 /* PhotoRandomScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CC5019692C88B301002E8F8C /* ViewModel */,
+				CCB97B6E2C6915B1004A6C94 /* View */,
+			);
+			path = PhotoRandomScreen;
+			sourceTree = "<group>";
+		};
+		CCB97B6E2C6915B1004A6C94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCB97B6F2C6915BC004A6C94 /* PhotoRandomViewController.swift */,
+				CCB97B712C6915D6004A6C94 /* PhotoRandomRootView.swift */,
+				CCB97B732C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CCCCCDC82C635106003FF69A /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +650,7 @@
 				CC2A7B7D2C52562200E51944 /* PhotoSearchRepository.swift */,
 				CC07AD642C53C8D1008146BF /* PhotoDetailRepository.swift */,
 				CC9204182C54DA5900417B3F /* PhotoLikeRepository.swift */,
+				CC5019632C88AE94002E8F8C /* RandomPhotoRepository.swift */,
 			);
 			path = PhotoData;
 			sourceTree = "<group>";
@@ -629,6 +670,7 @@
 				CC5EC3512C5248B700A54FE4 /* TopicTrendQueryDTO.swift */,
 				CC5EC34E2C52347F00A54FE4 /* PhotoSearchQueryDTO.swift */,
 				CC07AD612C53C839008146BF /* PhotoStatisticQueryDTO.swift */,
+				CC5019652C88B01F002E8F8C /* RandomPhotoQueryDTO.swift */,
 			);
 			path = Encodable;
 			sourceTree = "<group>";
@@ -875,7 +917,9 @@
 				CCA266082C5677E200826F9F /* ToastStyle+Extension.swift in Sources */,
 				CC575BE12C57205C00F5C212 /* UserDefaultsStorage.swift in Sources */,
 				CC5510B32C4E3C0100A042C2 /* OnboardingViewController.swift in Sources */,
+				CC5019642C88AE94002E8F8C /* RandomPhotoRepository.swift in Sources */,
 				CCFA37F32C4EB9F000C9ADC1 /* Observable.swift in Sources */,
+				CCB97B722C6915D6004A6C94 /* PhotoRandomRootView.swift in Sources */,
 				CC5510DC2C4E453F00A042C2 /* Literal.swift in Sources */,
 				CCFA37DC2C4E946A00C9ADC1 /* CamerImageView.swift in Sources */,
 				CC07AD562C538A22008146BF /* PhotoDetailModel.swift in Sources */,
@@ -895,10 +939,12 @@
 				CC07AD652C53C8D1008146BF /* PhotoDetailRepository.swift in Sources */,
 				CC1904BE2C511D3B0092F4AF /* NetworkManger.swift in Sources */,
 				CC07AD582C538F46008146BF /* PhotoDetailViewController.swift in Sources */,
+				CC5019662C88B01F002E8F8C /* RandomPhotoQueryDTO.swift in Sources */,
 				CC1904B22C50E8C60092F4AF /* TopicTrendTableViewCell.swift in Sources */,
 				CC1904B02C50E69F0092F4AF /* TopicTrendRootView.swift in Sources */,
 				CC5510F22C4E603B00A042C2 /* NavigationController.swift in Sources */,
 				CC5510F82C4E6CD300A042C2 /* BaseCollectionViewCell.swift in Sources */,
+				CC50196B2C88B30D002E8F8C /* PhotoRandomViewModel.swift in Sources */,
 				CC07AD482C527296008146BF /* PhotoSearchResultDTO.swift in Sources */,
 				CC5510F62C4E6BC300A042C2 /* BaseTableViewCell.swift in Sources */,
 				CC07AD502C537F42008146BF /* PhotoDetailHeaderView.swift in Sources */,
@@ -937,8 +983,10 @@
 				CC5510F42C4E6AAD00A042C2 /* BaseView.swift in Sources */,
 				CC5EC3452C5215B300A54FE4 /* PhotoSearchViewModel.swift in Sources */,
 				CC575BDE2C56C2A500F5C212 /* ProfileSettingType.swift in Sources */,
+				CCB97B702C6915BC004A6C94 /* PhotoRandomViewController.swift in Sources */,
 				CC1904772C5018220092F4AF /* TabBarController.swift in Sources */,
 				CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */,
+				CCB97B742C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift in Sources */,
 				CC19046D2C4FC17B0092F4AF /* ProfileImageSettingRootView.swift in Sources */,
 				CCFA37E02C4E96A700C9ADC1 /* ProfileSettingRootView.swift in Sources */,
 				CC5510EB2C4E588B00A042C2 /* BaseViewController.swift in Sources */,

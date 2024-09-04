@@ -12,6 +12,7 @@ final class PhotoService {
     private let likeRepository = PhotoLikeRepository()
     private let detailRepository = PhotoDetailRepository()
     private let topicTrendRepoistory = TopicTrendRepository()
+    private let randomPhotoRepository = RandomPhotoRepository()
 }
 
 //MARK: - Topic Trend
@@ -106,5 +107,30 @@ extension PhotoService {
     
     func removePhotoLike(photo: PhotoCellModel) {
         self.likeRepository.removePhotoLike(photo: photo)
+    }
+}
+
+extension PhotoService {
+    func fetchRandomPhotoList() async -> Result<[PhotoCellModel], Error>  {
+        let randomPhotos = await self.randomPhotoRepository.fetchRandomPhotoList()
+        let photoLikeList = await fetchLikeList()
+        let photoLikeSet = Set(photoLikeList)
+        var finalPhotoList = [PhotoCellModel]()
+
+        switch randomPhotos {
+        case .success(let photoList):
+            
+            for photo in photoList {
+                var photo = photo
+                let isLike = photoLikeSet.contains(photo)
+
+                photo.isLike = isLike
+                finalPhotoList.append(photo)
+            }
+            
+            return .success(finalPhotoList)
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }

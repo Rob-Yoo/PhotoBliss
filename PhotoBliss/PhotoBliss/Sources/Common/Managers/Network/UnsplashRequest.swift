@@ -11,6 +11,7 @@ enum UnsplashRequest {
     case topic(topicID: String, queryDTO: TopicTrendQueryDTO)
     case search(query: PhotoSearchQueryDTO)
     case statistic(imageID: String)
+    case randomPhoto
     
     private var baseURL: String {
         return "https://api.unsplash.com"
@@ -24,6 +25,8 @@ enum UnsplashRequest {
             return baseURL + "/search/photos"
         case .statistic(let imageID):
             return baseURL + "/photos/\(imageID)/statistics"
+        case .randomPhoto:
+            return baseURL + "/photos/random"
         }
     }
     
@@ -39,6 +42,8 @@ enum UnsplashRequest {
             return query
         case .statistic:
             return PhotoStatisticQueryDTO()
+        case .randomPhoto:
+            return RandomPhotoQueryDTO()
         }
     }
 }

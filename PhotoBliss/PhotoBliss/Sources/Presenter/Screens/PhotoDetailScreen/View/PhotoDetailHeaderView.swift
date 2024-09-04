@@ -19,7 +19,7 @@ final class PhotoDetailHeaderView: BaseView {
         $0.tintColor = .white
     }
     
-    private let detailInfoLabelView = DetailInfoLabelView()
+    let detailInfoLabelView = DetailInfoLabelView()
     
     let likeButton = LikeButton(isCircle: false)
     
@@ -59,20 +59,31 @@ final class PhotoDetailHeaderView: BaseView {
         self.detailInfoLabelView.update(photoDetail: photoDetail)
     }
     
+    func updatePhotographerInfoView(photo: PhotoCellModel) {
+        let imageUrl = URL(string: photo.photographerImageUrl)
+        
+        self.photographerImageView.kf.setImage(with: imageUrl)
+        self.detailInfoLabelView.update(photo: photo)
+    }
+    
     func updateLikeButton(photoDetail: PhotoDetailModel) {
         self.likeButton.isLike = photoDetail.photo.isLike
     }
+    
+    func updateLikeButton(photo: PhotoCellModel) {
+        self.likeButton.isLike = photo.isLike
+    }
 }
 
-private final class DetailInfoLabelView: BaseView {
-    private let photographerNameLabel = UILabel().then {
+final class DetailInfoLabelView: BaseView {
+    let photographerNameLabel = UILabel().then {
         $0.font = .regular15
         $0.textColor = .black
         $0.textAlignment = .left
         $0.numberOfLines = 1
     }
     
-    private let publishedDateLabel = UILabel().then {
+    let publishedDateLabel = UILabel().then {
         $0.font = .bold13
         $0.textColor = .black
         $0.textAlignment = .left
@@ -103,5 +114,10 @@ private final class DetailInfoLabelView: BaseView {
     func update(photoDetail: PhotoDetailModel) {
         self.photographerNameLabel.text = photoDetail.photo.photographerName
         self.publishedDateLabel.text = photoDetail.photo.publishedDate + " 게시됨"
+    }
+    
+    func update(photo: PhotoCellModel) {
+        self.photographerNameLabel.text = photo.photographerName
+        self.publishedDateLabel.text = photo.publishedDate + " 게시됨"
     }
 }
