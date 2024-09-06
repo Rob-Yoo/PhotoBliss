@@ -7,7 +7,7 @@ Unsplash API를 활용하여 사진을 검색하고 좋아요 할 수 있는 앱
 - **기간** : `2024.07.22 ~ 2024.08.05` (약 2주)
 - **개발 인원** : `iOS 1명`
 - **지원 버전**: <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/>
-- **기술 스택 및 라이브러리** : `UIKit` `Network` `SnapKit` `Then` `Alamofire` `Kingfisher` `Realm` `Toast`
+- **기술 스택 및 라이브러리** : `UIKit` `Network` `SnapKit` `Then` `Alamofire` `Kingfisher` `Realm` `DGCharts` `Toast`
 - **프로젝트 주요 기능**
 
   - `토픽별 트렌드 사진 화면`
