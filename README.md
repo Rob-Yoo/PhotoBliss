@@ -48,7 +48,7 @@ Unsplash API를 활용하여 사진을 검색하고 좋아요 할 수 있는 앱
 
 <br>
 
-  | 토픽별 트렌드 사진 화면 | 랜덤 사진 화면 | 검색 화면 | 좋아요 리스트 화면 | 상세 정보 화면 |
+  | 토픽별 트렌드 화면 | 랜덤 사진 화면 | 검색 화면 | 좋아요 리스트 화면 | 상세 정보 화면 |
   |--|--|--|--|--|
   |![토픽별 트렌드](https://github.com/user-attachments/assets/285230c1-f41d-4681-8fc5-c2a5954ef36f)|![랜덤 사진](https://github.com/user-attachments/assets/7743d9c6-d84b-41b8-aad4-231129231d61)|![사진 검색](https://github.com/user-attachments/assets/a305f87f-51f5-4a0a-8ea2-35cd72ad3a2e)|![좋아요 리스트](https://github.com/user-attachments/assets/ccc2ae71-f330-4f3f-8777-54e5b5651de4)|![사진 상세](https://github.com/user-attachments/assets/9a0f891b-710c-4035-8f60-50f82b31a9fa)|
 
