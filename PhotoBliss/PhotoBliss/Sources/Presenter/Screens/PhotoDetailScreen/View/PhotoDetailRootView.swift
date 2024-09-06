@@ -28,6 +28,8 @@ final class PhotoDetailRootView: BaseView {
     
     private let photoDetailInfoView = PhotoDetailInfoView()
     
+    private let photoChartView = PhotoChartView()
+    
     weak var delegate: PhotoDetailRootViewDelegate?
     
     override func configureView() {
@@ -38,6 +40,7 @@ final class PhotoDetailRootView: BaseView {
         self.addSubview(headerView)
         self.addSubview(photoView)
         self.addSubview(photoDetailInfoView)
+        self.addSubview(photoChartView)
     }
     
     override func configureLayout() {
@@ -55,7 +58,13 @@ final class PhotoDetailRootView: BaseView {
         photoDetailInfoView.snp.makeConstraints {
             $0.top.equalTo(photoView.snp.bottom).offset(15)
             $0.horizontalEdges.equalToSuperview().inset(15)
-            $0.height.equalTo(photoView).multipliedBy(0.8)
+            $0.height.equalTo(photoView).multipliedBy(0.4)
+        }
+        
+        photoChartView.snp.makeConstraints {
+            $0.top.equalTo(photoDetailInfoView.snp.bottom).offset(15)
+            $0.horizontalEdges.equalTo(photoDetailInfoView)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
     
@@ -78,6 +87,7 @@ final class PhotoDetailRootView: BaseView {
 
         self.headerView.updatePhotographerInfoView(photoDetail: photoDetail)
         self.photoDetailInfoView.update(photoDetail: photoDetail)
+        self.photoChartView.updateUI(photo: photoDetail)
     }
     
     @objc private func likeButtonTapped() {

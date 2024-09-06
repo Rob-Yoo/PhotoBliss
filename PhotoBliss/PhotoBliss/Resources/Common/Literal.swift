@@ -9,6 +9,7 @@ import Foundation
 
 enum Literal {
     enum NavigationTitle {
+        static let ourTopic = "OUR TOPIC"
         static let newProfile = "PROFILE SETTING"
         static let search = "SEARCH PHOTO"
         static let editProfile = "EDIT PROFILE"

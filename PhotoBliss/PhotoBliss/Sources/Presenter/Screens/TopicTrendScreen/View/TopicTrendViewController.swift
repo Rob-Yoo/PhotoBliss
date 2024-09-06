@@ -30,7 +30,6 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     override func viewDidLoad() {
         self.contentView.makeToastActivity(.center)
         super.viewDidLoad()
-        self.configureNavigationRightBarButtonItem()
         self.addNetworkMonitor()
         self.input.value = .viewDidLoad
     }
@@ -38,7 +37,6 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         self.configureNavBarAppearence(appearenceType: .transparent)
-        self.input.value = .reloadUserProfileImage
     }
     
     deinit {
@@ -64,9 +62,6 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                 case .topicList(let topicList):
                     contentView.updateUI(data: topicList)
                     
-                case .userProfileImageNumber(let number):
-                    updateProfileImage(imageNumber: number)
-                    
                 case .networkError(let message):
                     showNetworkErrorAlert(message: message)
                     
@@ -75,15 +70,7 @@ final class TopicTrendViewController: BaseViewController<TopicTrendRootView> {
                 contentView.hideToastActivity()
             }
     }
-    
-    private func configureNavigationRightBarButtonItem() {
-        let barButton = UIBarButtonItem(customView: profileImageView)
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
-        
-        self.navigationItem.rightBarButtonItem = barButton
-        profileImageView.addGestureRecognizer(tapGR)
-    }
-    
+
     private func addNetworkMonitor() {
         let id = NetworkManger.shared.doMonitoringNetwork { [weak self] in
             self?.input.value = .shouldRefresh
@@ -99,28 +86,10 @@ extension TopicTrendViewController: TopicTrendRootViewDelegate {
         self.input.value = .shouldRefresh
     }
     
-    @objc private func profileImageViewTapped() {
-        let nextVC = EditProfileSettingViewController(contentView: ProfileSettingRootView(type: .Editing))
-
-        nextVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
     func photoCellTapped(photo: PhotoCellModel) {
         let nextVC = PhotoDetailViewController(photo: photo)
         
         nextVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-}
-
-//MARK: - Update UI
-extension TopicTrendViewController {
-    private func updateProfileImage(imageNumber: Int) {
-        let size = self.navigationController?.navigationBar.frame.height ?? 44
-
-        self.profileImageView.image = UIImage.profileImages[imageNumber].resizeImage(size: CGSize(width: size, height: size))
-    }
-    
-    
 }

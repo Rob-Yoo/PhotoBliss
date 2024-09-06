@@ -96,6 +96,8 @@
 		CCCCCDBA2C6244F6003FF69A /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCCCDB92C6244F6003FF69A /* PhotoService.swift */; };
 		CCD982142C5785AE00B5C02B /* EditProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */; };
 		CCEF3E432C4FBA67006CAA4E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */; };
+		CCF510A52C8B67EF00936353 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = CCF510A42C8B67EF00936353 /* DGCharts */; };
+		CCF510A72C8B717A00936353 /* PhotoChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF510A62C8B717A00936353 /* PhotoChartView.swift */; };
 		CCFA37CF2C4E8C4300C9ADC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */; };
 		CCFA37D42C4E8E5100C9ADC1 /* polaroid.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */; };
 		CCFA37D82C4E917F00C9ADC1 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA37D72C4E917F00C9ADC1 /* ProfileImageView.swift */; };
@@ -206,6 +208,7 @@
 		CCCCCDB92C6244F6003FF69A /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		CCD982132C5785AE00B5C02B /* EditProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSettingViewController.swift; sourceTree = "<group>"; };
 		CCEF3E422C4FBA67006CAA4E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CCF510A62C8B717A00936353 /* PhotoChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoChartView.swift; sourceTree = "<group>"; };
 		CCFA37CE2C4E8C4300C9ADC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCFA37D32C4E8E5100C9ADC1 /* polaroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid.png; sourceTree = "<group>"; };
 		CCFA37D72C4E917F00C9ADC1 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 				CC5510C62C4E3DAD00A042C2 /* Then in Frameworks */,
 				CC5510D22C4E3E1800A042C2 /* Toast in Frameworks */,
 				CC37823E2C689C8400E8E269 /* RxSwift in Frameworks */,
+				CCF510A52C8B67EF00936353 /* DGCharts in Frameworks */,
 				CC5510C92C4E3DB800A042C2 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +258,7 @@
 				CC07AD4D2C537E51008146BF /* PhotoDetailRootView.swift */,
 				CC07AD4F2C537F42008146BF /* PhotoDetailHeaderView.swift */,
 				CC07AD512C538538008146BF /* PhotoDetailInfoView.swift */,
+				CCF510A62C8B717A00936353 /* PhotoChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 				CC5510D42C4E3E7800A042C2 /* Kingfisher */,
 				CC37823B2C689C8400E8E269 /* RxCocoa */,
 				CC37823D2C689C8400E8E269 /* RxSwift */,
+				CCF510A42C8B67EF00936353 /* DGCharts */,
 			);
 			productName = PhotoBliss;
 			productReference = CC5510AB2C4E3C0100A042C2 /* PhotoBliss.app */;
@@ -880,6 +886,7 @@
 				CC5510D02C4E3E1800A042C2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				CC5510D32C4E3E7800A042C2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CC37823A2C689C8400E8E269 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CCF510A32C8B67EF00936353 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = CC5510AC2C4E3C0100A042C2 /* Products */;
 			projectDirPath = "";
@@ -984,6 +991,7 @@
 				CC5EC3452C5215B300A54FE4 /* PhotoSearchViewModel.swift in Sources */,
 				CC575BDE2C56C2A500F5C212 /* ProfileSettingType.swift in Sources */,
 				CCB97B702C6915BC004A6C94 /* PhotoRandomViewController.swift in Sources */,
+				CCF510A72C8B717A00936353 /* PhotoChartView.swift in Sources */,
 				CC1904772C5018220092F4AF /* TabBarController.swift in Sources */,
 				CCFA37F12C4EB81900C9ADC1 /* ProfileSettingViewModel.swift in Sources */,
 				CCB97B742C691C51004A6C94 /* PhotoRandomCollectionViewCell.swift in Sources */,
@@ -1267,6 +1275,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		CCF510A32C8B67EF00936353 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChartsOrg/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1309,6 +1325,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC5510D32C4E3E7800A042C2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		CCF510A42C8B67EF00936353 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCF510A32C8B67EF00936353 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

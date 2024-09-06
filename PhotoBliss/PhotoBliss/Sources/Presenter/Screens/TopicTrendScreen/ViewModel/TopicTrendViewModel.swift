@@ -12,12 +12,10 @@ final class TopicTrendViewModel {
     enum Input {
         case viewDidLoad
         case shouldRefresh
-        case reloadUserProfileImage
     }
     
     enum Output {
         case topicList(_ topicList: [TopicModel])
-        case userProfileImageNumber(_ number: Int)
         case networkError(_ message: String)
     }
     
@@ -36,9 +34,7 @@ final class TopicTrendViewModel {
                 
             case .shouldRefresh:
                 Task { await self.fetchTopicList() }
-                
-            case .reloadUserProfileImage:
-                output.value = .userProfileImageNumber(userDataRepository.loadProfileImageNumber())
+
             }
         }
         return output

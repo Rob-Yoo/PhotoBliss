@@ -15,6 +15,7 @@ final class PhotoRandomRootView: BaseView {
         $0.register(PhotoRandomCollectionViewCell.self, forCellWithReuseIdentifier: PhotoRandomCollectionViewCell.reusableIdentifier)
         $0.showsVerticalScrollIndicator = false
         $0.isPagingEnabled = true
+        $0.contentInsetAdjustmentBehavior = .never
     }
     
     private func createLayout() -> UICollectionViewLayout {
