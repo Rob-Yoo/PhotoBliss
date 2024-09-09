@@ -89,6 +89,12 @@ Unsplash API를 활용하여 사진을 검색하고 좋아요 할 수 있는 앱
 
 <br>
 
+### 네트워크 재연결 시 자동 리로드
+
+- NWPathMonitor를 통해 네트워크 연결 상태를 모니터링하여 네트워크 재연결 여부 판단
+
+  - API 통신 재요청 이벤트를 VieModel Input으로 넣어주는 completionHandler 등록
+
 ### 사진 검색 결과에서 좋아요 여부 판단
 
 - 좋아요 Array를 `Set`으로 변환하여 시간복잡도를 `O(N)`으로 개선
